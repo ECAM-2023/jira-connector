@@ -1,7 +1,7 @@
 module.exports = {
   HOST: "localhost",
   USER: "postgres",
-  PASSWORD: process.env.DB_PW,
+  PASSWORD: "database20",
   DB: "node-express-sequelize",
   dialect: "postgres",
   pool: {
