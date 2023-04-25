@@ -28,11 +28,20 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
+// Routes view_customer_organization
+require("./app/routes/view_customer_organization.routes")(app);
+
+// Routes organization
+require("./app/routes/jira_organization.routes")(app);
+
 // Routes Tutorial
 require("./app/routes/turorial.routes")(app);
 
 // Routes Jira
 require("./app/routes/jira_user.routes")(app);
+
+//Routes customer
+require("./app/routes/jira_customer.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

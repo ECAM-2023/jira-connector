@@ -1,6 +1,9 @@
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
+      
+
+      
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
@@ -20,5 +23,8 @@ db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.jira_users = require("./jira_user.model.js")(sequelize, Sequelize);
+db.jira_customers = require("./jira_customer.model.js")(sequelize, Sequelize);
+db.jira_organisations = require("./jira_organization.model.js")(sequelize, Sequelize);
+db.view_customer_organizations = require("./view_customer_organization.model.js")(sequelize, Sequelize);
 
 module.exports = db;
