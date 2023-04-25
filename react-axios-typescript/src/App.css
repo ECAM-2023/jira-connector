@@ -1,15 +1,23 @@
 .list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+    text-align: left;
+    max-width: 750px;
+    margin: auto;
 }
 
 .submit-form {
-  max-width: 300px;
-  margin: auto;
+    max-width: 300px;
+    margin: auto;
 }
 
 .edit-form {
-  max-width: 300px;
-  margin: auto;
+    max-width: 300px;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    user-select: none;
 }
