@@ -15,6 +15,8 @@ import JiraOrganization from "./components/jira_organization.component";
 import JiraOrganizationsList from "./components/jira_organizations-list.component";
 import JiraOrganizationAdd from "./components/jira_organization-add.component";
 
+import Register from "./components/register.component";
+
 class App extends Component {
     render() {
         return (
@@ -54,6 +56,11 @@ class App extends Component {
                                 Add organization
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={"/register"} className="nav-link">
+                                Register
+                            </Link>
+                        </li>
                     </div>
                 </nav>
 
@@ -68,6 +75,7 @@ class App extends Component {
                         <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
                         <Route path="/jira/organization/:id" component={JiraOrganization} />
                         <Route exact path="/addorganization" component={JiraOrganizationAdd} />
+                        <Route exact path={["/", "/register"]} component={Register} />
                     </Switch>
                 </div>
             </div>

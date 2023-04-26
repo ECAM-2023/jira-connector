@@ -145,7 +145,7 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                 </div>
 
                 <div className="col-md-7">
-                    <label htmlFor="organizations-per-page">Organizations per page:</label>
+                    <label htmlFor="organizations-per-page">Organizations per page :</label>
                     <select
                         id="organizations-per-page"
                         className="form-select"
