@@ -95,3 +95,29 @@ exports.update = (req, res) => {
       });
     });
 };
+
+
+// Delete a jira user with the specified id in the request
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Jira.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "jira user was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete jira user with id=${id}. Maybe jira user was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete jira user with id=" + id
+      });
+    });
+};

@@ -15,5 +15,8 @@ module.exports = app => {
   // Update a User with id
   router.put("/:id", jira_users.update);
 
-  app.use("/api/v1/jira", router);
+  // Delete a user with id
+  router.delete("/:id", jira_users.delete);
+
+  app.use("/api/v1/jira/user", router);
 };

@@ -15,7 +15,7 @@ type State = {
     usersPerPage: number;
 };
 
-const USERS_PER_PAGE = 2;
+const USERS_PER_PAGE = 5;
 
 export default class JiraUsersList extends Component<Props, State> {
     constructor(props: Props) {
@@ -156,8 +156,11 @@ export default class JiraUsersList extends Component<Props, State> {
                             this.setCurrentPage(1, parseInt(e.target.value))
                         }
                     >
-                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                         <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
                         <option value="8">8</option>
                     </select>
                 </div>
@@ -222,12 +225,8 @@ export default class JiraUsersList extends Component<Props, State> {
                                 </label>{" "}
                                 {currentUser.displayName}
                             </div>
-
-                            <Link to={"/jira/" + currentUser.id} className="badge badge-warning">
+                            <Link to={"/jira/user/" + currentUser.id} className="badge badge-warning">
                                 Edit
-                            </Link>
-                            <Link to={"/jira/" + currentUser.id} className="badge badge-warning">
-                                Delete
                             </Link>
                         </div>
                     ) : (
