@@ -1,9 +1,9 @@
 import http from "../http-common";
-import IJiraUserData from "../types/jira_user.type"
+import IJiraUserData from "../types/jira_user.type";
 
 class JiraUserDataService {
   getAll() {
-    return http.get<Array<IJiraUserData>>("/jira");
+    return http.get<Array<IJiraUserData>>("/jira/user");
   }
 
   get(id: string) {

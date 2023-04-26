@@ -8,6 +8,7 @@ import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 import JiraUser from "./components/jira_user.component";
 import JiraUsersList from "./components/jira_users-list.component";
+import Register from "./components/register.component"
 
 class App extends Component {
   render() {
@@ -29,8 +30,13 @@ class App extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/jira"} className="nav-link">
+              <Link to={"/jira/user"} className="nav-link">
                 Users
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/register"} className="nav-link">
+                Register
               </Link>
             </li>
           </div>
@@ -41,8 +47,9 @@ class App extends Component {
             <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
             <Route exact path="/add" component={AddTutorial} />
             <Route path="/tutorials/:id" component={Tutorial} />
-            <Route path="/jira/:id" component={JiraUser} />
-            <Route exact path={["/", "/jira"]} component={JiraUsersList} />
+            <Route path="/jira/user/:id" component={JiraUser} />
+            <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
+            <Route exact path={["/", "/register"]} component={Register} />
           </Switch>
         </div>
       </div>
