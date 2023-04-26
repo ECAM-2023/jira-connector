@@ -1,5 +1,4 @@
 import { Component, ChangeEvent } from "react";
-import Pagination from "./Pagination";
 import JiraUserDataService from "../services/jira_user.service";
 import { Link } from "react-router-dom";
 import IJiraUserData from "../types/jira_user.type";
@@ -13,7 +12,10 @@ type State = {
     searchAccountId: string;
     currentPage: number;
     lastPage: number;
+    usersPerPage: number;
 };
+
+const USERS_PER_PAGE = 2;
 
 export default class JiraUsersList extends Component<Props, State> {
     constructor(props: Props) {
@@ -30,13 +32,22 @@ export default class JiraUsersList extends Component<Props, State> {
             currentIndex: -1,
             searchAccountId: "",
             currentPage: 1,
-            lastPage: 7,
+            lastPage: 5,
+            usersPerPage: 5,
         };
     }
 
-    setCurrentPage(pageNumber: number) {
+    getPaginatedUsers() {
+        const { users, currentPage } = this.state;
+        const startIndex = (currentPage - 1) * USERS_PER_PAGE;
+        const endIndex = startIndex + USERS_PER_PAGE;
+        return users.slice(startIndex, endIndex);
+    }
+
+    setCurrentPage(pageNumber: number, usersPerPage: number) {
         this.setState({
             currentPage: pageNumber,
+            usersPerPage: usersPerPage,
         });
     }
 
@@ -99,19 +110,25 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     render() {
-        const { searchAccountId, users, currentUser, currentIndex, currentPage, lastPage } = this.state;
+        const { searchAccountId, users, currentUser, currentIndex, currentPage, lastPage, usersPerPage } = this.state;
+        const startIndex = (currentPage - 1) * usersPerPage;
+        const endIndex = Math.min(startIndex + usersPerPage, users.length);
+        const displayedUsers = users.slice(startIndex, endIndex);
+
+        // Calculate the index of the first user to display on the current page
+        const indexOfLastUser = currentPage * usersPerPage;
+        const indexOfFirstUser = indexOfLastUser - usersPerPage;
+
+        // Get the users to display on the current page
+        const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+
+        // Calculate the total number of pages based on the number of users and usersPerPage
+        const totalPages = Math.ceil(users.length / usersPerPage);
+
+        const paginatedUsers = this.getPaginatedUsers();
 
         return (
             <div className="list row">
-                <div className="container">
-                    <h1>Users Pagination</h1>
-                    <Pagination
-                        currentPage={currentPage}
-                        lastPage={lastPage}
-                        maxLength={7}
-                        setCurrentPage={this.setCurrentPage.bind(this)}
-                    />
-                </div>
                 <div className="col-md-8">
                     <div className="input-group mb-3">
                         <input
@@ -128,12 +145,44 @@ export default class JiraUsersList extends Component<Props, State> {
                         </div>
                     </div>
                 </div>
+
+                <div className="col-md-7">
+                    <label htmlFor="users-per-page">Users per page:</label>
+                    <select
+                        id="users-per-page"
+                        className="form-select"
+                        value={usersPerPage}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                            this.setCurrentPage(1, parseInt(e.target.value))
+                        }
+                    >
+                        <option value="2">2</option>
+                        <option value="5">5</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+
                 <div className="col-md-6">
                     <h4>Users List</h4>
 
+                    <nav>
+                        <ul className="pagination">
+                            {Array.from(Array(totalPages).keys()).map((pageNumber) => (
+                                <li
+                                    key={pageNumber}
+                                    className={"page-item " + (currentPage === pageNumber + 1 ? "active" : "")}
+                                >
+                                    <button className="page-link" onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}>
+                                        {pageNumber + 1}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
                     <ul className="list-group">
-                        {users &&
-                            users.map((user: IJiraUserData, index: number) => (
+                        {displayedUsers &&
+                            displayedUsers.map((user: IJiraUserData, index: number) => (
                                 <li
                                     className={"list-group-item " + (index === currentIndex ? "active" : "")}
                                     onClick={() => this.setActiveUser(user, index)}
@@ -144,6 +193,7 @@ export default class JiraUsersList extends Component<Props, State> {
                             ))}
                     </ul>
                 </div>
+
                 <div className="col-md-6">
                     {currentUser ? (
                         <div>
@@ -175,6 +225,9 @@ export default class JiraUsersList extends Component<Props, State> {
 
                             <Link to={"/jira/" + currentUser.id} className="badge badge-warning">
                                 Edit
+                            </Link>
+                            <Link to={"/jira/" + currentUser.id} className="badge badge-warning">
+                                Delete
                             </Link>
                         </div>
                     ) : (

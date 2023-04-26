@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/tutorials"} className="navbar-brand">
+          <Link to={"/jira"} className="navbar-brand">
             Vicvano
           </Link>
           <div className="navbar-nav mr-auto">
@@ -25,7 +25,7 @@ class App extends Component {
             </li>
             <li className="nav-item">
               <Link to={"/add"} className="nav-link">
-                Add
+                Add tutorial
               </Link>
             </li>
             <li className="nav-item">
@@ -41,8 +41,8 @@ class App extends Component {
             <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
             <Route exact path="/add" component={AddTutorial} />
             <Route path="/tutorials/:id" component={Tutorial} />
-            <Route path="/jira/:id" component={JiraUser} />
             <Route exact path={["/", "/jira"]} component={JiraUsersList} />
+            <Route path="/jira/:id" component={JiraUser} />
           </Switch>
         </div>
       </div>
