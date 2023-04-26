@@ -90,19 +90,24 @@ export default class JiraUsersList extends Component<Props, State> {
             currentIndex: index,
         });
     }
-
+    
     searchAccountId() {
         this.setState({
             currentUser: null,
             currentIndex: -1,
         });
 
-        JiraUserDataService.findByAccountId(this.state.searchAccountId)
+        const { searchAccountId } = this.state;
+        JiraUserDataService.findByAccountId(searchAccountId)
             .then((response: any) => {
+                const filteredUsers = response.data.filter((user: IJiraUserData) =>
+                    user.accountId.toLowerCase().includes(searchAccountId.toLowerCase())
+                );
                 this.setState({
-                    users: response.data,
+                    users: filteredUsers,
+                    currentPage: 1, // Reset to first page
+                    lastPage: Math.ceil(filteredUsers.length / 5), // Update last page count
                 });
-                console.log(response.data);
             })
             .catch((e: Error) => {
                 console.log(e);
@@ -175,7 +180,10 @@ export default class JiraUsersList extends Component<Props, State> {
                                     key={pageNumber}
                                     className={"page-item " + (currentPage === pageNumber + 1 ? "active" : "")}
                                 >
-                                    <button className="page-link" onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}>
+                                    <button
+                                        className="page-link"
+                                        onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}
+                                    >
                                         {pageNumber + 1}
                                     </button>
                                 </li>

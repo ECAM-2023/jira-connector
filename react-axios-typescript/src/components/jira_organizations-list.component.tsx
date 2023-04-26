@@ -97,12 +97,17 @@ export default class JiraOrganizationsList extends Component<Props, State> {
             currentIndex: -1,
         });
 
-        JiraOrganizationDataService.findByOrganizationID(this.state.searchOrganizationID)
+        const { searchOrganizationID } = this.state;
+        JiraOrganizationDataService.findByOrganizationID(searchOrganizationID)
             .then((response: any) => {
+                const filteredOrganizations = response.data.filter((organization: IJiraOrganizationData) =>
+                    organization.organizationID.toLowerCase().includes(searchOrganizationID.toLowerCase())
+                );
                 this.setState({
-                    organizations: response.data,
+                    organizations: filteredOrganizations,
+                    currentPage: 1, // Reset to first page
+                    lastPage: Math.ceil(filteredOrganizations.length / 5), // Update last page count
                 });
-                console.log(response.data);
             })
             .catch((e: Error) => {
                 console.log(e);
