@@ -18,11 +18,11 @@ module.exports = app => {
   // Update a Jira Organization with id
   router.put("/:id", view_customer_organizations.update);
 
-  // // Delete a Tutorial with id
-  // router.delete("/:id", jira.delete);
+  // Delete a Tutorial with id
+  router.delete("/:id", view_customer_organizations.delete);
 
-  // // Delete all Tutorials
-  // router.delete("/", jira.deleteAll);
+  // Delete all Tutorials
+  router.delete("/", view_customer_organizations.deleteAll);
 
   app.use("/api/v1/jira/viewco", router);
 };
