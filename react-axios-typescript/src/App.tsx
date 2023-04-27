@@ -3,9 +3,8 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import AddTutorial from "./components/add-tutorial.component";
-import Tutorial from "./components/tutorial.component";
-import TutorialsList from "./components/tutorials-list.component";
+import AuthService from "./services/auth.service";
+import IJiraUser from "./types/jira_user.type";
 
 import JiraUser from "./components/jira_user.component";
 import JiraUsersList from "./components/jira_users-list.component";
@@ -16,10 +15,57 @@ import JiraOrganization from "./components/jira_organization.component";
 import JiraOrganizationsList from "./components/jira_organizations-list.component";
 import JiraOrganizationAdd from "./components/jira_organization-add-validation.component";
 
+import Login from "./components/login.component";
 import Register from "./components/register.component";
+import Profile from "./components/profile.component";
 
-class App extends Component {
+import EventBus from "./common/EventBus";
+import JiraCustomersList from "./components/jira_customers-list.component";
+
+type Props = {};
+
+type State = {
+    //   showModeratorBoard: boolean,
+    //   showAdminBoard: boolean,
+    currentUser: IJiraUser | undefined;
+};
+
+class App extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.logout = this.logout.bind(this);
+
+        this.state = {
+            currentUser: undefined,
+        };
+    }
+
+    componentDidMount() {
+        const user = AuthService.getCurrentUser();
+
+        if (user) {
+            this.setState({
+                currentUser: user,
+            });
+        }
+
+        EventBus.on("logout", this.logout);
+    }
+
+    componentWillUnmount() {
+        EventBus.remove("logout", this.logout);
+    }
+
+    logout() {
+        AuthService.logout();
+        this.setState({
+            currentUser: undefined,
+        });
+    }
+
     render() {
+        const { currentUser } = this.state;
+
         return (
             <div>
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -27,16 +73,6 @@ class App extends Component {
                         Jira Connector
                     </Link>
                     <div className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <Link to={"/tutorials"} className="nav-link">
-                                Tutorials
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/add"} className="nav-link">
-                                Add tutorial
-                            </Link>
-                        </li>
                         <li className="nav-item">
                             <Link to={"/jira/user"} className="nav-link">
                                 Users
@@ -57,22 +93,47 @@ class App extends Component {
                                 Add organization
                             </Link>
                         </li>
-                    </div>
-                    <div className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <Link to={"/register"} className="nav-link">
-                                Register
+                            <Link to={"/jira/customer"} className="nav-link">
+                                Customers
                             </Link>
                         </li>
+                    </div>
+                    <div className="navbar-nav ms-auto">
+
+                        {currentUser ? (
+                            <div className="navbar-nav ms-auto">
+                                <li className="nav-item">
+                                    <Link to={"/profile"} className="nav-link">
+                                        {currentUser.displayName}
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="/login" className="nav-link" onClick={this.logout}>
+                                        Log Out
+                                    </a>
+                                </li>
+                            </div>
+                        ) : (
+                            <div className="navbar-nav ms-auto">
+                                <li className="nav-item">
+                                    <Link to={"/login"} className="nav-link">
+                                        Login
+                                    </Link>
+                                </li>
+
+                                <li className="nav-item">
+                                    <Link to={"/register"} className="nav-link">
+                                        Register
+                                    </Link>
+                                </li>
+                            </div>
+                        )}
                     </div>
                 </nav>
 
                 <div className="container mt-3">
                     <Switch>
-                        <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
-                        <Route exact path="/add" component={AddTutorial} />
-                        <Route path="/tutorials/:id" component={Tutorial} />
-
                         <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
                         <Route path="/jira/user/:id" component={JiraUser} />
                         <Route exact path="/adduser" component={JiraUserAddValidation} />
@@ -81,9 +142,14 @@ class App extends Component {
                         <Route path="/jira/organization/:id" component={JiraOrganization} />
                         <Route exact path="/addorganization" component={JiraOrganizationAdd} />
 
+                        <Route exact path={["/", "/jira/customer"]} component={JiraCustomersList} />
+
+                        <Route exact path={["/", "/login"]} component={Login} />
                         <Route exact path={["/", "/register"]} component={Register} />
+                        <Route exact path="/profile" component={Profile} />
                     </Switch>
                 </div>
+
             </div>
         );
     }
