@@ -10,10 +10,11 @@ import TutorialsList from "./components/tutorials-list.component";
 import JiraUser from "./components/jira_user.component";
 import JiraUsersList from "./components/jira_users-list.component";
 import JiraUserAdd from "./components/jira_user-add.component";
+import JiraUserAddValidation from "./components/jira_user-add-validation.component";
 
 import JiraOrganization from "./components/jira_organization.component";
 import JiraOrganizationsList from "./components/jira_organizations-list.component";
-import JiraOrganizationAdd from "./components/jira_organization-add.component";
+import JiraOrganizationAdd from "./components/jira_organization-add-validation.component";
 
 import Register from "./components/register.component";
 
@@ -56,6 +57,8 @@ class App extends Component {
                                 Add organization
                             </Link>
                         </li>
+                    </div>
+                    <div className="navbar-nav ms-auto">
                         <li className="nav-item">
                             <Link to={"/register"} className="nav-link">
                                 Register
@@ -69,12 +72,15 @@ class App extends Component {
                         <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
                         <Route exact path="/add" component={AddTutorial} />
                         <Route path="/tutorials/:id" component={Tutorial} />
+
                         <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
                         <Route path="/jira/user/:id" component={JiraUser} />
-                        <Route exact path="/adduser" component={JiraUserAdd} />
+                        <Route exact path="/adduser" component={JiraUserAddValidation} />
+
                         <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
                         <Route path="/jira/organization/:id" component={JiraOrganization} />
                         <Route exact path="/addorganization" component={JiraOrganizationAdd} />
+
                         <Route exact path={["/", "/register"]} component={Register} />
                     </Switch>
                 </div>

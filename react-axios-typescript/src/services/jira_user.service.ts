@@ -21,11 +21,7 @@ class JiraUserDataService {
     delete(id: any) {
         return http.delete<any>(`/jira/user/${id}`);
     }
-
-    // findByAccountId(accountId: string) {
-    //   return http.get<Array<IJiraUserData>>(`/jira/user?accountId=${accountId}`);
-    // }
-
+    
     findByAccountId(accountId: string) {
         return http.get(`/jira/user?accountId_like=${accountId}`);
     }
