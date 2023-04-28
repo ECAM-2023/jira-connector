@@ -161,7 +161,7 @@ export default class JiraUsersList extends Component<Props, State>{
               </div>
 
               <Link
-                to={"/jira/" + currentUser.id}
+                to={"/jira/user/" + currentUser.id}
                 className="badge badge-warning"
               >
                 Edit

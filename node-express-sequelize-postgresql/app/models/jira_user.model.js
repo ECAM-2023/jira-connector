@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   // "jira_user" = le nom de notre table dans la base de donnée
-  const Jira = sequelize.define("jira_user", {
+  const Jira_User = sequelize.define("jira_user", {
     accountId: {
       type: Sequelize.STRING
     },
@@ -15,5 +15,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  return Jira;
+  return Jira_User;
 };

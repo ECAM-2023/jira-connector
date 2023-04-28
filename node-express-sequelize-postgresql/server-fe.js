@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: ["http://localhost:8082","http://localhost:8081"]
 };
 
 app.use(cors(corsOptions));
@@ -25,8 +25,14 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to front-end's API" });
 });
+
+// Routes view_customer_organization
+require("./app/routes/view_customer_organization.routes")(app);
+
+// Routes organization
+require("./app/routes/jira_organization.routes")(app);
 
 // Routes Tutorial
 require("./app/routes/turorial.routes")(app);
@@ -34,8 +40,11 @@ require("./app/routes/turorial.routes")(app);
 // Routes Jira
 require("./app/routes/jira_user.routes")(app);
 
+//Routes customer
+require("./app/routes/jira_customer.routes")(app);
+
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8085;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
