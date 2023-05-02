@@ -1,5 +1,5 @@
 module.exports = app => {
-  const jira_organizations = require("../controllers/jira_organization.controller.js");
+  const jira_organizations = require("../controllers-fe/fe_organization.controller.js");
 
   var router = require("express").Router();
 

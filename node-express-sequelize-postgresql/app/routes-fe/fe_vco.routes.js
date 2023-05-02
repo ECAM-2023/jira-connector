@@ -1,5 +1,5 @@
 module.exports = app => {
-  const view_customer_organizations = require("../controllers/view_customer_organization.controller.js");
+  const view_customer_organizations = require("../controllers-fe/fe_vco.controller.js");
 
   var router = require("express").Router();
 

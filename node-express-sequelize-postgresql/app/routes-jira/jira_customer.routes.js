@@ -1,5 +1,5 @@
 module.exports = app => {
-  const jira_customers = require("../controllers/jira_customer.controller.js");
+  const jira_customers = require("../controllers-jira/jira_customer.controller.js");
 
   var router = require("express").Router();
 

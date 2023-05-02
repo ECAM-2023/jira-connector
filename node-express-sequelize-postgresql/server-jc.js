@@ -5,7 +5,8 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: ["http://localhost:8081","http://10.1.100.215:8081"]
+  origin: true,
+  Method: ['GET']
 };
 
 app.use(cors(corsOptions));
@@ -29,19 +30,22 @@ app.get("/", (req, res) => {
 });
 
 // Routes view_customer_organization
-require("./app/routes/view_customer_organization.routes")(app);
+require("./app/routes-jira/view_customer_organization.routes")(app);
 
 // Routes organization
-require("./app/routes/jira_organization.routes")(app);
+require("./app/routes-jira/jira_organization.routes")(app);
 
 // Routes Tutorial
-require("./app/routes/turorial.routes")(app);
+require("./app/routes-jira/turorial.routes")(app);
 
 // Routes Jira
-require("./app/routes/jira_user.routes")(app);
+require("./app/routes-jira/jira_user.routes")(app);
 
 //Routes customer
-require("./app/routes/jira_customer.routes")(app);
+require("./app/routes-jira/jira_customer.routes")(app);
+
+//Routes issue
+// require("./app/routes-jira/jira_issue.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
