@@ -5,9 +5,6 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import i18n from "./i18n/i18n";
-import { useTranslation } from "react-i18next";
-
 import AuthService from "./services/auth.service";
 import IJiraUser from "./types/jira_user.type";
 
@@ -20,7 +17,7 @@ import JiraOrganizationsList from "./components/jira_organizations-list.componen
 import JiraOrganizationAdd from "./components/jira_organization-add-validation.component";
 
 import Login from "./components/login.component";
-import Register from "./components/register-translation.component";
+import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import Settings from "./components/settings.component";
 
@@ -32,64 +29,6 @@ type Props = {};
 type State = {
     currentUser: IJiraUser | undefined;
 };
-
-function MultiLanguagesText() {
-    const { t, i18n } = useTranslation(["app"]);
-
-    return (
-        <div>
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <Link to={"/jira/user"} className="navbar-brand">
-                    {t("title")}
-                </Link>
-                <div className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <Link to={"/jira/user"} className="nav-link">
-                            {t("Users")}
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to={"/jira/organization"} className="nav-link">
-                            {t("Organizations")}
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to={"/jira/customer"} className="nav-link">
-                            {t("Customers")}
-                        </Link>
-                    </li>
-
-                    <Nav>
-                        <NavDropdown id="nav-dropdown-dark-example" title={t("AddNew")} menuVariant="dark">
-                            <NavDropdown.Item href="/adduser">{t("AddNewUser")}</NavDropdown.Item>
-                            <NavDropdown.Item href="/addorganization">{t("AddNewOrganization")}</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                </div>
-            </nav>
-        </div>
-    );
-}
-
-function UserConnected() {
-    const { t, i18n } = useTranslation(["app"]);
-
-    return (
-        <div className="navbar-nav ms-auto">
-            <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
-                    Login
-                </Link>
-            </li>
-
-            <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                    Register
-                </Link>
-            </li>
-        </div>
-    );
-}
 
 class App extends Component<Props, State> {
     constructor(props: Props) {
@@ -130,7 +69,35 @@ class App extends Component<Props, State> {
         return (
             <div>
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
-                    <MultiLanguagesText />
+                    <Link to={"/jira/user"} className="navbar-brand">
+                        Jira Connector
+                    </Link>
+                    <div className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to={"/jira/user"} className="nav-link">
+                                Users
+                            </Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <Link to={"/jira/organization"} className="nav-link">
+                                Organizations
+                            </Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <Link to={"/jira/customer"} className="nav-link">
+                                Customers
+                            </Link>
+                        </li>
+
+                        <Nav className="">
+                            <NavDropdown id="nav-dropdown-dark-example" title="Add new" menuVariant="dark">
+                                <NavDropdown.Item href="/adduser">Add user</NavDropdown.Item>
+                                <NavDropdown.Item href="/addorganization">Add organization</NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
+                    </div>
                     <div className="navbar-nav ms-auto">
                         {currentUser ? (
                             <div className="navbar-nav ms-auto">
@@ -146,11 +113,23 @@ class App extends Component<Props, State> {
                                 </li>
                             </div>
                         ) : (
-                            <UserConnected />
+                            <div className="navbar-nav ms-auto">
+                                <li className="nav-item">
+                                    <Link to={"/login"} className="nav-link">
+                                        Login
+                                    </Link>
+                                </li>
+
+                                <li className="nav-item">
+                                    <Link to={"/register"} className="nav-link">
+                                        Register
+                                    </Link>
+                                </li>
+                            </div>
                         )}
                         <li className="nav-item">
                             <Link to={"/settings"} className="nav-link">
-                                Settings
+                                <Image src="settings.jpg" alt="settings-img" /> Settings
                             </Link>
                         </li>
                     </div>
