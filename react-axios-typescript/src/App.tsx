@@ -45,6 +45,11 @@ function MultiLanguagesText() {
                 <div className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <Link to={"/jira/user"} className="nav-link">
+                            {t("Issues")}
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to={"/jira/user"} className="nav-link">
                             {t("Users")}
                         </Link>
                     </li>
@@ -131,9 +136,9 @@ class App extends Component<Props, State> {
             <div>
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
                     <MultiLanguagesText />
-                    <div className="navbar-nav ms-auto">
+                    <div className="navbar-nav ml-auto p-2">
                         {currentUser ? (
-                            <div className="navbar-nav ms-auto">
+                            <div className="navbar-nav">
                                 <li className="nav-item">
                                     <Link to={"/profile"} className="nav-link">
                                         {currentUser.displayName}

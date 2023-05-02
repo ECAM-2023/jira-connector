@@ -2,6 +2,8 @@ import { Component, ChangeEvent } from "react";
 import JiraUserDataService from "../services/jira_user.service";
 import { Link } from "react-router-dom";
 import IJiraUserData from "../types/jira_user.type";
+import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import * as XLSX from "xlsx";
 
 type Props = {};
 
@@ -13,6 +15,7 @@ type State = {
     currentPage: number;
     lastPage: number;
     usersPerPage: number;
+    exportFormat: string;
 };
 
 const USERS_PER_PAGE = 5;
@@ -25,6 +28,7 @@ export default class JiraUsersList extends Component<Props, State> {
         this.refreshList = this.refreshList.bind(this);
         this.setActiveUser = this.setActiveUser.bind(this);
         this.searchAccountId = this.searchAccountId.bind(this);
+        this.handleClickExportButton = this.handleClickExportButton.bind(this);
 
         this.state = {
             users: [],
@@ -34,7 +38,31 @@ export default class JiraUsersList extends Component<Props, State> {
             currentPage: 1,
             lastPage: 5,
             usersPerPage: 5,
+            exportFormat: "xlsx",
         };
+    }
+
+    handleClickExportButton() {
+        // Données à exporter
+        const { users } = this.state;
+
+        const data = [
+            ["AccountId", "AccountType", "Email", "DisplayName"],
+            ...users.map((user) => [user.accountId, user.accountType, user.emailAddress, user.displayName]),
+        ];
+
+        if (this.state.exportFormat === "xlsx") {
+            const workbook = XLSX.utils.book_new();
+
+            const worksheet = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+
+            XLSX.writeFile(workbook, "usersList.xlsx");
+        } else if (this.state.exportFormat === "word") {
+            return;
+        } else if (this.state.exportFormat === "rst") {
+            return;
+        }
     }
 
     getPaginatedUsers() {
@@ -90,7 +118,7 @@ export default class JiraUsersList extends Component<Props, State> {
             currentIndex: index,
         });
     }
-    
+
     searchAccountId() {
         this.setState({
             currentUser: null,
@@ -115,7 +143,8 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     render() {
-        const { searchAccountId, users, currentUser, currentIndex, currentPage, lastPage, usersPerPage } = this.state;
+        const { searchAccountId, users, currentUser, currentIndex, currentPage, lastPage, usersPerPage, exportFormat } =
+            this.state;
         const startIndex = (currentPage - 1) * usersPerPage;
         const endIndex = Math.min(startIndex + usersPerPage, users.length);
         const displayedUsers = users.slice(startIndex, endIndex);
@@ -123,13 +152,10 @@ export default class JiraUsersList extends Component<Props, State> {
         // Calculate the index of the first user to display on the current page
         const indexOfLastUser = currentPage * usersPerPage;
         const indexOfFirstUser = indexOfLastUser - usersPerPage;
-
         // Get the users to display on the current page
         const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-
         // Calculate the total number of pages based on the number of users and usersPerPage
         const totalPages = Math.ceil(users.length / usersPerPage);
-
         const paginatedUsers = this.getPaginatedUsers();
 
         return (
@@ -243,6 +269,23 @@ export default class JiraUsersList extends Component<Props, State> {
                             <p>Please click on a User...</p>
                         </div>
                     )}
+                </div>
+                <div className="col-md-6">
+                    Export Users List as :
+                    <select
+                        value={this.state.exportFormat}
+                        onChange={(e) => this.setState({ exportFormat: e.target.value })}
+                    >
+                        <option value="xlsx">.xlsx</option>
+                        <option value="word">.docx</option>
+                        <option value="rst">.rst</option>
+                        <option value="pdf">.pdf</option>
+                    </select>
+                    <div>
+                        <button onClick={this.handleClickExportButton.bind(this)}>
+                            Exporter en {this.state.exportFormat}
+                        </button>
+                    </div>
                 </div>
             </div>
         );
