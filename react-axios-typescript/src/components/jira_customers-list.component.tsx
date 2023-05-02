@@ -1,5 +1,5 @@
 import { Component, ChangeEvent } from "react";
-import JiraCustomerDataService from "../services/jira_customer.service.";
+import JiraCustomerDataService from "../services/jira_customer.service";
 import { Link } from "react-router-dom";
 import IJiraCustomerData from "../types/jira_customer.type";
 
@@ -90,7 +90,7 @@ export default class JiraCustomersList extends Component<Props, State> {
             currentIndex: index,
         });
     }
-    
+
     searchAccountId() {
         this.setState({
             currentCustomer: null,
@@ -115,7 +115,8 @@ export default class JiraCustomersList extends Component<Props, State> {
     }
 
     render() {
-        const { searchAccountId, customers, currentCustomer, currentIndex, currentPage, lastPage, customersPerPage } = this.state;
+        const { searchAccountId, customers, currentCustomer, currentIndex, currentPage, lastPage, customersPerPage } =
+            this.state;
         const startIndex = (currentPage - 1) * customersPerPage;
         const endIndex = Math.min(startIndex + customersPerPage, customers.length);
         const displayedCustomers = customers.slice(startIndex, endIndex);

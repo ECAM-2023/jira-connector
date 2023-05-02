@@ -1,7 +1,7 @@
 import { Component, ChangeEvent } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import JiraCustomerDataService from "../services/jira_customer.service.";
+import JiraCustomerDataService from "../services/jira_customer.service";
 import IJiraCustomerData from "../types/jira_customer.type";
 
 interface RouterProps {

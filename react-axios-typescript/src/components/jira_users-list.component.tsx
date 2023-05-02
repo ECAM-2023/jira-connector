@@ -2,7 +2,6 @@ import { Component, ChangeEvent } from "react";
 import JiraUserDataService from "../services/jira_user.service";
 import { Link } from "react-router-dom";
 import IJiraUserData from "../types/jira_user.type";
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import * as XLSX from "xlsx";
 
 type Props = {};

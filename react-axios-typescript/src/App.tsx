@@ -5,15 +5,22 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
+// Jira Icon source : https://atlassian.design/components/logo/examples#jira
+import { JiraIcon } from "@atlaskit/logo";
+
+import imageSettingsIcon from "./settings-icon.png";
+
 import i18n from "./i18n/i18n";
 import { useTranslation } from "react-i18next";
 
 import AuthService from "./services/auth.service";
 import IJiraUser from "./types/jira_user.type";
 
+import JiraIssueAdd from "./components/jira_issue-add.component";
+
 import JiraUser from "./components/jira_user.component";
 import JiraUsersList from "./components/jira_users-list.component";
-import JiraUserAddValidation from "./components/jira_user-add-validation.component";
+import JiraUserAdd from "./components/jira_user-add-validation.component";
 
 import JiraOrganization from "./components/jira_organization.component";
 import JiraOrganizationsList from "./components/jira_organizations-list.component";
@@ -39,33 +46,35 @@ function MultiLanguagesText() {
     return (
         <div>
             <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <Link to={"/jira/user"} className="navbar-brand">
+                <Link to={"/jira/user"} className="navbar-brand text-white">
+                    <JiraIcon appearance="brand" />
                     {t("title")}
                 </Link>
                 <div className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link to={"/jira/user"} className="nav-link">
+                        <Link to={"/jira/user"} className="nav-link text-light">
                             {t("Issues")}
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to={"/jira/user"} className="nav-link">
+                        <Link to={"/jira/user"} className="nav-link text-light">
                             {t("Users")}
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to={"/jira/organization"} className="nav-link">
+                        <Link to={"/jira/organization"} className="nav-link text-light">
                             {t("Organizations")}
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to={"/jira/customer"} className="nav-link">
+                        <Link to={"/jira/customer"} className="nav-link text-light">
                             {t("Customers")}
                         </Link>
                     </li>
 
                     <Nav>
-                        <NavDropdown id="nav-dropdown-dark-example" title={t("AddNew")} menuVariant="dark">
+                        <NavDropdown id="nav-dropdown-dark" title={t("AddNew")}>
+                            <NavDropdown.Item href="/addissue">{t("AddNewIssue")}</NavDropdown.Item>
                             <NavDropdown.Item href="/adduser">{t("AddNewUser")}</NavDropdown.Item>
                             <NavDropdown.Item href="/addorganization">{t("AddNewOrganization")}</NavDropdown.Item>
                         </NavDropdown>
@@ -82,13 +91,13 @@ function UserConnected() {
     return (
         <div className="navbar-nav ms-auto">
             <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
+                <Link to={"/login"} className="nav-link text-light">
                     Login
                 </Link>
             </li>
 
             <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
+                <Link to={"/register"} className="nav-link text-light">
                     Register
                 </Link>
             </li>
@@ -140,12 +149,12 @@ class App extends Component<Props, State> {
                         {currentUser ? (
                             <div className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link to={"/profile"} className="nav-link">
+                                    <Link to={"/profile"} className="nav-link text-light">
                                         {currentUser.displayName}
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="/login" className="nav-link" onClick={this.logout}>
+                                    <a href="/login" className="nav-link text-light" onClick={this.logout}>
                                         Log Out
                                     </a>
                                 </li>
@@ -154,7 +163,8 @@ class App extends Component<Props, State> {
                             <UserConnected />
                         )}
                         <li className="nav-item">
-                            <Link to={"/settings"} className="nav-link">
+                            <Link to={"/settings"} className="nav-link text-light">
+                                <img src={imageSettingsIcon} alt="SettingsIcon" width="20" />
                                 Settings
                             </Link>
                         </li>
@@ -163,9 +173,11 @@ class App extends Component<Props, State> {
 
                 <div className="container mt-3">
                     <Switch>
+                        <Route exact path="/addissue" component={JiraIssueAdd} />
+
                         <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
                         <Route path="/jira/user/:id" component={JiraUser} />
-                        <Route exact path="/adduser" component={JiraUserAddValidation} />
+                        <Route exact path="/adduser" component={JiraUserAdd} />
 
                         <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
                         <Route path="/jira/organization/:id" component={JiraOrganization} />

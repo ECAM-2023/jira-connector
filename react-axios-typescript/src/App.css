@@ -21,3 +21,7 @@
     padding: 20px 15px;
     user-select: none;
 }
+
+#nav-dropdown-dark {
+    color: white;
+}

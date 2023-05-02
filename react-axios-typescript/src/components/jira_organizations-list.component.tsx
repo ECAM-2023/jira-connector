@@ -2,6 +2,7 @@ import { Component, ChangeEvent } from "react";
 import JiraOrganizationDataService from "../services/jira_organization.service";
 import { Link } from "react-router-dom";
 import IJiraOrganizationData from "../types/jira_organization.type";
+import * as XLSX from "xlsx";
 
 type Props = {};
 
@@ -13,6 +14,7 @@ type State = {
     currentPage: number;
     lastPage: number;
     organizationsPerPage: number;
+    exportFormat: string;
 };
 
 const ORGANIZATIONS_PER_PAGE = 5;
@@ -25,6 +27,7 @@ export default class JiraOrganizationsList extends Component<Props, State> {
         this.refreshList = this.refreshList.bind(this);
         this.setActiveOrganization = this.setActiveOrganization.bind(this);
         this.searchOrganizationID = this.searchOrganizationID.bind(this);
+        this.handleClickExportButton = this.handleClickExportButton.bind(this);
 
         this.state = {
             organizations: [],
@@ -34,7 +37,31 @@ export default class JiraOrganizationsList extends Component<Props, State> {
             currentPage: 1,
             lastPage: 5,
             organizationsPerPage: 5,
+            exportFormat: "xlsx",
         };
+    }
+
+    handleClickExportButton() {
+        // Données à exporter
+        const { organizations } = this.state;
+
+        const data = [
+            ["organizationID", "name"],
+            ...organizations.map((organization) => [organization.organizationID, organization.name]),
+        ];
+
+        if (this.state.exportFormat === "xlsx") {
+            const workbook = XLSX.utils.book_new();
+
+            const worksheet = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Organizations");
+
+            XLSX.writeFile(workbook, "organizationsList.xlsx");
+        } else if (this.state.exportFormat === "word") {
+            return;
+        } else if (this.state.exportFormat === "rst") {
+            return;
+        }
     }
 
     getPaginatedOrganizations() {
@@ -115,7 +142,16 @@ export default class JiraOrganizationsList extends Component<Props, State> {
     }
 
     render() {
-        const { searchOrganizationID, organizations, currentOrganization, currentIndex, currentPage, lastPage, organizationsPerPage } = this.state;
+        const {
+            searchOrganizationID,
+            organizations,
+            currentOrganization,
+            currentIndex,
+            currentPage,
+            lastPage,
+            organizationsPerPage,
+            exportFormat,
+        } = this.state;
         const startIndex = (currentPage - 1) * organizationsPerPage;
         const endIndex = Math.min(startIndex + organizationsPerPage, organizations.length);
         const displayedOrganizations = organizations.slice(startIndex, endIndex);
@@ -137,7 +173,11 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                             onChange={this.onChangeSearchOrganizationID}
                         />
                         <div className="input-group-append">
-                            <button className="btn btn-outline-secondary" type="button" onClick={this.searchOrganizationID}>
+                            <button
+                                className="btn btn-outline-secondary"
+                                type="button"
+                                onClick={this.searchOrganizationID}
+                            >
                                 Search
                             </button>
                         </div>
@@ -173,7 +213,10 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                                     key={pageNumber}
                                     className={"page-item " + (currentPage === pageNumber + 1 ? "active" : "")}
                                 >
-                                    <button className="page-link" onClick={() => this.setCurrentPage(pageNumber + 1, organizationsPerPage)}>
+                                    <button
+                                        className="page-link"
+                                        onClick={() => this.setCurrentPage(pageNumber + 1, organizationsPerPage)}
+                                    >
                                         {pageNumber + 1}
                                     </button>
                                 </li>
@@ -221,6 +264,23 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                             <p>Please click on a Organization...</p>
                         </div>
                     )}
+                </div>
+                <div className="col-md-6">
+                    Export Organizations List as :
+                    <select
+                        value={this.state.exportFormat}
+                        onChange={(e) => this.setState({ exportFormat: e.target.value })}
+                    >
+                        <option value="xlsx">.xlsx</option>
+                        <option value="word">.docx</option>
+                        <option value="rst">.rst</option>
+                        <option value="pdf">.pdf</option>
+                    </select>
+                    <div>
+                        <button onClick={this.handleClickExportButton.bind(this)}>
+                            Exporter en {this.state.exportFormat}
+                        </button>
+                    </div>
                 </div>
             </div>
         );
