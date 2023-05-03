@@ -13,9 +13,6 @@ import imageSettingsIcon from "./settings-icon.png";
 import i18n from "./i18n/i18n";
 import { useTranslation } from "react-i18next";
 
-import AuthService from "./services/auth.service";
-import IJiraUser from "./types/jira_user.type";
-
 import JiraIssuesList from "./components/jira_issues-list.component";
 import JiraIssueAdd from "./components/jira_issue-add.component";
 
@@ -29,8 +26,11 @@ import JiraOrganizationAdd from "./components/jira_organization-add-validation.c
 
 import JiraCustomersList from "./components/jira_customers-list.component";
 
+import AuthService from "./services/auth.service";
+import IJiraUser from "./types/jira_user.type";
+
 import Login from "./components/login.component";
-import Register from "./components/register-translation.component";
+import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import Settings from "./components/settings.component";
 
@@ -39,6 +39,8 @@ import EventBus from "./common/EventBus";
 type Props = {};
 
 type State = {
+    showModeratorBoard: boolean;
+    showAdminBoard: boolean;
     currentUser: IJiraUser | undefined;
 };
 
@@ -128,6 +130,8 @@ class App extends Component<Props, State> {
         this.logout = this.logout.bind(this);
 
         this.state = {
+            showModeratorBoard: false,
+            showAdminBoard: false,
             currentUser: undefined,
         };
     }
@@ -138,6 +142,8 @@ class App extends Component<Props, State> {
         if (user) {
             this.setState({
                 currentUser: user,
+                showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
+                showAdminBoard: user.roles.includes("ROLE_ADMIN"),
             });
         }
 
@@ -151,6 +157,8 @@ class App extends Component<Props, State> {
     logout() {
         AuthService.logout();
         this.setState({
+            showModeratorBoard: false,
+            showAdminBoard: false,
             currentUser: undefined,
         });
     }

@@ -3,6 +3,7 @@ import JiraOrganizationDataService from "../services/jira_organization.service";
 import { Link } from "react-router-dom";
 import IJiraOrganizationData from "../types/jira_organization.type";
 import * as XLSX from "xlsx";
+import { Table } from "react-bootstrap";
 
 type Props = {};
 
@@ -206,6 +207,24 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                 <div className="col-md-6">
                     <h4>Organizations List</h4>
 
+                    <div className="container">
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>id</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {displayedOrganizations.map((organization, index) => (
+                                    <tr key={index}>
+                                        <td>{organization.name}</td>
+                                        <td>{organization.organizationID}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
                     <nav>
                         <ul className="pagination">
                             {Array.from(Array(totalPages).keys()).map((pageNumber) => (

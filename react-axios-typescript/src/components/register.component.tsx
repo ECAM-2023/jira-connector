@@ -87,7 +87,7 @@ export default class Register extends Component<Props, State> {
         };
 
         return (
-            <div className="col-md">
+            <div className="col-md card">
                 <Formik
                     initialValues={initialValues}
                     validationSchema={this.validationSchema}

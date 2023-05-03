@@ -74,7 +74,7 @@ export default class Login extends Component<Props, State> {
         };
 
         return (
-            <div className="col-md-12 card bg-light border-dark">
+            <div className="col-md-12 card">
                 <Formik
                     initialValues={initialValues}
                     validationSchema={this.validationSchema}

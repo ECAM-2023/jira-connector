@@ -10,10 +10,10 @@ function Settings() {
             <h1>{t("Settings")}</h1>
             <div className="d-flex">
                 <h3 className="">{t("Language")}</h3>
-                <button className="" value="en" onClick={() => i18n.changeLanguage("en")}>
+                <button className="btn btn-outline-primary" value="en" onClick={() => i18n.changeLanguage("en")}>
                     EN
                 </button>
-                <button className="" value="fr" onClick={() => i18n.changeLanguage("fr")}>
+                <button className="btn btn-outline-primary" value="fr" onClick={() => i18n.changeLanguage("fr")}>
                     FR
                 </button>
             </div>

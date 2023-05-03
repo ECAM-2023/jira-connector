@@ -3,6 +3,7 @@ import JiraUserDataService from "../services/jira_user.service";
 import { Link } from "react-router-dom";
 import IJiraUserData from "../types/jira_user.type";
 import * as XLSX from "xlsx";
+import { Table } from "react-bootstrap";
 
 type Props = {};
 
@@ -195,9 +196,37 @@ export default class JiraUsersList extends Component<Props, State> {
                     </select>
                 </div>
 
-                <div className="col-md-6">
+                <div className="col-md-7">
                     <h4>Users List</h4>
 
+                    <div className="container">
+                        <Table striped bordered hover className="table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>accountId</th>
+                                    <th>accountType</th>
+                                    <th>Email address</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {displayedUsers.map((user, index) => (
+                                    <tr key={index}>
+                                        <td>{user.displayName}</td>
+                                        <td>{user.accountId}</td>
+                                        <td>{user.accountType}</td>
+                                        <td>{user.emailAddress}</td>
+                                        <td>
+                                            <Link to={"/jira/user/" + user.id} className="badge badge-warning">
+                                                Edit
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
                     <nav>
                         <ul className="pagination">
                             {Array.from(Array(totalPages).keys()).map((pageNumber) => (
@@ -215,61 +244,8 @@ export default class JiraUsersList extends Component<Props, State> {
                             ))}
                         </ul>
                     </nav>
-
-                    <ul className="list-group">
-                        {displayedUsers &&
-                            displayedUsers.map((user: IJiraUserData, index: number) => (
-                                <li
-                                    className={"list-group-item " + (index === currentIndex ? "active" : "")}
-                                    onClick={() => this.setActiveUser(user, index)}
-                                    key={index}
-                                >
-                                    {user.displayName}
-                                </li>
-                            ))}
-                    </ul>
                 </div>
-
-                <div className="col-md-6">
-                    {currentUser ? (
-                        <div>
-                            <h4>User</h4>
-                            <div>
-                                <label>
-                                    <strong>AccountId:</strong>
-                                </label>{" "}
-                                {currentUser.accountId}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>AccountType:</strong>
-                                </label>{" "}
-                                {currentUser.accountType}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Email Address:</strong>
-                                </label>{" "}
-                                {currentUser.emailAddress}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Name:</strong>
-                                </label>{" "}
-                                {currentUser.displayName}
-                            </div>
-                            <Link to={"/jira/user/" + currentUser.id} className="badge badge-warning">
-                                Edit
-                            </Link>
-                        </div>
-                    ) : (
-                        <div>
-                            <br />
-                            <p>Please click on a User...</p>
-                        </div>
-                    )}
-                </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                     Export Users List as :
                     <select
                         value={this.state.exportFormat}
@@ -281,7 +257,7 @@ export default class JiraUsersList extends Component<Props, State> {
                         <option value="pdf">.pdf</option>
                     </select>
                     <div>
-                        <button onClick={this.handleClickExportButton.bind(this)}>
+                        <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
                             Exporter en {this.state.exportFormat}
                         </button>
                     </div>
