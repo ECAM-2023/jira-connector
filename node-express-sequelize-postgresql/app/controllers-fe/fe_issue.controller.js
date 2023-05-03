@@ -5,10 +5,24 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Issue
 exports.create = (req, res) => {
 
+  if (!req.body.issue_id) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+    return;
+  }
   // Create a Jira Issue
   const jira_issue = {
-    issue_id: req.body.id,
-    summary: req.body.summary
+    issue_id: req.body.issue_id,
+    key:req.body.key,
+    nameIssueType:req.body.nameIssueType,
+    timespent:req.body.timespent,
+    updated:req.body.updated,
+    description:req.body.description,
+    status:req.body.status,
+    summary: req.body.summary,
+    user:req.body.user,
+    organization:req.body.organization
   };
 
   // Save Jira Issue in the database
@@ -26,10 +40,12 @@ exports.create = (req, res) => {
 
 // Retrieve all Jira Issues from the database.
 exports.findAll = (req, res) => {
+  const summary = req.query.summary;
+  var condition = summary ? { summary: { [Op.iLike]: `%${summary}%` } } : null;
 
   Jira_Issue.findAll()
     .then(data => {
-      res.send(data,"ok");
+      res.send(data);
     })
     .catch(err => {
       res.status(500).send({

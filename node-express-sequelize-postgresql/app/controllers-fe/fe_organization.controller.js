@@ -36,7 +36,7 @@ exports.findAll = (req, res) => {
 
   Jira_Organization.findAll()
     .then(data => {
-      res.send(data,"ok");
+      res.send(data);
     })
     .catch(err => {
       res.status(500).send({

@@ -16,6 +16,35 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   }
 });
 
+const Post = sequelize.define('Post', {
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  content: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+    allowNull: false
+  }
+});
+
+// sequelize.query(`
+//   CREATE TRIGGER update_posts_updated_at
+//   BEFORE INSERT ON "jira_users"
+//   FOR EACH ROW
+//   EXECUTE PROCEDURE update_posts_updated_at()
+// `);
+
+// Utilisation de la classe Post
+const post = Post.create({
+  title: 'Mon titre',
+  content: 'Mon contenu'
+});
+console.log(post);
+
 const db = {};
 
 db.Sequelize = Sequelize;
@@ -28,4 +57,5 @@ db.jira_organisations = require("./jira_organization.model.js")(sequelize, Seque
 db.view_customer_organizations = require("./view_customer_organization.model.js")(sequelize, Sequelize);
 db.jira_issues = require("./jira_issue.model.js")(sequelize, Sequelize);
 db.login = require("./user_login.model.js")(sequelize, Sequelize);
+
 module.exports = db;

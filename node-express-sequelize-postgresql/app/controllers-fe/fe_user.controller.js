@@ -1,4 +1,5 @@
 const db = require("../models");
+const axios = require('axios');
 const Jira = db.jira_users;
 const Op = db.Sequelize.Op;
 
@@ -12,13 +13,18 @@ exports.create = (req, res) => {
     return;
   }
 
+class Jira_user{
+  
+  constructor(accountId, accountType,emailAddress,displayName) {
+    this.accountId = accountId;
+    this.accountType = accountType;
+    this.emailAddress = emailAddress;
+    this.displayName = displayName;
+  }
+}
+
   // Create a User
-  const jira_user = {
-    accountId: req.body.accountId,
-    accountType: req.body.accountType,
-    emailAddress: req.body.emailAddress,
-    displayName: req.body.displayName
-  };
+  const jira_user = new Jira_user(req.body.accountId,req.body.accountType,req.body.emailAddress,req.body.displayName)
 
   // Save User in the database
   Jira.create(jira_user)
@@ -38,9 +44,22 @@ exports.findAll = (req, res) => {
   const accountType = req.query.accountType;
   var condition = accountType ? { accountType: { [Op.iLike]: `%${accountType}%` } } : null;
 
+
+
   Jira.findAll({ where: condition })
     .then(data => {
-      res.send(data);
+      axios.get('http://10.1.100.244:8080/api/v1/jira/user')
+      .then(response => {
+        
+        data = response.data
+        res.send(data);})
+      .catch(error => {console.log(error); 
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving users."
+        });
+      }); 
+      
     })
     .catch(err => {
       res.status(500).send({

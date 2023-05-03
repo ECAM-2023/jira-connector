@@ -4,18 +4,18 @@ const Op = db.Sequelize.Op;
 
 // Create and Save a new Issue
 exports.create = (req, res) => {
-  // // Validate request
-  // if (!req.body.id) {
-  //   res.status(400).send({
-  //     message: "Content can not be empty!"
-  //   });
-  //   return;
-  // }
+  // Validate request
+  if (!req.body.name) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+    return;
+  }
 
   // Create a Jira Issue
   const user_login = {
-    issue_id: req.body.id,
-    summary: req.body.fields.summary
+    name:req.body.name,
+    email: req.body.email
   };
 
   // Save Jira Issue in the database
@@ -36,7 +36,7 @@ exports.findAll = (req, res) => {
 
   User_Login.findAll()
     .then(data => {
-      res.send(data,"ok");
+      res.send(data);
     })
     .catch(err => {
       res.status(500).send({
