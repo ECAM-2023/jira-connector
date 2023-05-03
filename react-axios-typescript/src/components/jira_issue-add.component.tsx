@@ -21,7 +21,7 @@ export default class JiraIssueAdd extends Component<Props, State> {
 
         this.state = {
             id: null,
-            issueId: "",
+            issue_id: "",
             summary: "",
             submitted: false,
             successful: false,
@@ -31,7 +31,7 @@ export default class JiraIssueAdd extends Component<Props, State> {
 
     validationSchema() {
         return Yup.object().shape({
-            issueId: Yup.string()
+            issue_id: Yup.string()
                 .test(
                     "len",
                     "The issue id must be between 3 and 50 characters.",
@@ -48,7 +48,7 @@ export default class JiraIssueAdd extends Component<Props, State> {
         });
     }
 
-    handleAddIssue(formValue: { issueId: string; summary: string }) {
+    handleAddIssue(formValue: { issue_id: string; summary: string }) {
         const data: IJiraIssueData = formValue;
 
         this.setState({
@@ -60,7 +60,7 @@ export default class JiraIssueAdd extends Component<Props, State> {
             (response: any) => {
                 this.setState({
                     id: response.data.id,
-                    issueId: response.data.issueId,
+                    issue_id: response.data.issue_id,
                     summary: response.data.summary,
                     submitted: true,
                     message: response.data.message,
@@ -84,7 +84,7 @@ export default class JiraIssueAdd extends Component<Props, State> {
 
     saveIssue() {
         const data: IJiraIssueData = {
-            issueId: this.state.issueId,
+            issue_id: this.state.issue_id,
             summary: this.state.summary,
         };
 
@@ -98,7 +98,7 @@ export default class JiraIssueAdd extends Component<Props, State> {
             .then((response: any) => {
                 this.setState({
                     id: response.data.id,
-                    issueId: response.data.issueId,
+                    issue_id: response.data.issue_id,
                     summary: response.data.summary,
                     message: response.data.message,
                     submitted: true,
@@ -117,7 +117,7 @@ export default class JiraIssueAdd extends Component<Props, State> {
     newIssue() {
         this.setState({
             id: null,
-            issueId: "",
+            issue_id: "",
             summary: "",
             submitted: false,
             successful: false,
@@ -126,10 +126,10 @@ export default class JiraIssueAdd extends Component<Props, State> {
     }
 
     render() {
-        const { submitted, issueId, summary, successful, message } = this.state;
+        const { submitted, issue_id, summary, successful, message } = this.state;
 
         const initialValues = {
-            issueId: "",
+            issue_id: "",
             summary: "",
         };
 
@@ -153,10 +153,10 @@ export default class JiraIssueAdd extends Component<Props, State> {
                                 {!successful && (
                                     <div>
                                         <div className="form-group">
-                                            <label htmlFor="issueId"> Issue id </label>
-                                            <Field name="issueId" type="text" className="form-control" id="issueId" />
+                                            <label htmlFor="issue_id"> Issue id </label>
+                                            <Field name="issue_id" type="text" className="form-control" id="issue_id" />
                                             <ErrorMessage
-                                                name="issueId"
+                                                name="issue_id"
                                                 component="div"
                                                 className="alert alert-danger"
                                             />

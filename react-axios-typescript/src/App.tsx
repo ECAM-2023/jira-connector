@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import AuthService from "./services/auth.service";
 import IJiraUser from "./types/jira_user.type";
 
+import JiraIssuesList from "./components/jira_issues-list.component";
 import JiraIssueAdd from "./components/jira_issue-add.component";
 
 import JiraUser from "./components/jira_user.component";
@@ -26,13 +27,14 @@ import JiraOrganization from "./components/jira_organization.component";
 import JiraOrganizationsList from "./components/jira_organizations-list.component";
 import JiraOrganizationAdd from "./components/jira_organization-add-validation.component";
 
+import JiraCustomersList from "./components/jira_customers-list.component";
+
 import Login from "./components/login.component";
 import Register from "./components/register-translation.component";
 import Profile from "./components/profile.component";
 import Settings from "./components/settings.component";
 
 import EventBus from "./common/EventBus";
-import JiraCustomersList from "./components/jira_customers-list.component";
 
 type Props = {};
 
@@ -52,7 +54,7 @@ function MultiLanguagesText() {
                 </Link>
                 <div className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link to={"/jira/user"} className="nav-link text-light">
+                        <Link to={"/jira/issue"} className="nav-link text-light">
                             {t("Issues")}
                         </Link>
                     </li>
@@ -105,6 +107,21 @@ function UserConnected() {
     );
 }
 
+function CopyrightFooter() {
+    const { t, i18n } = useTranslation(["app"]);
+
+    return (
+        <footer>
+            <div className="copyright">
+                <p>ECAM &copy; 2023. {t("Copyright")}</p>
+            </div>
+            <div className="version">
+                <p>v0.1.0</p>
+            </div>
+        </footer>
+    );
+}
+
 class App extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -142,7 +159,7 @@ class App extends Component<Props, State> {
         const { currentUser } = this.state;
 
         return (
-            <div>
+            <div className="app">
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
                     <MultiLanguagesText />
                     <div className="navbar-nav ml-auto p-2">
@@ -173,6 +190,7 @@ class App extends Component<Props, State> {
 
                 <div className="container mt-3">
                     <Switch>
+                        <Route exact path={["/", "/jira/issue"]} component={JiraIssuesList} />
                         <Route exact path="/addissue" component={JiraIssueAdd} />
 
                         <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
@@ -191,6 +209,7 @@ class App extends Component<Props, State> {
                         <Route exact path="/settings" component={Settings} />
                     </Switch>
                 </div>
+                <CopyrightFooter />
             </div>
         );
     }

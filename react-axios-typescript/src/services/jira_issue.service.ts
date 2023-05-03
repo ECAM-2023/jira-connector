@@ -22,8 +22,8 @@ class JiraIssueDataService {
         return http.delete<any>(`/jira/issue/${id}`);
     }
     
-    findByAccountId(accountId: string) {
-        return http.get(`/jira/issue?accountId_like=${accountId}`);
+    findByIssueId(issue_id: string) {
+        return http.get(`/jira/issue?issue_id_like=${issue_id}`);
     }
 }
 

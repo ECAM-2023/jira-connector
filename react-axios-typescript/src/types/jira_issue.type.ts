@@ -1,5 +1,5 @@
 export default interface IJiraIssueData {
   id?: any | null,
-  issueId: string,
+  issue_id: string,
   summary: string
 }
