@@ -199,6 +199,24 @@ export default class JiraUsersList extends Component<Props, State> {
                 <div className="col-md-7">
                     <h4>Users List</h4>
 
+                    <nav>
+                        <ul className="pagination">
+                            {Array.from(Array(totalPages).keys()).map((pageNumber) => (
+                                <li
+                                    key={pageNumber}
+                                    className={"page-item " + (currentPage === pageNumber + 1 ? "active" : "")}
+                                >
+                                    <button
+                                        className="page-link"
+                                        onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}
+                                    >
+                                        {pageNumber + 1}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
                     <div className="container">
                         <Table striped bordered hover className="table-custom">
                             <thead>
@@ -227,28 +245,12 @@ export default class JiraUsersList extends Component<Props, State> {
                             </tbody>
                         </Table>
                     </div>
-                    <nav>
-                        <ul className="pagination">
-                            {Array.from(Array(totalPages).keys()).map((pageNumber) => (
-                                <li
-                                    key={pageNumber}
-                                    className={"page-item " + (currentPage === pageNumber + 1 ? "active" : "")}
-                                >
-                                    <button
-                                        className="page-link"
-                                        onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}
-                                    >
-                                        {pageNumber + 1}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
                 </div>
                 <div className="col-md-8">
-                    Export Users List as :
+                    Export users list as :
                     <select
                         value={this.state.exportFormat}
+                        className="badge"
                         onChange={(e) => this.setState({ exportFormat: e.target.value })}
                     >
                         <option value="xlsx">.xlsx</option>

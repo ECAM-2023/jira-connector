@@ -112,7 +112,17 @@ export default class JiraWorklog extends Component<Props, State> {
                         <h4>Worklog</h4>
                         <form>
                             <div className="form-group">
-                                <label htmlFor="worklog_id">Id</label>
+                                <label htmlFor="issue_id">Issue id</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="issue_id"
+                                    readOnly
+                                    value={currentWorklog.issue_id}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="worklog_id">Worklog id</label>
                                 <input
                                     type="text"
                                     className="form-control"

@@ -13,8 +13,12 @@ import imageSettingsIcon from "./settings-icon.png";
 import i18n from "./i18n/i18n";
 import { useTranslation } from "react-i18next";
 
+// Home Page
+import Home from "./components/home";
+
 // Issues
 import JiraIssuesList from "./components/jira_issues-list.component";
+import JiraIssue from "./components/jira_issue.component";
 import JiraWorklogsList from "./components/jira_worklogs-list.component";
 import JiraWorklog from "./components/jira_worklog.component";
 
@@ -59,7 +63,7 @@ function MultiLanguagesText() {
     return (
         <div>
             <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <Link to={"/jira/user"} className="navbar-brand text-white">
+                <Link to={"/home"} className="navbar-brand text-white">
                     <JiraIcon appearance="brand" />
                     {t("title")}
                 </Link>
@@ -176,69 +180,74 @@ class App extends Component<Props, State> {
         const { currentUser } = this.state;
 
         return (
-            <div className="app">
-                <nav className="navbar navbar-expand navbar-dark bg-dark">
-                    <MultiLanguagesText />
-                    <div className="navbar-nav ml-auto p-2">
-                        {currentUser ? (
-                            <div className="navbar-nav">
-                                <li className="nav-item">
-                                    <Link to={"/profile"} className="nav-link text-light">
-                                        {currentUser.displayName}
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="/login" className="nav-link text-light" onClick={this.logout}>
-                                        Log Out
-                                    </a>
-                                </li>
-                            </div>
-                        ) : (
-                            <UserConnected />
-                        )}
-                        <li className="nav-item">
-                            <Link to={"/settings"} className="nav-link text-light">
-                                <img src={imageSettingsIcon} alt="SettingsIcon" width="20" />
-                                Settings
-                            </Link>
-                        </li>
+            <div>
+                <div className="app">
+                    <nav className="navbar navbar-expand navbar-dark bg-dark">
+                        <MultiLanguagesText />
+                        <div className="navbar-nav ml-auto p-2">
+                            {currentUser ? (
+                                <div className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link to={"/profile"} className="nav-link text-light">
+                                            {currentUser.displayName}
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="/login" className="nav-link text-light" onClick={this.logout}>
+                                            Log Out
+                                        </a>
+                                    </li>
+                                </div>
+                            ) : (
+                                <UserConnected />
+                            )}
+                            <li className="nav-item">
+                                <Link to={"/settings"} className="nav-link text-light">
+                                    <img src={imageSettingsIcon} alt="SettingsIcon" width="20" />
+                                    Settings
+                                </Link>
+                            </li>
+                        </div>
+                    </nav>
+
+                    <div className="container mt-3">
+                        <Switch>
+                            <Route exact path={["/", "/home"]} component={Home} />
+
+                            {/* Issues */}
+                            <Route exact path={["/", "/jira/issue"]} component={JiraIssuesList} />
+                            <Route path="/jira/issue/:id" component={JiraIssue} />
+                            {/* Worklogs in issues */}
+                            <Route exact path={["/", "/jira/issue/worklog"]} component={JiraWorklogsList} />
+                            <Route path="/jira/issue/worklog/:id" component={JiraWorklog} />
+
+                            {/* Users */}
+                            <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
+                            <Route path="/jira/user/:id" component={JiraUser} />
+
+                            {/* Add new */}
+                            <Route exact path="/addissue" component={JiraIssueAdd} />
+                            <Route exact path="/adduser" component={JiraUserAdd} />
+                            <Route exact path="/addorganization" component={JiraOrganizationAdd} />
+
+                            {/* Organizations */}
+                            <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
+                            <Route path="/jira/organization/:id" component={JiraOrganization} />
+                            <Route exact path="/jira/viewco" component={JiraCustomersList} />
+
+                            {/* Customers */}
+                            <Route exact path={["/", "/jira/customer"]} component={JiraCustomersList} />
+                            <Route path="/jira/customer/:id" component={JiraCustomer} />
+
+                            {/* Login & Register */}
+                            <Route exact path={["/", "/login"]} component={Login} />
+                            <Route exact path={["/", "/register"]} component={Register} />
+
+                            {/* Profile & Settings */}
+                            <Route exact path="/profile" component={Profile} />
+                            <Route exact path="/settings" component={Settings} />
+                        </Switch>
                     </div>
-                </nav>
-
-                <div className="container mt-3">
-                    <Switch>
-                        {/* Issues */}
-                        <Route exact path={["/", "/jira/issue"]} component={JiraIssuesList} />
-                        {/* Worklogs in issues */}
-                        <Route exact path={["/", "/jira/issue/worklog"]} component={JiraWorklogsList} />
-                        <Route path="/jira/issue/worklog/:id" component={JiraWorklog} />
-
-                        {/* Users */}
-                        <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
-                        <Route path="/jira/user/:id" component={JiraUser} />
-
-                        {/* Add new */}
-                        <Route exact path="/addissue" component={JiraIssueAdd} />
-                        <Route exact path="/adduser" component={JiraUserAdd} />
-                        <Route exact path="/addorganization" component={JiraOrganizationAdd} />
-
-                        {/* Organizations */}
-                        <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
-                        <Route path="/jira/organization/:id" component={JiraOrganization} />
-                        <Route exact path="/jira/viewco" component={JiraCustomersList} />
-
-                        {/* Customers */}
-                        <Route exact path={["/", "/jira/customer"]} component={JiraCustomersList} />
-                        <Route path="/jira/customer/:id" component={JiraCustomer} />
-
-                        {/* Login & Register */}
-                        <Route exact path={["/", "/login"]} component={Login} />
-                        <Route exact path={["/", "/register"]} component={Register} />
-
-                        {/* Profile & Settings */}
-                        <Route exact path="/profile" component={Profile} />
-                        <Route exact path="/settings" component={Settings} />
-                    </Switch>
                 </div>
                 <CopyrightFooter />
             </div>

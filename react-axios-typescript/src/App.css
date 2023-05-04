@@ -105,3 +105,8 @@ footer {
 .badge {
     border: solid 2px black;
 }
+
+select {
+    margin-left: 10px;
+    border: solid 2px black;
+}

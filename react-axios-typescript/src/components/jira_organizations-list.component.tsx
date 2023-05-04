@@ -23,12 +23,12 @@ const ORGANIZATIONS_PER_PAGE = 5;
 export default class JiraOrganizationsList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.handleClickExportButton = this.handleClickExportButton.bind(this);
         this.onChangeSearchOrganizationID = this.onChangeSearchOrganizationID.bind(this);
         this.retrieveJiraOrganizations = this.retrieveJiraOrganizations.bind(this);
         this.refreshList = this.refreshList.bind(this);
         this.setActiveOrganization = this.setActiveOrganization.bind(this);
         this.searchOrganizationID = this.searchOrganizationID.bind(this);
-        this.handleClickExportButton = this.handleClickExportButton.bind(this);
 
         this.state = {
             organizations: [],
@@ -207,6 +207,24 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                 <div className="col-md-6">
                     <h4>Organizations List</h4>
 
+                    <nav>
+                        <ul className="pagination">
+                            {Array.from(Array(totalPages).keys()).map((pageNumber) => (
+                                <li
+                                    key={pageNumber}
+                                    className={"page-item " + (currentPage === pageNumber + 1 ? "active" : "")}
+                                >
+                                    <button
+                                        className="page-link"
+                                        onClick={() => this.setCurrentPage(pageNumber + 1, organizationsPerPage)}
+                                    >
+                                        {pageNumber + 1}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
                     <div className="container">
                         <Table striped bordered hover>
                             <thead>
@@ -237,26 +255,9 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                             </tbody>
                         </Table>
                     </div>
-                    <nav>
-                        <ul className="pagination">
-                            {Array.from(Array(totalPages).keys()).map((pageNumber) => (
-                                <li
-                                    key={pageNumber}
-                                    className={"page-item " + (currentPage === pageNumber + 1 ? "active" : "")}
-                                >
-                                    <button
-                                        className="page-link"
-                                        onClick={() => this.setCurrentPage(pageNumber + 1, organizationsPerPage)}
-                                    >
-                                        {pageNumber + 1}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
                 </div>
                 <div className="col-md-7">
-                    Export Organizations List as :
+                    Export organizations list as :
                     <select
                         value={this.state.exportFormat}
                         onChange={(e) => this.setState({ exportFormat: e.target.value })}

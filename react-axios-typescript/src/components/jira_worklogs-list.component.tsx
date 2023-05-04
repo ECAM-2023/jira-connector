@@ -2,6 +2,7 @@ import { Component, ChangeEvent } from "react";
 import JiraWorklogDataService from "../services/jira_worklog.service";
 import { Link } from "react-router-dom";
 import IJiraWorklogData from "../types/jira_worklog.type";
+import * as XLSX from "xlsx";
 import { Table } from "react-bootstrap";
 
 type Props = {};
@@ -14,6 +15,7 @@ type State = {
     currentPage: number;
     lastPage: number;
     worklogsPerPage: number;
+    exportFormat: string;
 };
 
 const WORKLOGS_PER_PAGE = 5;
@@ -21,6 +23,7 @@ const WORKLOGS_PER_PAGE = 5;
 export default class JiraWorklogsList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.handleClickExportButton = this.handleClickExportButton.bind(this);
         this.onChangeSearchIssueId = this.onChangeSearchIssueId.bind(this);
         this.retrieveJiraIssues = this.retrieveJiraIssues.bind(this);
         this.refreshList = this.refreshList.bind(this);
@@ -35,7 +38,38 @@ export default class JiraWorklogsList extends Component<Props, State> {
             currentPage: 1,
             lastPage: 5,
             worklogsPerPage: 5,
+            exportFormat: "xlsx",
         };
+    }
+
+    handleClickExportButton() {
+        // Données à exporter
+        const { worklogs } = this.state;
+
+        const data = [
+            ["issue_id", "worklog_id", "description", "timespent", "updated", "creatorId"],
+            ...worklogs.map((worklog) => [
+                worklog.issue_id,
+                worklog.worklog_id,
+                worklog.description,
+                worklog.timespent,
+                worklog.updated,
+                worklog.creatorId,
+            ]),
+        ];
+
+        if (this.state.exportFormat === "xlsx") {
+            const workbook = XLSX.utils.book_new();
+
+            const worksheet = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Worklogs");
+
+            XLSX.writeFile(workbook, "worklogsList.xlsx");
+        } else if (this.state.exportFormat === "word") {
+            return;
+        } else if (this.state.exportFormat === "rst") {
+            return;
+        }
     }
 
     getPaginatedIssues() {
@@ -151,7 +185,7 @@ export default class JiraWorklogsList extends Component<Props, State> {
                 </div>
 
                 <div className="col-md-7">
-                    <label htmlFor="worklogs-per-page">Issues per page:</label>
+                    <label htmlFor="worklogs-per-page">Worklogs per page:</label>
                     <select
                         id="worklogs-per-page"
                         className="form-select"
@@ -170,7 +204,7 @@ export default class JiraWorklogsList extends Component<Props, State> {
                 </div>
 
                 <div className="col-md-6">
-                    <h4>Issue's worklogs</h4>
+                    <h4>Worklogs list</h4>
 
                     <nav>
                         <ul className="pagination">
@@ -223,6 +257,23 @@ export default class JiraWorklogsList extends Component<Props, State> {
                                 ))}
                             </tbody>
                         </Table>
+                    </div>
+                </div>
+                <div className="col-md-7">
+                    Export worklogs list as :
+                    <select
+                        value={this.state.exportFormat}
+                        onChange={(e) => this.setState({ exportFormat: e.target.value })}
+                    >
+                        <option value="xlsx">.xlsx</option>
+                        <option value="word">.docx</option>
+                        <option value="rst">.rst</option>
+                        <option value="pdf">.pdf</option>
+                    </select>
+                    <div>
+                        <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
+                            Exporter en {this.state.exportFormat}
+                        </button>
                     </div>
                 </div>
             </div>
