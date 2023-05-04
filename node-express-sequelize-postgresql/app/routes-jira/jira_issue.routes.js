@@ -20,7 +20,10 @@ module.exports = app => {
   router.get("/worklog", jira_worklog.findAll);
 
   // Retrieve a single Jira worklogs with id
-  router.get("/worklog/:id", jira_worklog.findOne);
+  //router.get("/worklog/:id", jira_worklog.findOne);
+
+  // Retrieve a single Jira worklogs with id
+  router.get("/worklog/:id", jira_worklog.findworklogs);
 
   // Update a Jira worklogs with id
   router.put("/worklog/:id", jira_worklog.update);

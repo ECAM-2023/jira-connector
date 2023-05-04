@@ -11,6 +11,7 @@ exports.create = (req, res) => {
     });
     return;
   }
+  
   // Create a Jira Issue
   const jira_worklog = {
     worklog_id:req.body.worklog_id,
@@ -50,12 +51,35 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Jira Worklog with an id
-exports.findOne = (req, res) => {
+exports.findworklogs = (req, res) => {
   //const id = req.params.id
   const idwl = req.params.id;
   var condition =  idwl ? { worklog_id: { [Op.iLike]: `%${idwl}%` } } : null;
   //{ where: condition }
   Jira_Worklog.findAll({ where: condition })
+  //Jira_Worklog.query("SELECT * FROM public.jira_worklogs WHERE WORKLOG_ID = '10015'")
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Worklog with id=${id}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Worklog with id=" + id
+      });
+    });
+};
+// Find a single Jira Worklog with an id
+exports.findOne = (req, res) => {
+  const id = req.params.id
+  //const idwl = req.params.id;
+  //var condition =  idwl ? { worklog_id: { [Op.iLike]: `%${idwl}%` } } : null;
+  //{ where: condition }
+  Jira_Worklog.findByPk(id)
   //Jira_Worklog.query("SELECT * FROM public.jira_worklogs WHERE WORKLOG_ID = '10015'")
     .then(data => {
       if (data) {
