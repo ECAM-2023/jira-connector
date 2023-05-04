@@ -1,139 +1,91 @@
 const db = require("../models");
 const View_Customer_Organization = db.view_customer_organizations;
 const Op = db.Sequelize.Op;
+const axios = require('axios');
 
-// Create and Save a new View_Customer_Organization
+
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.accountId) {
-    res.status(400).send({
-      message: "Content can not be empty!"
+  
+    // Validate request
+    if (!req.body.accountId) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+    // Create a Jira_viewco object
+    const jira_viewco = {
+        organizationID: req.body.organizationID,
+        name: req.body.name
+      };  
+    // post viewco in jira-connector by frontend 
+    axios.post('http://10.1.100.244:8080/api/v1/jira/viewco', jira_viewco)
+    .then(response => {
+      res.send(response.data); // logs the response from the server
+    })
+    .catch(error => {
+      console.error(error); // logs any errors that occur
     });
-    return;
-  }
-
-  // Create a Jira View_Customer_Organization
-  const view_customer_organization = {
-    accountId: req.body.accountId,
-    organizationID: req.body.organizationID
   };
-
-  // Save Jira View_Customer_Organization in the database
-  View_Customer_Organization.create(view_customer_organization)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
+  
+  // Retrieve all viewcos from the jira-connector.
+  exports.findAll = (req, res) => {
+  
+    axios.get('http://10.1.100.244:8080/api/v1/jira/viewco')
+    .then(response => {
+      
+      res.send(response.data);})
+    .catch(error => {console.log(error); 
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Jira View_Customer_Organization."
+          err.message || "Some error occurred while retrieving viewcos."
       });
-    });
-};
-
-// Retrieve all Jira View_Customer_Organizations from the database.
-exports.findAll = (req, res) => {
-  const accountId = req.query.accountId;
-  var condition = accountId ? { accountId: { [Op.iLike]: `%${accountId}%` } } : null;
-
-  View_Customer_Organization.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
     })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving View_Customer_Organizations."
-      });
-    });
-};
-
-// Find a single Jira View_Customer_Organization with an id
-exports.findOne = (req, res) => {
-  const id = req.params.id;
-
-  View_Customer_Organization.findByPk(id)
-    .then(data => {
-      if (data) {
-        res.send(data);
-      } else {
-        res.status(404).send({
-          message: `Cannot find View_Customer_Organization with id=${id}.`
-        });
-      }
+  };
+  
+  // Find a single viewco with an accountId
+  exports.findOne = (req, res) => {
+  
+    const id = req.params.id;
+    axios.get('http://10.1.100.244:8080/api/v1/jira/viewco/' + id)
+    .then(response => {
+      res.send(response.data); // logs the response from the server
     })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving View_Customer_Organization with id=" + id
-      });
+    .catch(error => {
+      console.error(error); // logs any errors that occur
     });
-};
-
-// Update a View_Customer_Organization by the id in the request
-exports.update = (req, res) => {
-  const id = req.params.id;
-
-  View_Customer_Organization.update(req.body, {
-    where: { id: id }
-  })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Jira View_Customer_Organization was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Jira View_Customer_Organization with id=${id}. Maybe Jira View_Customer_Organization was not found or req.body is empty!`
-        });
-      }
+  };
+  
+  // Update a viewco by the id in the request
+  exports.update = (req, res) => {
+  
+    const id = req.params.id;
+    const jira_viewco = {
+        viewcoID: req.body.viewcoID,
+        name: req.body.name
+      };
+  
+    axios.put('http://10.1.100.244:8080/api/v1/jira/viewco/' + id, jira_viewco)
+    .then(response => {
+      res.send(response.data); // logs the response from the server
     })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error updating View_Customer_Organization with id=" + id
-      });
+    .catch(error => {
+      console.error(error); // logs any errors that occur
     });
-};
-
-// Delete a View_Customer_Organization with the specified id in the request
-exports.delete = (req, res) => {
-  const id = req.params.id;
-
-  View_Customer_Organization.destroy({
-    where: { id: id }
-  })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "View_Customer_Organization was deleted successfully!"
-        });
-      } else {
-        res.send({
-          message: `Cannot delete View_Customer_Organization with id=${id}. Maybe View_Customer_Organization was not found!`
-        });
-      }
+  };
+  
+  // Delete a jira viewco with the specified id in the request
+  exports.delete = (req, res) => {
+  
+    const id = req.params.id;
+  
+    axios.delete('http://10.1.100.244:8080/api/v1/jira/viewco/' + id)
+    .then(response => {
+      res.send(response.data); // logs the response from the server
     })
-    .catch(err => {
-      res.status(500).send({
-        message: "Could not delete View_Customer_Organization with id=" + id
-      });
+    .catch(error => {
+      console.error(error); // logs any errors that occur
     });
-};
-
-// Delete all View_Customer_Organizations from the database.
-exports.deleteAll = (req, res) => {
-  View_Customer_Organization.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} View_Customer_Organizations were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all View_Customer_Organizations."
-      });
-    });
-};
+  };
 
 

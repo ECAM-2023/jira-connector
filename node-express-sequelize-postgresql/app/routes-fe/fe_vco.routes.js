@@ -21,8 +21,5 @@ module.exports = app => {
   // Delete a Tutorial with id
   router.delete("/:id", view_customer_organizations.delete);
 
-  // Delete all Tutorials
-  router.delete("/", view_customer_organizations.deleteAll);
-
   app.use("/api/v1/jira/viewco", router);
 };

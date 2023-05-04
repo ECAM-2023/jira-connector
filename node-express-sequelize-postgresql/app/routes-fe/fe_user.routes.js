@@ -19,7 +19,7 @@ module.exports = app => {
   router.delete("/:id", jira_users.delete);
 
   // Delete all Users
-  router.delete("/", jira_users.deleteAll);
+  //router.delete("/", jira_users.deleteAll);
 
   app.use("/api/v1/jira/user", router);
 };

@@ -1,5 +1,5 @@
 module.exports = app => {
-  const jira_issue = require("../controllers-fe/fe_issue.controller.js");
+  const jira_issue = require("../controllers-jira/jira_issue.controller.js");
 
   var router = require("express").Router();
 
@@ -17,6 +17,9 @@ module.exports = app => {
 
   // Delete a Tutorial with id
   router.delete("/:id", jira_issue.delete);
+
+  // Delete all Tutorials
+  router.delete("/", jira_issue.deleteAll);
 
   app.use("/api/v1/jira/issue", router);
 };

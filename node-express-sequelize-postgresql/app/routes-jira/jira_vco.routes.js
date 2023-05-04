@@ -1,5 +1,5 @@
 module.exports = app => {
-  const view_customer_organizations = require("../controllers-jira/view_customer_organization.controller.js");
+  const view_customer_organizations = require("../controllers-jira/jira_vco.controller.js");
 
   var router = require("express").Router();
 

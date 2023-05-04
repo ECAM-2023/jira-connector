@@ -9,7 +9,6 @@ module.exports = app => {
   // Retrieve all Organizations
   router.get("/", jira_organizations.findAll);
 
-
   // Retrieve a single Jira Organization with id
   router.get("/:id", jira_organizations.findOne);
 
@@ -18,9 +17,6 @@ module.exports = app => {
 
   // Delete a Tutorial with id
   router.delete("/:id", jira_organizations.delete);
-
-  // Delete all Tutorials
-  router.delete("/", jira_organizations.deleteAll);
 
   app.use("/api/v1/jira/organization", router);
 };

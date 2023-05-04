@@ -9,7 +9,6 @@ module.exports = app => {
   // Retrieve all Organizations
   router.get("/", jira_organizations.findAll);
 
-
   // Retrieve a single Jira Organization with id
   router.get("/:id", jira_organizations.findOne);
 

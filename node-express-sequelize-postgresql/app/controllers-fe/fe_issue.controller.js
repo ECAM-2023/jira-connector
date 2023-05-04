@@ -1,17 +1,74 @@
 const db = require("../models");
 const Jira_Issue = db.jira_issues;
 const Op = db.Sequelize.Op;
+const axios = require('axios');
 
-// Create and Save a new Issue
+
+// Create and Save a new issue
 exports.create = (req, res) => {
-
+  
+  // Validate request
   if (!req.body.issue_id) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
-  // Create a Jira Issue
+  // Create a Jira_issue object
+    const jira_issue = {
+      issue_id: req.body.issue_id,
+      key:req.body.key,
+      nameIssueType:req.body.nameIssueType,
+      timespent:req.body.timespent,
+      updated:req.body.updated,
+      description:req.body.description,
+      status:req.body.status,
+      summary: req.body.summary,
+      user:req.body.user,
+      organization:req.body.organization
+    };
+  // post issue in jira-connector by frontend 
+  axios.post('http://10.1.100.244:8080/api/v1/jira/issue', jira_issue)
+  .then(response => {
+    res.send(response.data); // logs the response from the server
+  })
+  .catch(error => {
+    console.error(error); // logs any errors that occur
+  });
+};
+
+// Retrieve all issues from the jira-connector.
+exports.findAll = (req, res) => {
+
+  axios.get('http://10.1.100.244:8080/api/v1/jira/issue')
+  .then(response => {
+    
+    res.send(response.data);})
+  .catch(error => {console.log(error); 
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving issues."
+    });
+  })
+};
+
+// Find a single issue with an accountId
+exports.findOne = (req, res) => {
+
+  const id = req.params.id;
+  axios.get('http://10.1.100.244:8080/api/v1/jira/issue/' + id)
+  .then(response => {
+    res.send(response.data); // logs the response from the server
+  })
+  .catch(error => {
+    console.error(error); // logs any errors that occur
+  });
+};
+
+// Update a issue by the id in the request
+exports.update = (req, res) => {
+
+  const id = req.params.id;
   const jira_issue = {
     issue_id: req.body.issue_id,
     key:req.body.key,
@@ -25,120 +82,25 @@ exports.create = (req, res) => {
     organization:req.body.organization
   };
 
-  // Save Jira Issue in the database
-  Jira_Issue.create(jira_issue)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Jira Issue."
-      });
-    });
-};
-
-// Retrieve all Jira Issues from the database.
-exports.findAll = (req, res) => {
-  const summary = req.query.summary;
-  var condition = summary ? { summary: { [Op.iLike]: `%${summary}%` } } : null;
-
-  Jira_Issue.findAll()
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Issues."
-      });
-    });
-};
-
-// Find a single Jira Issue with an id
-exports.findOne = (req, res) => {
-  const id = req.params.id;
-
-  Jira_Issue.findByPk(id)
-    .then(data => {
-      if (data) {
-        res.send(data);
-      } else {
-        res.status(404).send({
-          message: `Cannot find Issue with id=${id}.`
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving Issue with id=" + id
-      });
-    });
-};
-
-// Update a Issue by the id in the request
-exports.update = (req, res) => {
-  const id = req.params.id;
-
-  Jira_Issue.update(req.body, {
-    where: { id: id }
+  axios.put('http://10.1.100.244:8080/api/v1/jira/issue/' + id, jira_issue)
+  .then(response => {
+    res.send(response.data); // logs the response from the server
   })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Jira Issue was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Jira Issue with id=${id}. Maybe Jira Issue was not found or req.body is empty!`
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error updating Issue with id=" + id
-      });
-    });
+  .catch(error => {
+    console.error(error); // logs any errors that occur
+  });
 };
 
-// Delete a Issue with the specified id in the request
+// Delete a jira issue with the specified id in the request
 exports.delete = (req, res) => {
+
   const id = req.params.id;
 
-  Jira_Issue.destroy({
-    where: { id: id }
+  axios.delete('http://10.1.100.244:8080/api/v1/jira/issue/' + id)
+  .then(response => {
+    res.send(response.data); // logs the response from the server
   })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Issue was deleted successfully!"
-        });
-      } else {
-        res.send({
-          message: `Cannot delete Issue with id=${id}. Maybe Issue was not found!`
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Could not delete Issue with id=" + id
-      });
-    });
-};
-
-// Delete all Issues from the database.
-exports.deleteAll = (req, res) => {
-  Jira_Issue.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} Issues were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all Issues."
-      });
-    });
+  .catch(error => {
+    console.error(error); // logs any errors that occur
+  });
 };

@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes view_customer_organization
-require("./app/routes-jira/view_customer_organization.routes")(app);
+require("./app/routes-jira/jira_vco.routes")(app);
 
 // Routes organization
 require("./app/routes-jira/jira_organization.routes")(app);
@@ -45,7 +45,7 @@ require("./app/routes-jira/jira_user.routes")(app);
 require("./app/routes-jira/jira_customer.routes")(app);
 
 //Routes issue
-// require("./app/routes-jira/jira_issue.routes")(app);
+require("./app/routes-jira/jira_issue.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

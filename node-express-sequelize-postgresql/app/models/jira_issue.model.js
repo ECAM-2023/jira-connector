@@ -27,13 +27,13 @@ module.exports = (sequelize, Sequelize) => {
     summary: {
       type: Sequelize.STRING
     },
-    user: {
+    userId: {
       type: Sequelize.STRING
     },
-    organization: {
+    organizationId: {
       type: Sequelize.STRING
     }
   });
-
+ 
   return Jira_Issue;
 };

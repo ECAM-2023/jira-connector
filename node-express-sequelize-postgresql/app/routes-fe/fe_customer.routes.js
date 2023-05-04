@@ -18,8 +18,5 @@ module.exports = app => {
   // Delete a customer with id
   router.delete("/:id", jira_customers.delete);
 
-  // Delete all customers
-  router.delete("/", jira_customers.deleteAll);
-
   app.use("/api/v1/jira/customer", router);
 };
