@@ -1,5 +1,6 @@
 const db = require("../models");
 const Jira_Issue = db.jira_issues;
+const Jira_Worklog = db.jira_worklog;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Issue
@@ -58,7 +59,6 @@ exports.findAll = (req, res) => {
 // Find a single Jira Issue with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-
   Jira_Issue.findByPk(id)
     .then(data => {
       if (data) {
@@ -75,6 +75,26 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+exports.findworkloginissue = (req, res) => {
+  const id = req.params.id;
+  Jira_Issue.findByPk(id)
+    .then(data => {
+      if (data) {
+        const lissue_id = data.issue_id
+        res.send (data);
+        };
+    })
+    var condition = lissue_id ? { issue_id: { [Op.iLike]: `%${issue_id}%` } } : null;
+      Jira_Worklog.findAll({ where: condition })
+        .then(datas => {
+          res.send(datas);
+        })
+        res.send(data);
+  Jira_Issue.findAll
+    .then(data => {
+      })
+      };
 
 // Update a Issue by the id in the request
 exports.update = (req, res) => {
