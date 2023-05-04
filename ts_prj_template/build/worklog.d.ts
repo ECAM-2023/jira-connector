@@ -1,0 +1,30 @@
+export interface LevelInfoMessageUpdatedJiraIssueTimestamp1681906807774WebhookEventWorklogCreatedWorklogAuthorAccountID712020E84B5E291C394D00A96CC50899A22274AccountTypeAtlassianActiveTrueAvatarUrls16X16HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNG24X24HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNG32X32HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNG48X48HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNGDisplayNameMouradMettiouiSelfHTTPSMouradAtlassianNetRESTAPI2UserAccountID7120203Ae84B5E291C394D00A96CC50899A22274TimeZoneEuropeBrusselsCreated20230419T1420077740200ID10020IssueID10019SelfHTTPSMouradAtlassianNetRESTAPI2Issue10019Worklog10020Started20230419T1415048390200TimeSpent5MTimeSpentSeconds300UpdateAuthorAccountID712020E84B5E291C394D00A96CC50899A22274AccountTypeAtlassianActiveTrueAvatarUrls16X16HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNG24X24HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNG32X32HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNG48X48HTTPSSecureGravatarCOMAvatar131Bc91Ba141D45A20955540F051932CDHTTPS3A2F2FavatarManagementAvatarsUsWest2ProdPublicAtlPaasNet2Finitials2FMM0PNGDisplayNameMouradMettiouiSelfHTTPSMouradAtlassianNetRESTAPI2UserAccountID7120203Ae84B5E291C394D00A96CC50899A22274TimeZoneEuropeBrusselsUpdated20230419T1420077740200 {
+    level: string;
+    message: string;
+    timestamp: number;
+    webhookEvent: string;
+    worklog: Worklog;
+}
+export interface Worklog {
+    author: Author;
+    created: string;
+    id: string;
+    issueId: string;
+    self: string;
+    started: string;
+    timeSpent: string;
+    timeSpentSeconds: number;
+    updateAuthor: Author;
+    updated: string;
+}
+export interface Author {
+    accountId: string;
+    accountType: string;
+    active: boolean;
+    avatarUrls: {
+        [key: string]: string;
+    };
+    displayName: string;
+    self: string;
+    timeZone: string;
+}

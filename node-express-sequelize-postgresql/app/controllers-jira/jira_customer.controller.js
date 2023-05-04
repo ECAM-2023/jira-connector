@@ -1,8 +1,8 @@
 const db = require("../models");
-const Jira = db.jira_users;
+const Jira = db.jira_customers;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new User
+// Create and Save a new customer
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.accountId) {
@@ -12,28 +12,28 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a User
-  const jira_user = {
+  // Create a customer
+  const jira_customer = {
     accountId: req.body.accountId,
     accountType: req.body.accountType,
     emailAddress: req.body.emailAddress,
     displayName: req.body.displayName
   };
 
-  // Save User in the database
-  Jira.create(jira_user)
+  // Save customer in the database
+  Jira.create(jira_customer)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the User."
+          err.message || "Some error occurred while creating the customer."
       });
     });
 };
 
-// Retrieve all Users from the database.
+// Retrieve all customers from the database.
 exports.findAll = (req, res) => {
   const accountType = req.query.accountType;
   var condition = accountType ? { accountType: { [Op.iLike]: `%${accountType}%` } } : null;
@@ -45,12 +45,12 @@ exports.findAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving users."
+          err.message || "Some error occurred while retrieving customers."
       });
     });
 };
 
-// Find a single User with an accountId
+// Find a single customer with an accountId
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
@@ -60,18 +60,18 @@ exports.findOne = (req, res) => {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find User with id=${id}.`
+          message: `Cannot find customer with id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving User with id=" + id
+        message: "Error retrieving customer with id=" + id
       });
     });
 };
 
-// Update a User by the id in the request
+// Update a customer by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
@@ -81,23 +81,22 @@ exports.update = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "User was updated successfully."
+          message: "customer was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update User with id=${id}. Maybe User was not found or req.body is empty!`
+          message: `Cannot update customer with id=${id}. Maybe customer was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating User with id=" + id
+        message: "Error updating customer with id=" + id
       });
     });
 };
 
-
-// Delete a jira user with the specified id in the request
+// Delete a jira customer with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
@@ -107,17 +106,34 @@ exports.delete = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "jira user was deleted successfully!"
+          message: "jira customer was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete jira user with id=${id}. Maybe jira user was not found!`
+          message: `Cannot delete jira customer with id=${id}. Maybe jira customer was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete jira user with id=" + id
+        message: "Could not delete jira customer with id=" + id
+      });
+    });
+};
+
+// Delete all jira customer from the database.
+exports.deleteAll = (req, res) => {
+Jira.destroy({
+    where: {},
+    truncate: false
+  })
+    .then(nums => {
+      res.send({ message: `${nums} jira customers were deleted successfully!` });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while removing all jira customers."
       });
     });
 };

@@ -1,0 +1,30 @@
+{
+    "attachment": {
+        "author": {
+            "accountId": "70121:a1214ae7-5c7a-422f-8513-edbeb36d6838",
+            "accountType": "atlassian",
+            "active": true,
+            "avatarUrls": {
+                "16x16": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                "24x24": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                "32x32": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                "48x48": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png"
+            },
+            "displayName": "Corentin Maillard",
+            "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=70121%3Aa1214ae7-5c7a-422f-8513-edbeb36d6838",
+            "timeZone": "Europe/Brussels"
+        },
+        "content": "https://corentinmaillard.atlassian.net/rest/api/2/attachment/content/10003",
+        "created": "2023-04-19T15:15:29.990+0200",
+        "filename": "app.png",
+        "id": "10003",
+        "mimeType": "image/png",
+        "self": "https://corentinmaillard.atlassian.net/rest/api/2/attachment/10003",
+        "size": 5624,
+        "thumbnail": "https://corentinmaillard.atlassian.net/rest/api/2/attachment/thumbnail/10003"
+    },
+    "level": "info",
+    "message": "Updated Jira issue",
+    "timestamp": 1681910129990,
+    "webhookEvent": "attachment_created"
+}
