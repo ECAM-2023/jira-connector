@@ -177,13 +177,15 @@ export default class JiraCustomer extends Component<Props, State> {
                             </div>
                         </form>
 
-                        <button type="submit" className="badge badge-success" onClick={this.updateCustomer}>
-                            Update
-                        </button>
+                        <div className="d-flex justify-content-between">
+                            <button type="submit" className="badge badge-success p-2" onClick={this.updateCustomer}>
+                                Update
+                            </button>
 
-                        <button className="badge badge-danger mr-2" onClick={this.deleteCustomer}>
-                            Delete
-                        </button>
+                            <button className="badge badge-danger p-2" onClick={this.deleteCustomer}>
+                                Delete
+                            </button>
+                        </div>
 
                         <p>{this.state.message}</p>
                     </div>

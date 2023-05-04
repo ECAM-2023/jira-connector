@@ -234,6 +234,9 @@ export default class JiraCustomersList extends Component<Props, State> {
                             <Link to={"/jira/customer/" + currentCustomer.id} className="badge badge-warning">
                                 Edit
                             </Link>
+                            <Link to={"/jira/issue/" + currentCustomer.id} className="badge badge-primary">
+                                View issues
+                            </Link>
                         </div>
                     ) : (
                         <div>

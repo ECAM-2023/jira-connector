@@ -213,6 +213,7 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                                 <tr>
                                     <th>Name</th>
                                     <th>id</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -220,6 +221,17 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                                     <tr key={index}>
                                         <td>{organization.name}</td>
                                         <td>{organization.organizationID}</td>
+                                        <td>
+                                            <Link
+                                                to={"/jira/organization/" + organization.id}
+                                                className="badge badge-warning"
+                                            >
+                                                Edit
+                                            </Link>
+                                            <Link to={"/jira/viewco"} className="badge badge-primary">
+                                                View customers
+                                            </Link>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -242,49 +254,8 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                             ))}
                         </ul>
                     </nav>
-
-                    <ul className="list-group">
-                        {displayedOrganizations &&
-                            displayedOrganizations.map((organization: IJiraOrganizationData, index: number) => (
-                                <li
-                                    className={"list-group-item " + (index === currentIndex ? "active" : "")}
-                                    onClick={() => this.setActiveOrganization(organization, index)}
-                                    key={index}
-                                >
-                                    {organization.name}
-                                </li>
-                            ))}
-                    </ul>
                 </div>
-
-                <div className="col-md-6">
-                    {currentOrganization ? (
-                        <div>
-                            <h4>Organization</h4>
-                            <div>
-                                <label>
-                                    <strong>OrganizationID:</strong>
-                                </label>{" "}
-                                {currentOrganization.organizationID}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Name:</strong>
-                                </label>{" "}
-                                {currentOrganization.name}
-                            </div>
-                            <Link to={"/jira/organization/" + currentOrganization.id} className="badge badge-warning">
-                                Edit
-                            </Link>
-                        </div>
-                    ) : (
-                        <div>
-                            <br />
-                            <p>Please click on a Organization...</p>
-                        </div>
-                    )}
-                </div>
-                <div className="col-md-6">
+                <div className="col-md-7">
                     Export Organizations List as :
                     <select
                         value={this.state.exportFormat}
@@ -296,7 +267,7 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                         <option value="pdf">.pdf</option>
                     </select>
                     <div>
-                        <button onClick={this.handleClickExportButton.bind(this)}>
+                        <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
                             Exporter en {this.state.exportFormat}
                         </button>
                     </div>

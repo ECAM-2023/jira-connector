@@ -1,5 +1,5 @@
 import { Component, ChangeEvent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, Link } from "react-router-dom";
 
 import JiraOrganizationDataService from "../services/jira_organization.service";
 import IJiraOrganizationData from "../types/jira_organization.type";
@@ -19,7 +19,6 @@ type State = {
 export default class JiraOrganization extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.onChangeOrganizationID = this.onChangeOrganizationID.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.getOrganization = this.getOrganization.bind(this);
         this.updateOrganization = this.updateOrganization.bind(this);
@@ -29,7 +28,7 @@ export default class JiraOrganization extends Component<Props, State> {
             currentOrganization: {
                 id: null,
                 organizationID: "",
-                name: ""
+                name: "",
             },
             message: "",
         };
@@ -37,19 +36,6 @@ export default class JiraOrganization extends Component<Props, State> {
 
     componentDidMount() {
         this.getOrganization(this.props.match.params.id);
-    }
-
-    onChangeOrganizationID(e: ChangeEvent<HTMLInputElement>) {
-        const organizationID = e.target.value;
-
-        this.setState(function (prevState) {
-            return {
-                currentOrganization: {
-                    ...prevState.currentOrganization,
-                    organizationID: organizationID,
-                },
-            };
-        });
     }
 
     onChangeName(e: ChangeEvent<HTMLInputElement>) {
@@ -110,13 +96,13 @@ export default class JiraOrganization extends Component<Props, State> {
                         <h4>Organization</h4>
                         <form>
                             <div className="form-group">
-                                <label htmlFor="organizationID">OrganizationID</label>
+                                <label htmlFor="organizationID">Id</label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="organizationID"
+                                    readOnly
                                     value={currentOrganization.organizationID}
-                                    onChange={this.onChangeOrganizationID}
                                 />
                             </div>
                             <div className="form-group">
@@ -131,13 +117,19 @@ export default class JiraOrganization extends Component<Props, State> {
                             </div>
                         </form>
 
-                        <button type="submit" className="badge badge-success" onClick={this.updateOrganization}>
-                            Update
-                        </button>
+                        <div className="d-flex justify-content-between">
+                            <button type="submit" className="badge badge-success p-2" onClick={this.updateOrganization}>
+                                Update
+                            </button>
 
-                        <button className="badge badge-danger mr-2" onClick={this.deleteOrganization}>
-                            Delete
-                        </button>
+                            <Link to={"/jira/organization"} className="badge badge-warning p-2">
+                                Back
+                            </Link>
+
+                            <button className="badge badge-danger p-2" onClick={this.deleteOrganization}>
+                                Delete
+                            </button>
+                        </div>
 
                         <p>{this.state.message}</p>
                     </div>

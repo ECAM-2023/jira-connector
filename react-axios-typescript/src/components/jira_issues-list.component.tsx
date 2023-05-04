@@ -2,6 +2,8 @@ import { Component, ChangeEvent } from "react";
 import JiraIssueDataService from "../services/jira_issue.service";
 import { Link } from "react-router-dom";
 import IJiraIssueData from "../types/jira_issue.type";
+import * as XLSX from "xlsx";
+import { Table } from "react-bootstrap";
 
 type Props = {};
 
@@ -13,6 +15,7 @@ type State = {
     currentPage: number;
     lastPage: number;
     issuesPerPage: number;
+    exportFormat: string;
 };
 
 const ISSUES_PER_PAGE = 5;
@@ -20,6 +23,7 @@ const ISSUES_PER_PAGE = 5;
 export default class JiraIssuesList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.handleClickExportButton = this.handleClickExportButton.bind(this);
         this.onChangeSearchIssueId = this.onChangeSearchIssueId.bind(this);
         this.retrieveJiraIssues = this.retrieveJiraIssues.bind(this);
         this.refreshList = this.refreshList.bind(this);
@@ -34,7 +38,53 @@ export default class JiraIssuesList extends Component<Props, State> {
             currentPage: 1,
             lastPage: 5,
             issuesPerPage: 5,
+            exportFormat: "xlsx",
         };
+    }
+
+    handleClickExportButton() {
+        // Données à exporter
+        const { issues } = this.state;
+
+        const data = [
+            [
+                "issue_id",
+                "key",
+                "nameIssueType",
+                "timespent",
+                "updated",
+                "description",
+                "status",
+                "summary",
+                "userId",
+                "organizationId",
+            ],
+            ...issues.map((issue) => [
+                issue.issue_id,
+                issue.key,
+                issue.nameIssueType,
+                issue.timespent,
+                issue.updated,
+                issue.description,
+                issue.status,
+                issue.summary,
+                issue.userId,
+                issue.organizationId,
+            ]),
+        ];
+
+        if (this.state.exportFormat === "xlsx") {
+            const workbook = XLSX.utils.book_new();
+
+            const worksheet = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+
+            XLSX.writeFile(workbook, "issuesList.xlsx");
+        } else if (this.state.exportFormat === "word") {
+            return;
+        } else if (this.state.exportFormat === "rst") {
+            return;
+        }
     }
 
     getPaginatedIssues() {
@@ -115,7 +165,16 @@ export default class JiraIssuesList extends Component<Props, State> {
     }
 
     render() {
-        const { searchIssueId, issues, currentIssue, currentIndex, currentPage, lastPage, issuesPerPage } = this.state;
+        const {
+            searchIssueId,
+            issues,
+            currentIssue,
+            currentIndex,
+            currentPage,
+            lastPage,
+            issuesPerPage,
+            exportFormat,
+        } = this.state;
         const startIndex = (currentPage - 1) * issuesPerPage;
         const endIndex = Math.min(startIndex + issuesPerPage, issues.length);
         const displayedIssues = issues.slice(startIndex, endIndex);
@@ -187,47 +246,66 @@ export default class JiraIssuesList extends Component<Props, State> {
                             ))}
                         </ul>
                     </nav>
-
-                    <ul className="list-group">
-                        {displayedIssues &&
-                            displayedIssues.map((issue: IJiraIssueData, index: number) => (
-                                <li
-                                    className={"list-group-item " + (index === currentIndex ? "active" : "")}
-                                    onClick={() => this.setActiveIssue(issue, index)}
-                                    key={index}
-                                >
-                                    {issue.summary} : {issue.issue_id}
-                                </li>
-                            ))}
-                    </ul>
+                    <div className="container">
+                        <Table striped bordered hover className="table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Summary</th>
+                                    <th>Description</th>
+                                    {/* <th>Id</th> */}
+                                    <th>Key</th>
+                                    {/* <th>Type name</th> */}
+                                    <th>Time spent</th>
+                                    <th>Updated</th>
+                                    <th>Status</th>
+                                    <th>Organization id</th>
+                                    <th>User id</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {displayedIssues.map((issue, index) => (
+                                    <tr key={index}>
+                                        <td>{issue.summary}</td>
+                                        <td>{issue.description}</td>
+                                        {/* <td>{issue.issue_id}</td> */}
+                                        <td>{issue.key}</td>
+                                        {/* <td>{issue.nameIssueType}</td> */}
+                                        <td>{issue.timespent}</td>
+                                        <td>{issue.updated}</td>
+                                        <td>{issue.status}</td>
+                                        <td>{issue.organizationId}</td>
+                                        <td>{issue.userId}</td>
+                                        <td>
+                                            <Link to={"/jira/issue/" + issue.id} className="badge badge-warning">
+                                                Edit
+                                            </Link>
+                                            <Link to={"/jira/issue/worklog/"} className="badge badge-primary">
+                                                View worklogs
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
-
-                <div className="col-md-6">
-                    {currentIssue ? (
-                        <div>
-                            <h4>Issue</h4>
-                            <div>
-                                <label>
-                                    <strong>Issue id:</strong>
-                                </label>{" "}
-                                {currentIssue.issue_id}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Summary:</strong>
-                                </label>{" "}
-                                {currentIssue.summary}
-                            </div>
-                            <Link to={"/jira/issue/" + currentIssue.id} className="badge badge-warning">
-                                Edit
-                            </Link>
-                        </div>
-                    ) : (
-                        <div>
-                            <br />
-                            <p>Please click on a Issue...</p>
-                        </div>
-                    )}
+                <div className="col-md-8">
+                    Export issues list as :
+                    <select
+                        value={this.state.exportFormat}
+                        onChange={(e) => this.setState({ exportFormat: e.target.value })}
+                    >
+                        <option value="xlsx">.xlsx</option>
+                        <option value="word">.docx</option>
+                        <option value="rst">.rst</option>
+                        <option value="pdf">.pdf</option>
+                    </select>
+                    <div>
+                        <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
+                            Exporter en {this.state.exportFormat}
+                        </button>
+                    </div>
                 </div>
             </div>
         );

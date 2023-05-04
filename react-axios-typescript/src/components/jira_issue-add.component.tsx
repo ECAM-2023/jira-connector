@@ -22,7 +22,15 @@ export default class JiraIssueAdd extends Component<Props, State> {
         this.state = {
             id: null,
             issue_id: "",
+            key: "",
+            nameIssueType: "",
+            timespent: "",
+            updated: "",
+            description: "",
+            status: "",
             summary: "",
+            userId: "",
+            organizationId: "",
             submitted: false,
             successful: false,
             message: "",
@@ -48,7 +56,18 @@ export default class JiraIssueAdd extends Component<Props, State> {
         });
     }
 
-    handleAddIssue(formValue: { issue_id: string; summary: string }) {
+    handleAddIssue(formValue: {
+        issue_id: string;
+        key: string;
+        nameIssueType: string;
+        timespent: string;
+        updated: string;
+        description: string;
+        status: string;
+        summary: string;
+        userId: string;
+        organizationId: string;
+    }) {
         const data: IJiraIssueData = formValue;
 
         this.setState({
@@ -61,7 +80,15 @@ export default class JiraIssueAdd extends Component<Props, State> {
                 this.setState({
                     id: response.data.id,
                     issue_id: response.data.issue_id,
+                    key: response.data.key,
+                    nameIssueType: response.data.nameIssueType,
+                    timespent: response.data.timespent,
+                    updated: response.data.updated,
+                    description: response.data.description,
+                    status: response.data.status,
                     summary: response.data.summary,
+                    userId: response.data.userId,
+                    organizationId: response.data.organizationId,
                     submitted: true,
                     message: response.data.message,
                     successful: true,
@@ -85,7 +112,15 @@ export default class JiraIssueAdd extends Component<Props, State> {
     saveIssue() {
         const data: IJiraIssueData = {
             issue_id: this.state.issue_id,
+            key: this.state.key,
+            nameIssueType: this.state.nameIssueType,
+            timespent: this.state.timespent,
+            updated: this.state.updated,
+            description: this.state.description,
+            status: this.state.status,
             summary: this.state.summary,
+            userId: this.state.userId,
+            organizationId: this.state.organizationId,
         };
 
         this.setState({
@@ -99,7 +134,15 @@ export default class JiraIssueAdd extends Component<Props, State> {
                 this.setState({
                     id: response.data.id,
                     issue_id: response.data.issue_id,
+                    key: response.data.key,
+                    nameIssueType: response.data.nameIssueType,
+                    timespent: response.data.timespent,
+                    updated: response.data.updated,
+                    description: response.data.description,
+                    status: response.data.status,
                     summary: response.data.summary,
+                    userId: response.data.userId,
+                    organizationId: response.data.organizationId,
                     message: response.data.message,
                     submitted: true,
                     successful: true,
@@ -118,7 +161,15 @@ export default class JiraIssueAdd extends Component<Props, State> {
         this.setState({
             id: null,
             issue_id: "",
+            key: "",
+            nameIssueType: "",
+            timespent: "",
+            updated: "",
+            description: "",
+            status: "",
             summary: "",
+            userId: "",
+            organizationId: "",
             submitted: false,
             successful: false,
             message: "",
@@ -130,7 +181,15 @@ export default class JiraIssueAdd extends Component<Props, State> {
 
         const initialValues = {
             issue_id: "",
+            key: "",
+            nameIssueType: "",
+            timespent: "",
+            updated: "",
+            description: "",
+            status: "",
             summary: "",
+            userId: "",
+            organizationId: "",
         };
 
         return (

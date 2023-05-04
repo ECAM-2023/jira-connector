@@ -23,12 +23,12 @@ const USERS_PER_PAGE = 5;
 export default class JiraUsersList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.handleClickExportButton = this.handleClickExportButton.bind(this);
         this.onChangeSearchAccountId = this.onChangeSearchAccountId.bind(this);
         this.retrieveJiraUsers = this.retrieveJiraUsers.bind(this);
         this.refreshList = this.refreshList.bind(this);
         this.setActiveUser = this.setActiveUser.bind(this);
         this.searchAccountId = this.searchAccountId.bind(this);
-        this.handleClickExportButton = this.handleClickExportButton.bind(this);
 
         this.state = {
             users: [],

@@ -13,18 +13,27 @@ import imageSettingsIcon from "./settings-icon.png";
 import i18n from "./i18n/i18n";
 import { useTranslation } from "react-i18next";
 
+// Issues
 import JiraIssuesList from "./components/jira_issues-list.component";
-import JiraIssueAdd from "./components/jira_issue-add.component";
+import JiraWorklogsList from "./components/jira_worklogs-list.component";
+import JiraWorklog from "./components/jira_worklog.component";
 
+// Users
 import JiraUser from "./components/jira_user.component";
 import JiraUsersList from "./components/jira_users-list.component";
-import JiraUserAdd from "./components/jira_user-add-validation.component";
 
+// Organizations
 import JiraOrganization from "./components/jira_organization.component";
 import JiraOrganizationsList from "./components/jira_organizations-list.component";
-import JiraOrganizationAdd from "./components/jira_organization-add-validation.component";
 
+// Customers
 import JiraCustomersList from "./components/jira_customers-list.component";
+import JiraCustomer from "./components/jira_customer.component";
+
+// Add new
+import JiraIssueAdd from "./components/jira_issue-add.component";
+import JiraUserAdd from "./components/jira_user-add-validation.component";
+import JiraOrganizationAdd from "./components/jira_organization-add-validation.component";
 
 import AuthService from "./services/auth.service";
 import IJiraUser from "./types/jira_user.type";
@@ -198,21 +207,35 @@ class App extends Component<Props, State> {
 
                 <div className="container mt-3">
                     <Switch>
+                        {/* Issues */}
                         <Route exact path={["/", "/jira/issue"]} component={JiraIssuesList} />
-                        <Route exact path="/addissue" component={JiraIssueAdd} />
+                        {/* Worklogs in issues */}
+                        <Route exact path={["/", "/jira/issue/worklog"]} component={JiraWorklogsList} />
+                        <Route path="/jira/issue/worklog/:id" component={JiraWorklog} />
 
+                        {/* Users */}
                         <Route exact path={["/", "/jira/user"]} component={JiraUsersList} />
                         <Route path="/jira/user/:id" component={JiraUser} />
-                        <Route exact path="/adduser" component={JiraUserAdd} />
 
-                        <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
-                        <Route path="/jira/organization/:id" component={JiraOrganization} />
+                        {/* Add new */}
+                        <Route exact path="/addissue" component={JiraIssueAdd} />
+                        <Route exact path="/adduser" component={JiraUserAdd} />
                         <Route exact path="/addorganization" component={JiraOrganizationAdd} />
 
-                        <Route exact path={["/", "/jira/customer"]} component={JiraCustomersList} />
+                        {/* Organizations */}
+                        <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
+                        <Route path="/jira/organization/:id" component={JiraOrganization} />
+                        <Route exact path="/jira/viewco" component={JiraCustomersList} />
 
+                        {/* Customers */}
+                        <Route exact path={["/", "/jira/customer"]} component={JiraCustomersList} />
+                        <Route path="/jira/customer/:id" component={JiraCustomer} />
+
+                        {/* Login & Register */}
                         <Route exact path={["/", "/login"]} component={Login} />
                         <Route exact path={["/", "/register"]} component={Register} />
+
+                        {/* Profile & Settings */}
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/settings" component={Settings} />
                     </Switch>

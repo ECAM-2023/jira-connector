@@ -1,5 +1,5 @@
 import { Component, ChangeEvent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, Link } from "react-router-dom";
 
 import JiraUserDataService from "../services/jira_user.service";
 import IJiraUserData from "../types/jira_user.type";
@@ -19,8 +19,6 @@ type State = {
 export default class JiraUser extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.onChangeAccountId = this.onChangeAccountId.bind(this);
-        this.onChangeAccountType = this.onChangeAccountType.bind(this);
         this.onChangeEmailAddress = this.onChangeEmailAddress.bind(this);
         this.onChangeDisplayName = this.onChangeDisplayName.bind(this);
         this.getUser = this.getUser.bind(this);
@@ -41,30 +39,6 @@ export default class JiraUser extends Component<Props, State> {
 
     componentDidMount() {
         this.getUser(this.props.match.params.id);
-    }
-
-    onChangeAccountId(e: ChangeEvent<HTMLInputElement>) {
-        const accountId = e.target.value;
-
-        this.setState(function (prevState) {
-            return {
-                currentUser: {
-                    ...prevState.currentUser,
-                    accountId: accountId,
-                },
-            };
-        });
-    }
-
-    onChangeAccountType(e: ChangeEvent<HTMLInputElement>) {
-        const accountType = e.target.value;
-
-        this.setState((prevState) => ({
-            currentUser: {
-                ...prevState.currentUser,
-                accountType: accountType,
-            },
-        }));
     }
 
     onChangeEmailAddress(e: ChangeEvent<HTMLInputElement>) {
@@ -141,8 +115,8 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="accountId"
+                                    readOnly
                                     value={currentUser.accountId}
-                                    onChange={this.onChangeAccountId}
                                 />
                             </div>
                             <div className="form-group">
@@ -151,8 +125,8 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="accountType"
+                                    readOnly
                                     value={currentUser.accountType}
-                                    onChange={this.onChangeAccountType}
                                 />
                             </div>
                             <div className="form-group">
@@ -161,8 +135,8 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="emailAddress"
+                                    readOnly
                                     value={currentUser.accountType}
-                                    onChange={this.onChangeEmailAddress}
                                 />
                             </div>
                             <div className="form-group">
@@ -171,19 +145,21 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="displayName"
+                                    readOnly
                                     value={currentUser.displayName}
                                     onChange={this.onChangeDisplayName}
                                 />
                             </div>
                         </form>
+                        <div className="d-flex justify-content-between">
+                            <Link to={"/jira/user"} className="badge badge-warning p-2">
+                                Back
+                            </Link>
 
-                        <button type="submit" className="badge badge-success" onClick={this.updateUser}>
-                            Update
-                        </button>
-
-                        <button className="badge badge-danger mr-2" onClick={this.deleteUser}>
-                            Delete
-                        </button>
+                            <button className="badge badge-danger p-2" onClick={this.deleteUser}>
+                                Delete
+                            </button>
+                        </div>
 
                         <p>{this.state.message}</p>
                     </div>
