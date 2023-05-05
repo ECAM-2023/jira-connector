@@ -23,7 +23,7 @@ exports.create = (req, res) => {
     status:req.body.status,
     summary: req.body.summary,
     userId:req.body.userId,
-    organizationId:req.body.organizationId
+    organizationid:req.body.organizationId
   };
 
   // Save Jira Issue in the database
@@ -76,24 +76,36 @@ exports.findOne = (req, res) => {
     });
 };
 
-exports.findworkloginissue = (req, res) => {
+exports.findbyOrganisationId = (req, res) => {
   const id = req.params.id;
-  Jira_Issue.findByPk(id)
+  var condition = id ? { organizationId: { [Op.iLike]: `%${id}%` } } : null;
+  Jira_Issue.findAll({where: condition})
     .then(data => {
       if (data) {
-        const lissue_id = data.issue_id
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Issue with id=${id}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Issue with id=" + id
+      });
+    });
+};
+
+exports.findworkloginissue = (req, res) => {
+  const id = req.params.id;
+  var condition = id ? { issue_id: { [Op.iLike]: `%${id}%` } } : null;
+
+  Jira_Worklog.findAll({where: condition})
+    .then(data => {
+      if (data) {
         res.send (data);
         };
     })
-    var condition = lissue_id ? { issue_id: { [Op.iLike]: `%${issue_id}%` } } : null;
-      Jira_Worklog.findAll({ where: condition })
-        .then(datas => {
-          res.send(datas);
-        })
-        res.send(data);
-  Jira_Issue.findAll
-    .then(data => {
-      })
       };
 
 // Update a Issue by the id in the request

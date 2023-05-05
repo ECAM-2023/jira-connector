@@ -1,5 +1,7 @@
 const db = require("../models");
+const Jira_Issue = db.jira_issues;
 const Jira_Organization = db.jira_organisations;
+const Jira_Worklog = db.jira_worklog;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Organisation
@@ -44,6 +46,49 @@ exports.findAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving Organisations."
+      });
+    });
+};
+
+exports.findbyOrganisationId = (req, res) => {
+  const id = req.params.id;
+  var condition = id ? { organizationid: { [Op.iLike]: `%${id}%` } } : null;
+  Jira_Issue.findAll({where: condition})
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Issue with id=${id}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Issue with id=" + id
+      });
+    });
+};
+
+exports.findissuebyOrgId = (req, res) => {
+  const idorg = req.params.idorg;
+  const idiss = req.params.idiss;
+  var conditionorg = idorg ? { organizationId: { [Op.iLike]: `%${idorg}%` } } & idiss ? { issue_Id: { [Op.iLike]: `%${idiss}%` } } : null : null ;
+  var conditioniss = idiss ? { organizationId: { [Op.iLike]: `%${idiss}%` } } : null;
+
+  Jira_Issue.findAll({where: conditionorg})
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Issue with idorg=${idorg}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving org with id=" + idorg +"and issue with id "+ idiss
       });
     });
 };

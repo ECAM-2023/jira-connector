@@ -24,8 +24,8 @@ exports.create = (req, res) => {
       description:req.body.description,
       status:req.body.status,
       summary: req.body.summary,
-      user:req.body.user,
-      organization:req.body.organization
+      userId:req.body.userId,
+      organizationId:req.body.organizationId
     };
   // post issue in jira-connector by frontend 
   axios.post('http://10.1.100.244:8080/api/v1/jira/issue', jira_issue)
@@ -78,8 +78,8 @@ exports.update = (req, res) => {
     description:req.body.description,
     status:req.body.status,
     summary: req.body.summary,
-    user:req.body.user,
-    organization:req.body.organization
+    userId:req.body.userId,
+    organizationId:req.body.organizationId
   };
 
   axios.put('http://10.1.100.244:8080/api/v1/jira/issue/' + id, jira_issue)

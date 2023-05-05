@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
     userId: {
       type: Sequelize.STRING
     },
-    organizationId: {
+    organizationid: {
       type: Sequelize.STRING
     }
   });
