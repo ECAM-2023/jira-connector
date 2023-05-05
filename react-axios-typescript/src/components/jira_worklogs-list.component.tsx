@@ -247,7 +247,7 @@ export default class JiraWorklogsList extends Component<Props, State> {
                                         <td>{worklog.creatorId}</td>
                                         <td>
                                             <Link
-                                                to={"/jira/issue/worklog/" + worklog.id}
+                                                to={"/jira/issue/worklog/" + worklog.worklog_id}
                                                 className="badge badge-warning"
                                             >
                                                 Edit

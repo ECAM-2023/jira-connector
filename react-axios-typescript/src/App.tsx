@@ -69,16 +69,6 @@ function MultiLanguagesText() {
                 </Link>
                 <div className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link to={"/jira/issue"} className="nav-link text-light">
-                            {t("Issues")}
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to={"/jira/user"} className="nav-link text-light">
-                            {t("Users")}
-                        </Link>
-                    </li>
-                    <li className="nav-item">
                         <Link to={"/jira/organization"} className="nav-link text-light">
                             {t("Organizations")}
                         </Link>
@@ -88,12 +78,22 @@ function MultiLanguagesText() {
                             {t("Customers")}
                         </Link>
                     </li>
+                    <li className="nav-item">
+                        <Link to={"/jira/issue"} className="nav-link text-light">
+                            {t("Issues")}
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to={"/jira/user"} className="nav-link text-light">
+                            {t("Users")}
+                        </Link>
+                    </li>
 
                     <Nav>
                         <NavDropdown id="nav-dropdown-dark" title={t("AddNew")}>
+                            <NavDropdown.Item href="/addorganization">{t("AddNewOrganization")}</NavDropdown.Item>
                             <NavDropdown.Item href="/addissue">{t("AddNewIssue")}</NavDropdown.Item>
                             <NavDropdown.Item href="/adduser">{t("AddNewUser")}</NavDropdown.Item>
-                            <NavDropdown.Item href="/addorganization">{t("AddNewOrganization")}</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </div>
@@ -180,7 +180,7 @@ class App extends Component<Props, State> {
         const { currentUser } = this.state;
 
         return (
-            <div>
+            <div className="page-container">
                 <div className="app">
                     <nav className="navbar navbar-expand navbar-dark bg-dark">
                         <MultiLanguagesText />
@@ -216,7 +216,8 @@ class App extends Component<Props, State> {
 
                             {/* Issues */}
                             <Route exact path={["/", "/jira/issue"]} component={JiraIssuesList} />
-                            <Route path="/jira/issue/:id" component={JiraIssue} />
+                            <Route path="/jira/issue/edit/:id" component={JiraIssue} />
+                            {/* <Route path="/jira/issue/:id" component={JiraIssue} /> */}
                             {/* Worklogs in issues */}
                             <Route exact path={["/", "/jira/issue/worklog"]} component={JiraWorklogsList} />
                             <Route path="/jira/issue/worklog/:id" component={JiraWorklog} />
@@ -232,7 +233,7 @@ class App extends Component<Props, State> {
 
                             {/* Organizations */}
                             <Route exact path={["/", "/jira/organization"]} component={JiraOrganizationsList} />
-                            <Route path="/jira/organization/:id" component={JiraOrganization} />
+                            <Route path="/jira/organization/edit/:id" component={JiraOrganization} />
                             <Route exact path="/jira/viewco" component={JiraCustomersList} />
 
                             {/* Customers */}

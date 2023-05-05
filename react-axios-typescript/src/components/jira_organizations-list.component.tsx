@@ -241,7 +241,7 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                                         <td>{organization.organizationID}</td>
                                         <td>
                                             <Link
-                                                to={"/jira/organization/" + organization.id}
+                                                to={"/jira/organization/edit/" + organization.id}
                                                 className="badge badge-warning"
                                             >
                                                 Edit
@@ -269,7 +269,7 @@ export default class JiraOrganizationsList extends Component<Props, State> {
                     </select>
                     <div>
                         <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
-                            Exporter en {this.state.exportFormat}
+                            Export as {this.state.exportFormat}
                         </button>
                     </div>
                 </div>

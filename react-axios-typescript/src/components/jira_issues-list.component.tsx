@@ -277,7 +277,7 @@ export default class JiraIssuesList extends Component<Props, State> {
                                         <td>{issue.organizationId}</td>
                                         <td>{issue.userId}</td>
                                         <td>
-                                            <Link to={"/jira/issue/" + issue.id} className="badge badge-warning">
+                                            <Link to={"/jira/issue/edit/" + issue.id} className="badge badge-warning">
                                                 Edit
                                             </Link>
                                             <Link to={"/jira/issue/worklog/"} className="badge badge-primary">
@@ -303,7 +303,7 @@ export default class JiraIssuesList extends Component<Props, State> {
                     </select>
                     <div>
                         <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
-                            Exporter en {this.state.exportFormat}
+                            Export as {this.state.exportFormat}
                         </button>
                     </div>
                 </div>

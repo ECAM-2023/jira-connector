@@ -260,7 +260,7 @@ export default class JiraUsersList extends Component<Props, State> {
                     </select>
                     <div>
                         <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
-                            Exporter en {this.state.exportFormat}
+                            Export as {this.state.exportFormat}
                         </button>
                     </div>
                 </div>

@@ -2,6 +2,8 @@ import { Component, ChangeEvent } from "react";
 import JiraCustomerDataService from "../services/jira_customer.service";
 import { Link } from "react-router-dom";
 import IJiraCustomerData from "../types/jira_customer.type";
+import * as XLSX from "xlsx";
+import { Table } from "react-bootstrap";
 
 type Props = {};
 
@@ -13,6 +15,7 @@ type State = {
     currentPage: number;
     lastPage: number;
     customersPerPage: number;
+    exportFormat: string;
 };
 
 const CUSTOMERS_PER_PAGE = 5;
@@ -20,6 +23,7 @@ const CUSTOMERS_PER_PAGE = 5;
 export default class JiraCustomersList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.handleClickExportButton = this.handleClickExportButton.bind(this);
         this.onChangeSearchAccountId = this.onChangeSearchAccountId.bind(this);
         this.retrieveJiraCustomers = this.retrieveJiraCustomers.bind(this);
         this.refreshList = this.refreshList.bind(this);
@@ -34,7 +38,36 @@ export default class JiraCustomersList extends Component<Props, State> {
             currentPage: 1,
             lastPage: 5,
             customersPerPage: 5,
+            exportFormat: "xlsx",
         };
+    }
+
+    handleClickExportButton() {
+        // Données à exporter
+        const { customers } = this.state;
+
+        const data = [
+            ["AccountId", "AccountType", "Email", "DisplayName"],
+            ...customers.map((customer) => [
+                customer.accountId,
+                customer.accountType,
+                customer.emailAddress,
+                customer.displayName,
+            ]),
+        ];
+
+        if (this.state.exportFormat === "xlsx") {
+            const workbook = XLSX.utils.book_new();
+
+            const worksheet = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Customers");
+
+            XLSX.writeFile(workbook, "customersList.xlsx");
+        } else if (this.state.exportFormat === "word") {
+            return;
+        } else if (this.state.exportFormat === "rst") {
+            return;
+        }
     }
 
     getPaginatedCustomers() {
@@ -189,61 +222,55 @@ export default class JiraCustomersList extends Component<Props, State> {
                         </ul>
                     </nav>
 
-                    <ul className="list-group">
-                        {displayedCustomers &&
-                            displayedCustomers.map((customer: IJiraCustomerData, index: number) => (
-                                <li
-                                    className={"list-group-item " + (index === currentIndex ? "active" : "")}
-                                    onClick={() => this.setActiveCustomer(customer, index)}
-                                    key={index}
-                                >
-                                    {customer.displayName}
-                                </li>
-                            ))}
-                    </ul>
+                    <div className="container">
+                        <Table striped bordered hover className="table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>accountId</th>
+                                    <th>accountType</th>
+                                    <th>Email address</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {displayedCustomers.map((customer, index) => (
+                                    <tr key={index}>
+                                        <td>{customer.displayName}</td>
+                                        <td>{customer.accountId}</td>
+                                        <td>{customer.accountType}</td>
+                                        <td>{customer.emailAddress}</td>
+                                        <td>
+                                            <Link to={"/jira/customer/" + customer.id} className="badge badge-warning">
+                                                Edit
+                                            </Link>
+                                            <Link to={"/jira/issue"} className="badge badge-primary">
+                                                View issues
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
-
-                <div className="col-md-6">
-                    {currentCustomer ? (
-                        <div>
-                            <h4>Customer</h4>
-                            <div>
-                                <label>
-                                    <strong>AccountId:</strong>
-                                </label>{" "}
-                                {currentCustomer.accountId}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>AccountType:</strong>
-                                </label>{" "}
-                                {currentCustomer.accountType}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Email Address:</strong>
-                                </label>{" "}
-                                {currentCustomer.emailAddress}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Name:</strong>
-                                </label>{" "}
-                                {currentCustomer.displayName}
-                            </div>
-                            <Link to={"/jira/customer/" + currentCustomer.id} className="badge badge-warning">
-                                Edit
-                            </Link>
-                            <Link to={"/jira/issue/" + currentCustomer.id} className="badge badge-primary">
-                                View issues
-                            </Link>
-                        </div>
-                    ) : (
-                        <div>
-                            <br />
-                            <p>Please click on a Customer...</p>
-                        </div>
-                    )}
+                <div className="col-md-8">
+                    Export customers list as :
+                    <select
+                        value={this.state.exportFormat}
+                        className="badge"
+                        onChange={(e) => this.setState({ exportFormat: e.target.value })}
+                    >
+                        <option value="xlsx">.xlsx</option>
+                        <option value="word">.docx</option>
+                        <option value="rst">.rst</option>
+                        <option value="pdf">.pdf</option>
+                    </select>
+                    <div>
+                        <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
+                            Export as {this.state.exportFormat}
+                        </button>
+                    </div>
                 </div>
             </div>
         );
