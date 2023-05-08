@@ -2,6 +2,9 @@ import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+import i18n from "../i18n/i18n";
+import { useTranslation } from "react-i18next";
+
 import AuthService from "../services/auth.service";
 
 type Props = {};
@@ -33,7 +36,7 @@ export default class Register extends Component<Props, State> {
             username: Yup.string()
                 .test(
                     "len",
-                    "The username must be between 3 and 20 characters.",
+                    i18n.t("UsernameWarning")!,
                     (val: any) => val && val.toString().length >= 3 && val.toString().length <= 20
                 )
                 .required("This field is required!"),
@@ -87,7 +90,7 @@ export default class Register extends Component<Props, State> {
         };
 
         return (
-            <div className="col-md card">
+            <div className="col-md">
                 <Formik
                     initialValues={initialValues}
                     validationSchema={this.validationSchema}

@@ -1,8 +1,8 @@
 import { Component, ChangeEvent } from "react";
-import { RouteComponentProps, Link } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 
-import JiraUserDataService from "../services/jira_user.service";
-import IJiraUserData from "../types/jira_user.type";
+import JiraCustomerDataService from "../services/jira_customer.service";
+import IJiraCustomerData from "../types/jira_customer.type";
 
 interface RouterProps {
     // type for `match.params`
@@ -12,21 +12,23 @@ interface RouterProps {
 type Props = RouteComponentProps<RouterProps>;
 
 type State = {
-    currentUser: IJiraUserData;
+    currentCustomer: IJiraCustomerData;
     message: string;
 };
 
-export default class JiraUser extends Component<Props, State> {
+export default class JiraCustomer extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.onChangeAccountId = this.onChangeAccountId.bind(this);
+        this.onChangeAccountType = this.onChangeAccountType.bind(this);
         this.onChangeEmailAddress = this.onChangeEmailAddress.bind(this);
         this.onChangeDisplayName = this.onChangeDisplayName.bind(this);
-        this.getUser = this.getUser.bind(this);
-        this.updateUser = this.updateUser.bind(this);
-        this.deleteUser = this.deleteUser.bind(this);
+        this.getCustomer = this.getCustomer.bind(this);
+        this.updateCustomer = this.updateCustomer.bind(this);
+        this.deleteCustomer = this.deleteCustomer.bind(this);
 
         this.state = {
-            currentUser: {
+            currentCustomer: {
                 id: null,
                 accountId: "",
                 accountType: "",
@@ -38,15 +40,39 @@ export default class JiraUser extends Component<Props, State> {
     }
 
     componentDidMount() {
-        this.getUser(this.props.match.params.id);
+        this.getCustomer(this.props.match.params.id);
+    }
+
+    onChangeAccountId(e: ChangeEvent<HTMLInputElement>) {
+        const accountId = e.target.value;
+
+        this.setState(function (prevState) {
+            return {
+                currentCustomer: {
+                    ...prevState.currentCustomer,
+                    accountId: accountId,
+                },
+            };
+        });
+    }
+
+    onChangeAccountType(e: ChangeEvent<HTMLInputElement>) {
+        const accountType = e.target.value;
+
+        this.setState((prevState) => ({
+            currentCustomer: {
+                ...prevState.currentCustomer,
+                accountType: accountType,
+            },
+        }));
     }
 
     onChangeEmailAddress(e: ChangeEvent<HTMLInputElement>) {
         const emailAddress = e.target.value;
 
         this.setState((prevState) => ({
-            currentUser: {
-                ...prevState.currentUser,
+            currentCustomer: {
+                ...prevState.currentCustomer,
                 emailAddress: emailAddress,
             },
         }));
@@ -56,18 +82,18 @@ export default class JiraUser extends Component<Props, State> {
         const displayName = e.target.value;
 
         this.setState((prevState) => ({
-            currentUser: {
-                ...prevState.currentUser,
+            currentCustomer: {
+                ...prevState.currentCustomer,
                 displayName: displayName,
             },
         }));
     }
 
-    getUser(id: string) {
-        JiraUserDataService.get(id)
+    getCustomer(id: string) {
+        JiraCustomerDataService.get(id)
             .then((response: any) => {
                 this.setState({
-                    currentUser: response.data,
+                    currentCustomer: response.data,
                 });
                 console.log(response.data);
             })
@@ -76,12 +102,12 @@ export default class JiraUser extends Component<Props, State> {
             });
     }
 
-    updateUser() {
-        JiraUserDataService.update(this.state.currentUser, this.state.currentUser.id)
+    updateCustomer() {
+        JiraCustomerDataService.update(this.state.currentCustomer, this.state.currentCustomer.id)
             .then((response: any) => {
                 console.log(response.data);
                 this.setState({
-                    message: "The user was updated successfully!",
+                    message: "The customer was updated successfully!",
                 });
             })
             .catch((e: Error) => {
@@ -89,11 +115,11 @@ export default class JiraUser extends Component<Props, State> {
             });
     }
 
-    deleteUser() {
-        JiraUserDataService.delete(this.state.currentUser.id)
+    deleteCustomer() {
+        JiraCustomerDataService.delete(this.state.currentCustomer.id)
             .then((response: any) => {
                 console.log(response.data);
-                this.props.history.push("/jira/user");
+                this.props.history.push("/jira/customer");
             })
             .catch((e: Error) => {
                 console.log(e);
@@ -101,13 +127,13 @@ export default class JiraUser extends Component<Props, State> {
     }
 
     render() {
-        const { currentUser } = this.state;
+        const { currentCustomer } = this.state;
 
         return (
             <div>
-                {currentUser ? (
+                {currentCustomer ? (
                     <div className="edit-form">
-                        <h4>User</h4>
+                        <h4>Customer</h4>
                         <form>
                             <div className="form-group">
                                 <label htmlFor="accountId">AccountId</label>
@@ -115,8 +141,8 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="accountId"
-                                    readOnly
-                                    value={currentUser.accountId}
+                                    value={currentCustomer.accountId}
+                                    onChange={this.onChangeAccountId}
                                 />
                             </div>
                             <div className="form-group">
@@ -125,8 +151,8 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="accountType"
-                                    readOnly
-                                    value={currentUser.accountType}
+                                    value={currentCustomer.accountType}
+                                    onChange={this.onChangeAccountType}
                                 />
                             </div>
                             <div className="form-group">
@@ -135,8 +161,8 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="emailAddress"
-                                    readOnly
-                                    value={currentUser.accountType}
+                                    value={currentCustomer.accountType}
+                                    onChange={this.onChangeEmailAddress}
                                 />
                             </div>
                             <div className="form-group">
@@ -145,18 +171,18 @@ export default class JiraUser extends Component<Props, State> {
                                     type="text"
                                     className="form-control"
                                     id="displayName"
-                                    readOnly
-                                    value={currentUser.displayName}
+                                    value={currentCustomer.displayName}
                                     onChange={this.onChangeDisplayName}
                                 />
                             </div>
                         </form>
-                        <div className="d-flex justify-content-between">
-                            <Link to={"/jira/user"} className="badge badge-warning p-2">
-                                Back
-                            </Link>
 
-                            <button className="badge badge-danger p-2" onClick={this.deleteUser}>
+                        <div className="d-flex justify-content-between">
+                            <button type="submit" className="badge badge-success p-2" onClick={this.updateCustomer}>
+                                Update
+                            </button>
+
+                            <button className="badge badge-danger p-2" onClick={this.deleteCustomer}>
                                 Delete
                             </button>
                         </div>
@@ -166,7 +192,7 @@ export default class JiraUser extends Component<Props, State> {
                 ) : (
                     <div>
                         <br />
-                        <p>Please click on a User...</p>
+                        <p>Please click on a Customer...</p>
                     </div>
                 )}
             </div>

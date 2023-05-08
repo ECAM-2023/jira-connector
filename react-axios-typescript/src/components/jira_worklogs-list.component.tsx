@@ -1,63 +1,70 @@
 import { Component, ChangeEvent } from "react";
-import JiraUserDataService from "../services/jira_user.service";
+import JiraWorklogDataService from "../services/jira_worklog.service";
 import { Link } from "react-router-dom";
-import IJiraUserData from "../types/jira_user.type";
+import IJiraWorklogData from "../types/jira_worklog.type";
 import * as XLSX from "xlsx";
 import { Table } from "react-bootstrap";
 
 type Props = {};
 
 type State = {
-    users: Array<IJiraUserData>;
-    currentUser: IJiraUserData | null;
+    worklogs: Array<IJiraWorklogData>;
+    currentWorklog: IJiraWorklogData | null;
     currentIndex: number;
-    searchAccountId: string;
+    searchIssueId: string;
     currentPage: number;
     lastPage: number;
-    usersPerPage: number;
+    worklogsPerPage: number;
     exportFormat: string;
 };
 
-const USERS_PER_PAGE = 5;
+const WORKLOGS_PER_PAGE = 5;
 
-export default class JiraUsersList extends Component<Props, State> {
+export default class JiraWorklogsList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.handleClickExportButton = this.handleClickExportButton.bind(this);
-        this.onChangeSearchAccountId = this.onChangeSearchAccountId.bind(this);
-        this.retrieveJiraUsers = this.retrieveJiraUsers.bind(this);
+        this.onChangeSearchIssueId = this.onChangeSearchIssueId.bind(this);
+        this.retrieveJiraIssues = this.retrieveJiraIssues.bind(this);
         this.refreshList = this.refreshList.bind(this);
-        this.setActiveUser = this.setActiveUser.bind(this);
-        this.searchAccountId = this.searchAccountId.bind(this);
+        this.setActiveIssue = this.setActiveIssue.bind(this);
+        this.searchIssueId = this.searchIssueId.bind(this);
 
         this.state = {
-            users: [],
-            currentUser: null,
+            worklogs: [],
+            currentWorklog: null,
             currentIndex: -1,
-            searchAccountId: "",
+            searchIssueId: "",
             currentPage: 1,
             lastPage: 5,
-            usersPerPage: 5,
+            worklogsPerPage: 5,
             exportFormat: "xlsx",
         };
     }
 
     handleClickExportButton() {
         // Données à exporter
-        const { users } = this.state;
+        const { worklogs } = this.state;
 
         const data = [
-            ["AccountId", "AccountType", "Email", "DisplayName"],
-            ...users.map((user) => [user.accountId, user.accountType, user.emailAddress, user.displayName]),
+            ["issue_id", "worklog_id", "description", "timespent", "updated", "creatorId"],
+            ...worklogs.map((worklog) => [
+                worklog.issue_id,
+                worklog.worklog_id,
+                worklog.description,
+                worklog.timespent,
+                worklog.updated,
+                worklog.creatorId,
+            ]),
         ];
 
         if (this.state.exportFormat === "xlsx") {
             const workbook = XLSX.utils.book_new();
 
             const worksheet = XLSX.utils.aoa_to_sheet(data);
-            XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Worklogs");
 
-            XLSX.writeFile(workbook, "usersList.xlsx");
+            XLSX.writeFile(workbook, "worklogsList.xlsx");
         } else if (this.state.exportFormat === "word") {
             return;
         } else if (this.state.exportFormat === "rst") {
@@ -65,37 +72,37 @@ export default class JiraUsersList extends Component<Props, State> {
         }
     }
 
-    getPaginatedUsers() {
-        const { users, currentPage } = this.state;
-        const startIndex = (currentPage - 1) * USERS_PER_PAGE;
-        const endIndex = startIndex + USERS_PER_PAGE;
-        return users.slice(startIndex, endIndex);
+    getPaginatedIssues() {
+        const { worklogs, currentPage } = this.state;
+        const startIndex = (currentPage - 1) * WORKLOGS_PER_PAGE;
+        const endIndex = startIndex + WORKLOGS_PER_PAGE;
+        return worklogs.slice(startIndex, endIndex);
     }
 
-    setCurrentPage(pageNumber: number, usersPerPage: number) {
+    setCurrentPage(pageNumber: number, worklogsPerPage: number) {
         this.setState({
             currentPage: pageNumber,
-            usersPerPage: usersPerPage,
+            worklogsPerPage: worklogsPerPage,
         });
     }
 
     componentDidMount() {
-        this.retrieveJiraUsers();
+        this.retrieveJiraIssues();
     }
 
-    onChangeSearchAccountId(e: ChangeEvent<HTMLInputElement>) {
-        const searchAccountId = e.target.value;
+    onChangeSearchIssueId(e: ChangeEvent<HTMLInputElement>) {
+        const searchIssueId = e.target.value;
 
         this.setState({
-            searchAccountId: searchAccountId,
+            searchIssueId: searchIssueId,
         });
     }
 
-    retrieveJiraUsers() {
-        JiraUserDataService.getAll()
+    retrieveJiraIssues() {
+        JiraWorklogDataService.getAll()
             .then((response: any) => {
                 this.setState({
-                    users: response.data,
+                    worklogs: response.data,
                 });
                 console.log(response.data);
             })
@@ -105,36 +112,36 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     refreshList() {
-        this.retrieveJiraUsers();
+        this.retrieveJiraIssues();
         this.setState({
-            currentUser: null,
+            currentWorklog: null,
             currentIndex: -1,
         });
     }
 
-    setActiveUser(user: IJiraUserData, index: number) {
+    setActiveIssue(worklog: IJiraWorklogData, index: number) {
         this.setState({
-            currentUser: user,
+            currentWorklog: worklog,
             currentIndex: index,
         });
     }
 
-    searchAccountId() {
+    searchIssueId() {
         this.setState({
-            currentUser: null,
+            currentWorklog: null,
             currentIndex: -1,
         });
 
-        const { searchAccountId } = this.state;
-        JiraUserDataService.findByAccountId(searchAccountId)
+        const { searchIssueId } = this.state;
+        JiraWorklogDataService.findByIssueId(searchIssueId)
             .then((response: any) => {
-                const filteredUsers = response.data.filter((user: IJiraUserData) =>
-                    user.accountId.toLowerCase().includes(searchAccountId.toLowerCase())
+                const filteredIssues = response.data.filter((worklogs: IJiraWorklogData) =>
+                    worklogs.issue_id.toLowerCase().includes(searchIssueId.toLowerCase())
                 );
                 this.setState({
-                    users: filteredUsers,
+                    worklogs: filteredIssues,
                     currentPage: 1, // Reset to first page
-                    lastPage: Math.ceil(filteredUsers.length / 5), // Update last page count
+                    lastPage: Math.ceil(filteredIssues.length / 5), // Update last page count
                 });
             })
             .catch((e: Error) => {
@@ -143,20 +150,20 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     render() {
-        const { searchAccountId, users, currentUser, currentIndex, currentPage, lastPage, usersPerPage, exportFormat } =
+        const { searchIssueId, worklogs, currentWorklog, currentIndex, currentPage, lastPage, worklogsPerPage } =
             this.state;
-        const startIndex = (currentPage - 1) * usersPerPage;
-        const endIndex = Math.min(startIndex + usersPerPage, users.length);
-        const displayedUsers = users.slice(startIndex, endIndex);
+        const startIndex = (currentPage - 1) * worklogsPerPage;
+        const endIndex = Math.min(startIndex + worklogsPerPage, worklogs.length);
+        const displayedIssues = worklogs.slice(startIndex, endIndex);
 
-        // Calculate the index of the first user to display on the current page
-        const indexOfLastUser = currentPage * usersPerPage;
-        const indexOfFirstUser = indexOfLastUser - usersPerPage;
-        // Get the users to display on the current page
-        const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-        // Calculate the total number of pages based on the number of users and usersPerPage
-        const totalPages = Math.ceil(users.length / usersPerPage);
-        const paginatedUsers = this.getPaginatedUsers();
+        const indexOfLastIssue = currentPage * worklogsPerPage;
+        const indexOfFirstIssue = indexOfLastIssue - worklogsPerPage;
+
+        const currentIssues = worklogs.slice(indexOfFirstIssue, indexOfLastIssue);
+
+        const totalPages = Math.ceil(worklogs.length / worklogsPerPage);
+
+        const paginatedIssues = this.getPaginatedIssues();
 
         return (
             <div className="list row">
@@ -165,12 +172,12 @@ export default class JiraUsersList extends Component<Props, State> {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Search by accountId"
-                            value={searchAccountId}
-                            onChange={this.onChangeSearchAccountId}
+                            placeholder="Search by issue_id"
+                            value={searchIssueId}
+                            onChange={this.onChangeSearchIssueId}
                         />
                         <div className="input-group-append">
-                            <button className="btn btn-outline-secondary" type="button" onClick={this.searchAccountId}>
+                            <button className="btn btn-outline-secondary" type="button" onClick={this.searchIssueId}>
                                 Search
                             </button>
                         </div>
@@ -178,11 +185,11 @@ export default class JiraUsersList extends Component<Props, State> {
                 </div>
 
                 <div className="col-md-7">
-                    <label htmlFor="users-per-page">Users per page:</label>
+                    <label htmlFor="worklogs-per-page">Worklogs per page:</label>
                     <select
-                        id="users-per-page"
+                        id="worklogs-per-page"
                         className="form-select"
-                        value={usersPerPage}
+                        value={worklogsPerPage}
                         onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                             this.setCurrentPage(1, parseInt(e.target.value))
                         }
@@ -196,8 +203,8 @@ export default class JiraUsersList extends Component<Props, State> {
                     </select>
                 </div>
 
-                <div className="col-md-7">
-                    <h4>Users List</h4>
+                <div className="col-md-6">
+                    <h4>Worklogs list</h4>
 
                     <nav>
                         <ul className="pagination">
@@ -208,7 +215,7 @@ export default class JiraUsersList extends Component<Props, State> {
                                 >
                                     <button
                                         className="page-link"
-                                        onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}
+                                        onClick={() => this.setCurrentPage(pageNumber + 1, worklogsPerPage)}
                                     >
                                         {pageNumber + 1}
                                     </button>
@@ -216,27 +223,33 @@ export default class JiraUsersList extends Component<Props, State> {
                             ))}
                         </ul>
                     </nav>
-
                     <div className="container">
                         <Table striped bordered hover className="table-custom">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>accountId</th>
-                                    <th>accountType</th>
-                                    <th>Email address</th>
+                                    <th>Id</th>
+                                    {/* <th>Issue Id</th> */}
+                                    <th>Description</th>
+                                    <th>Time spent</th>
+                                    <th>Updated</th>
+                                    <th>Creator id</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {displayedUsers.map((user, index) => (
+                                {displayedIssues.map((worklog, index) => (
                                     <tr key={index}>
-                                        <td>{user.displayName}</td>
-                                        <td>{user.accountId}</td>
-                                        <td>{user.accountType}</td>
-                                        <td>{user.emailAddress}</td>
+                                        {/* <td>{worklog.issue_id}</td> */}
+                                        <td>{worklog.worklog_id}</td>
+                                        <td>{worklog.description}</td>
+                                        <td>{worklog.timespent}</td>
+                                        <td>{worklog.updated}</td>
+                                        <td>{worklog.creatorId}</td>
                                         <td>
-                                            <Link to={"/jira/user/" + user.id} className="badge badge-warning">
+                                            <Link
+                                                to={"/jira/issue/worklog/" + worklog.worklog_id}
+                                                className="badge badge-warning"
+                                            >
                                                 Edit
                                             </Link>
                                         </td>
@@ -246,11 +259,10 @@ export default class JiraUsersList extends Component<Props, State> {
                         </Table>
                     </div>
                 </div>
-                <div className="col-md-8">
-                    Export users list as :
+                <div className="col-md-7">
+                    Export worklogs list as :
                     <select
                         value={this.state.exportFormat}
-                        className="badge"
                         onChange={(e) => this.setState({ exportFormat: e.target.value })}
                     >
                         <option value="xlsx">.xlsx</option>
@@ -260,7 +272,7 @@ export default class JiraUsersList extends Component<Props, State> {
                     </select>
                     <div>
                         <button className="btn btn-outline-success" onClick={this.handleClickExportButton.bind(this)}>
-                            Export as {this.state.exportFormat}
+                            Exporter en {this.state.exportFormat}
                         </button>
                     </div>
                 </div>
