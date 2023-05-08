@@ -16,10 +16,10 @@ module.exports = app => {
       router.get("/:id/issue", jira_organizations.findbyOrganisationId);
 
           // Retrieve a single Jira Organization with id
-          //router.get("/:idorg/issue/:idiss/worklog", jira_organizations.findbyOrganisationIdandiss);
+          router.get("/:idorg/issue/:id/worklog", jira_organizations.findworkloginissue);
 
           // Retrieve a single Jira Organization with id
-          //router.get("/:idorg/issue/:idiss", jira_organizations.findissuebyOrgId);
+          router.get("/:idorg/issue/:idiss", jira_organizations.findissuebyOrgId);
 
   // Update a Jira Organization with id
   router.put("/:id", jira_organizations.update);

@@ -73,10 +73,16 @@ exports.findbyOrganisationId = (req, res) => {
 exports.findissuebyOrgId = (req, res) => {
   const idorg = req.params.idorg;
   const idiss = req.params.idiss;
-  var conditionorg = idorg ? { organizationId: { [Op.iLike]: `%${idorg}%` } } & idiss ? { issue_Id: { [Op.iLike]: `%${idiss}%` } } : null : null ;
-  var conditioniss = idiss ? { organizationId: { [Op.iLike]: `%${idiss}%` } } : null;
+  var conditionorg = idorg ? { organizationid: { [Op.iLike]: `%${idorg}%` } } : null
+  var conditioniss = idiss ? { issue_id: { [Op.iLike]: `%${idiss}%` } } : null;
 
-  Jira_Issue.findAll({where: conditionorg})
+  Jira_Issue.findAll({
+    where: {
+      [Op.and]: [
+        conditionorg,
+        conditioniss
+      ]
+    }})
     .then(data => {
       if (data) {
         res.send(data);
@@ -92,6 +98,19 @@ exports.findissuebyOrgId = (req, res) => {
       });
     });
 };
+
+exports.findworkloginissue = (req, res) => {
+  const id = req.params.id;
+  var condition = id ? { issue_id: { [Op.iLike]: `%${id}%` } } : null;
+
+  Jira_Worklog.findAll({where: condition})
+    .then(data => {
+      if (data) {
+        res.send (data);
+        };
+    })
+      };
+
 
 // Find a single Jira Organisation with an id
 exports.findOne = (req, res) => {
