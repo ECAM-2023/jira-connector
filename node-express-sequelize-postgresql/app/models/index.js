@@ -57,5 +57,6 @@ db.jira_organisations = require("./jira_organization.model.js")(sequelize, Seque
 db.view_customer_organizations = require("./view_customer_organization.model.js")(sequelize, Sequelize);
 db.jira_issues = require("./jira_issue.model.js")(sequelize, Sequelize);
 db.login = require("./user_login.model.js")(sequelize, Sequelize);
+db.jira_worklog = require("./jira_worklog.model.js")(sequelize, Sequelize);
 
 module.exports = db;

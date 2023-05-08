@@ -1,5 +1,6 @@
 import http from "../http-common";
 import IJiraUserData from "../types/jira_user.type";
+import IJiraUserData from "../types/jira_user.type";
 
 class JiraUserDataService {
     getAll() {

@@ -38,8 +38,14 @@ require("./app/routes-jira/jira_organization.routes")(app);
 // Routes Tutorial
 require("./app/routes-jira/turorial.routes")(app);
 
-// Routes Jira
+// Routes user
 require("./app/routes-jira/jira_user.routes")(app);
+
+//Routes customer
+require("./app/routes-jira/jira_customer.routes")(app);
+
+//Routes issue
+require("./app/routes-jira/jira_issue.routes")(app);
 
 //Routes customer
 require("./app/routes-jira/jira_customer.routes")(app);
