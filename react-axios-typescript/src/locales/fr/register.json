@@ -1,0 +1,7 @@
+{
+    "Username": "Nom d'utilisateur",
+    "UsernameWarning": "Le nom d'utilisateur doit être entre 3 et 20 caractères.",
+    "Email": "Email",
+    "Password": "Mot de passe",
+    "Submit": "S'inscrire"
+}

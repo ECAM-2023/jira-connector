@@ -47,6 +47,12 @@ require("./app/routes-jira/jira_customer.routes")(app);
 //Routes issue
 require("./app/routes-jira/jira_issue.routes")(app);
 
+//Routes customer
+require("./app/routes-jira/jira_customer.routes")(app);
+
+//Routes issue
+require("./app/routes-jira/jira_issue.routes")(app);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

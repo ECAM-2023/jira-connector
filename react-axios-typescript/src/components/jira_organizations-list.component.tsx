@@ -1,63 +1,63 @@
 import { Component, ChangeEvent } from "react";
-import JiraUserDataService from "../services/jira_user.service";
+import JiraOrganizationDataService from "../services/jira_organization.service";
 import { Link } from "react-router-dom";
-import IJiraUserData from "../types/jira_user.type";
+import IJiraOrganizationData from "../types/jira_organization.type";
 import * as XLSX from "xlsx";
 import { Table } from "react-bootstrap";
 
 type Props = {};
 
 type State = {
-    users: Array<IJiraUserData>;
-    currentUser: IJiraUserData | null;
+    organizations: Array<IJiraOrganizationData>;
+    currentOrganization: IJiraOrganizationData | null;
     currentIndex: number;
-    searchAccountId: string;
+    searchOrganizationID: string;
     currentPage: number;
     lastPage: number;
-    usersPerPage: number;
+    organizationsPerPage: number;
     exportFormat: string;
 };
 
-const USERS_PER_PAGE = 5;
+const ORGANIZATIONS_PER_PAGE = 5;
 
-export default class JiraUsersList extends Component<Props, State> {
+export default class JiraOrganizationsList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.handleClickExportButton = this.handleClickExportButton.bind(this);
-        this.onChangeSearchAccountId = this.onChangeSearchAccountId.bind(this);
-        this.retrieveJiraUsers = this.retrieveJiraUsers.bind(this);
+        this.onChangeSearchOrganizationID = this.onChangeSearchOrganizationID.bind(this);
+        this.retrieveJiraOrganizations = this.retrieveJiraOrganizations.bind(this);
         this.refreshList = this.refreshList.bind(this);
-        this.setActiveUser = this.setActiveUser.bind(this);
-        this.searchAccountId = this.searchAccountId.bind(this);
+        this.setActiveOrganization = this.setActiveOrganization.bind(this);
+        this.searchOrganizationID = this.searchOrganizationID.bind(this);
 
         this.state = {
-            users: [],
-            currentUser: null,
+            organizations: [],
+            currentOrganization: null,
             currentIndex: -1,
-            searchAccountId: "",
+            searchOrganizationID: "",
             currentPage: 1,
             lastPage: 5,
-            usersPerPage: 5,
+            organizationsPerPage: 5,
             exportFormat: "xlsx",
         };
     }
 
     handleClickExportButton() {
         // Données à exporter
-        const { users } = this.state;
+        const { organizations } = this.state;
 
         const data = [
-            ["AccountId", "AccountType", "Email", "DisplayName"],
-            ...users.map((user) => [user.accountId, user.accountType, user.emailAddress, user.displayName]),
+            ["organizationID", "name"],
+            ...organizations.map((organization) => [organization.organizationID, organization.name]),
         ];
 
         if (this.state.exportFormat === "xlsx") {
             const workbook = XLSX.utils.book_new();
 
             const worksheet = XLSX.utils.aoa_to_sheet(data);
-            XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Organizations");
 
-            XLSX.writeFile(workbook, "usersList.xlsx");
+            XLSX.writeFile(workbook, "organizationsList.xlsx");
         } else if (this.state.exportFormat === "word") {
             return;
         } else if (this.state.exportFormat === "rst") {
@@ -65,37 +65,37 @@ export default class JiraUsersList extends Component<Props, State> {
         }
     }
 
-    getPaginatedUsers() {
-        const { users, currentPage } = this.state;
-        const startIndex = (currentPage - 1) * USERS_PER_PAGE;
-        const endIndex = startIndex + USERS_PER_PAGE;
-        return users.slice(startIndex, endIndex);
+    getPaginatedOrganizations() {
+        const { organizations, currentPage } = this.state;
+        const startIndex = (currentPage - 1) * ORGANIZATIONS_PER_PAGE;
+        const endIndex = startIndex + ORGANIZATIONS_PER_PAGE;
+        return organizations.slice(startIndex, endIndex);
     }
 
-    setCurrentPage(pageNumber: number, usersPerPage: number) {
+    setCurrentPage(pageNumber: number, organizationsPerPage: number) {
         this.setState({
             currentPage: pageNumber,
-            usersPerPage: usersPerPage,
+            organizationsPerPage: organizationsPerPage,
         });
     }
 
     componentDidMount() {
-        this.retrieveJiraUsers();
+        this.retrieveJiraOrganizations();
     }
 
-    onChangeSearchAccountId(e: ChangeEvent<HTMLInputElement>) {
-        const searchAccountId = e.target.value;
+    onChangeSearchOrganizationID(e: ChangeEvent<HTMLInputElement>) {
+        const searchOrganizationID = e.target.value;
 
         this.setState({
-            searchAccountId: searchAccountId,
+            searchOrganizationID: searchOrganizationID,
         });
     }
 
-    retrieveJiraUsers() {
-        JiraUserDataService.getAll()
+    retrieveJiraOrganizations() {
+        JiraOrganizationDataService.getAll()
             .then((response: any) => {
                 this.setState({
-                    users: response.data,
+                    organizations: response.data,
                 });
                 console.log(response.data);
             })
@@ -105,36 +105,36 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     refreshList() {
-        this.retrieveJiraUsers();
+        this.retrieveJiraOrganizations();
         this.setState({
-            currentUser: null,
+            currentOrganization: null,
             currentIndex: -1,
         });
     }
 
-    setActiveUser(user: IJiraUserData, index: number) {
+    setActiveOrganization(organization: IJiraOrganizationData, index: number) {
         this.setState({
-            currentUser: user,
+            currentOrganization: organization,
             currentIndex: index,
         });
     }
 
-    searchAccountId() {
+    searchOrganizationID() {
         this.setState({
-            currentUser: null,
+            currentOrganization: null,
             currentIndex: -1,
         });
 
-        const { searchAccountId } = this.state;
-        JiraUserDataService.findByAccountId(searchAccountId)
+        const { searchOrganizationID } = this.state;
+        JiraOrganizationDataService.findByOrganizationID(searchOrganizationID)
             .then((response: any) => {
-                const filteredUsers = response.data.filter((user: IJiraUserData) =>
-                    user.accountId.toLowerCase().includes(searchAccountId.toLowerCase())
+                const filteredOrganizations = response.data.filter((organization: IJiraOrganizationData) =>
+                    organization.organizationID.toLowerCase().includes(searchOrganizationID.toLowerCase())
                 );
                 this.setState({
-                    users: filteredUsers,
+                    organizations: filteredOrganizations,
                     currentPage: 1, // Reset to first page
-                    lastPage: Math.ceil(filteredUsers.length / 5), // Update last page count
+                    lastPage: Math.ceil(filteredOrganizations.length / 5), // Update last page count
                 });
             })
             .catch((e: Error) => {
@@ -143,20 +143,24 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     render() {
-        const { searchAccountId, users, currentUser, currentIndex, currentPage, lastPage, usersPerPage, exportFormat } =
-            this.state;
-        const startIndex = (currentPage - 1) * usersPerPage;
-        const endIndex = Math.min(startIndex + usersPerPage, users.length);
-        const displayedUsers = users.slice(startIndex, endIndex);
+        const {
+            searchOrganizationID,
+            organizations,
+            currentOrganization,
+            currentIndex,
+            currentPage,
+            lastPage,
+            organizationsPerPage,
+            exportFormat,
+        } = this.state;
+        const startIndex = (currentPage - 1) * organizationsPerPage;
+        const endIndex = Math.min(startIndex + organizationsPerPage, organizations.length);
+        const displayedOrganizations = organizations.slice(startIndex, endIndex);
 
-        // Calculate the index of the first user to display on the current page
-        const indexOfLastUser = currentPage * usersPerPage;
-        const indexOfFirstUser = indexOfLastUser - usersPerPage;
-        // Get the users to display on the current page
-        const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-        // Calculate the total number of pages based on the number of users and usersPerPage
-        const totalPages = Math.ceil(users.length / usersPerPage);
-        const paginatedUsers = this.getPaginatedUsers();
+        const indexOfLastOrganization = currentPage * organizationsPerPage;
+        const indexOfFirstOrganization = indexOfLastOrganization - organizationsPerPage;
+
+        const totalPages = Math.ceil(organizations.length / organizationsPerPage);
 
         return (
             <div className="list row">
@@ -165,12 +169,16 @@ export default class JiraUsersList extends Component<Props, State> {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Search by accountId"
-                            value={searchAccountId}
-                            onChange={this.onChangeSearchAccountId}
+                            placeholder="Search by organizationID"
+                            value={searchOrganizationID}
+                            onChange={this.onChangeSearchOrganizationID}
                         />
                         <div className="input-group-append">
-                            <button className="btn btn-outline-secondary" type="button" onClick={this.searchAccountId}>
+                            <button
+                                className="btn btn-outline-secondary"
+                                type="button"
+                                onClick={this.searchOrganizationID}
+                            >
                                 Search
                             </button>
                         </div>
@@ -178,11 +186,11 @@ export default class JiraUsersList extends Component<Props, State> {
                 </div>
 
                 <div className="col-md-7">
-                    <label htmlFor="users-per-page">Users per page:</label>
+                    <label htmlFor="organizations-per-page">Organizations per page :</label>
                     <select
-                        id="users-per-page"
+                        id="organizations-per-page"
                         className="form-select"
-                        value={usersPerPage}
+                        value={organizationsPerPage}
                         onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                             this.setCurrentPage(1, parseInt(e.target.value))
                         }
@@ -196,8 +204,8 @@ export default class JiraUsersList extends Component<Props, State> {
                     </select>
                 </div>
 
-                <div className="col-md-7">
-                    <h4>Users List</h4>
+                <div className="col-md-6">
+                    <h4>Organizations List</h4>
 
                     <nav>
                         <ul className="pagination">
@@ -208,7 +216,7 @@ export default class JiraUsersList extends Component<Props, State> {
                                 >
                                     <button
                                         className="page-link"
-                                        onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}
+                                        onClick={() => this.setCurrentPage(pageNumber + 1, organizationsPerPage)}
                                     >
                                         {pageNumber + 1}
                                     </button>
@@ -218,26 +226,28 @@ export default class JiraUsersList extends Component<Props, State> {
                     </nav>
 
                     <div className="container">
-                        <Table striped bordered hover className="table-custom">
+                        <Table striped bordered hover>
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>accountId</th>
-                                    <th>accountType</th>
-                                    <th>Email address</th>
+                                    <th>id</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {displayedUsers.map((user, index) => (
+                                {displayedOrganizations.map((organization, index) => (
                                     <tr key={index}>
-                                        <td>{user.displayName}</td>
-                                        <td>{user.accountId}</td>
-                                        <td>{user.accountType}</td>
-                                        <td>{user.emailAddress}</td>
+                                        <td>{organization.name}</td>
+                                        <td>{organization.organizationID}</td>
                                         <td>
-                                            <Link to={"/jira/user/" + user.id} className="badge badge-warning">
+                                            <Link
+                                                to={"/jira/organization/edit/" + organization.id}
+                                                className="badge badge-warning"
+                                            >
                                                 Edit
+                                            </Link>
+                                            <Link to={"/jira/viewco"} className="badge badge-primary">
+                                                View customers
                                             </Link>
                                         </td>
                                     </tr>
@@ -246,11 +256,10 @@ export default class JiraUsersList extends Component<Props, State> {
                         </Table>
                     </div>
                 </div>
-                <div className="col-md-8">
-                    Export users list as :
+                <div className="col-md-7">
+                    Export organizations list as :
                     <select
                         value={this.state.exportFormat}
-                        className="badge"
                         onChange={(e) => this.setState({ exportFormat: e.target.value })}
                     >
                         <option value="xlsx">.xlsx</option>

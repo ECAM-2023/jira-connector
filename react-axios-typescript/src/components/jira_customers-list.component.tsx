@@ -1,63 +1,68 @@
 import { Component, ChangeEvent } from "react";
-import JiraUserDataService from "../services/jira_user.service";
+import JiraCustomerDataService from "../services/jira_customer.service";
 import { Link } from "react-router-dom";
-import IJiraUserData from "../types/jira_user.type";
+import IJiraCustomerData from "../types/jira_customer.type";
 import * as XLSX from "xlsx";
 import { Table } from "react-bootstrap";
 
 type Props = {};
 
 type State = {
-    users: Array<IJiraUserData>;
-    currentUser: IJiraUserData | null;
+    customers: Array<IJiraCustomerData>;
+    currentCustomer: IJiraCustomerData | null;
     currentIndex: number;
     searchAccountId: string;
     currentPage: number;
     lastPage: number;
-    usersPerPage: number;
+    customersPerPage: number;
     exportFormat: string;
 };
 
-const USERS_PER_PAGE = 5;
+const CUSTOMERS_PER_PAGE = 5;
 
-export default class JiraUsersList extends Component<Props, State> {
+export default class JiraCustomersList extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.handleClickExportButton = this.handleClickExportButton.bind(this);
         this.onChangeSearchAccountId = this.onChangeSearchAccountId.bind(this);
-        this.retrieveJiraUsers = this.retrieveJiraUsers.bind(this);
+        this.retrieveJiraCustomers = this.retrieveJiraCustomers.bind(this);
         this.refreshList = this.refreshList.bind(this);
-        this.setActiveUser = this.setActiveUser.bind(this);
+        this.setActiveCustomer = this.setActiveCustomer.bind(this);
         this.searchAccountId = this.searchAccountId.bind(this);
 
         this.state = {
-            users: [],
-            currentUser: null,
+            customers: [],
+            currentCustomer: null,
             currentIndex: -1,
             searchAccountId: "",
             currentPage: 1,
             lastPage: 5,
-            usersPerPage: 5,
+            customersPerPage: 5,
             exportFormat: "xlsx",
         };
     }
 
     handleClickExportButton() {
         // Données à exporter
-        const { users } = this.state;
+        const { customers } = this.state;
 
         const data = [
             ["AccountId", "AccountType", "Email", "DisplayName"],
-            ...users.map((user) => [user.accountId, user.accountType, user.emailAddress, user.displayName]),
+            ...customers.map((customer) => [
+                customer.accountId,
+                customer.accountType,
+                customer.emailAddress,
+                customer.displayName,
+            ]),
         ];
 
         if (this.state.exportFormat === "xlsx") {
             const workbook = XLSX.utils.book_new();
 
             const worksheet = XLSX.utils.aoa_to_sheet(data);
-            XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Customers");
 
-            XLSX.writeFile(workbook, "usersList.xlsx");
+            XLSX.writeFile(workbook, "customersList.xlsx");
         } else if (this.state.exportFormat === "word") {
             return;
         } else if (this.state.exportFormat === "rst") {
@@ -65,22 +70,22 @@ export default class JiraUsersList extends Component<Props, State> {
         }
     }
 
-    getPaginatedUsers() {
-        const { users, currentPage } = this.state;
-        const startIndex = (currentPage - 1) * USERS_PER_PAGE;
-        const endIndex = startIndex + USERS_PER_PAGE;
-        return users.slice(startIndex, endIndex);
+    getPaginatedCustomers() {
+        const { customers, currentPage } = this.state;
+        const startIndex = (currentPage - 1) * CUSTOMERS_PER_PAGE;
+        const endIndex = startIndex + CUSTOMERS_PER_PAGE;
+        return customers.slice(startIndex, endIndex);
     }
 
-    setCurrentPage(pageNumber: number, usersPerPage: number) {
+    setCurrentPage(pageNumber: number, customersPerPage: number) {
         this.setState({
             currentPage: pageNumber,
-            usersPerPage: usersPerPage,
+            customersPerPage: customersPerPage,
         });
     }
 
     componentDidMount() {
-        this.retrieveJiraUsers();
+        this.retrieveJiraCustomers();
     }
 
     onChangeSearchAccountId(e: ChangeEvent<HTMLInputElement>) {
@@ -91,11 +96,11 @@ export default class JiraUsersList extends Component<Props, State> {
         });
     }
 
-    retrieveJiraUsers() {
-        JiraUserDataService.getAll()
+    retrieveJiraCustomers() {
+        JiraCustomerDataService.getAll()
             .then((response: any) => {
                 this.setState({
-                    users: response.data,
+                    customers: response.data,
                 });
                 console.log(response.data);
             })
@@ -105,36 +110,36 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     refreshList() {
-        this.retrieveJiraUsers();
+        this.retrieveJiraCustomers();
         this.setState({
-            currentUser: null,
+            currentCustomer: null,
             currentIndex: -1,
         });
     }
 
-    setActiveUser(user: IJiraUserData, index: number) {
+    setActiveCustomer(customer: IJiraCustomerData, index: number) {
         this.setState({
-            currentUser: user,
+            currentCustomer: customer,
             currentIndex: index,
         });
     }
 
     searchAccountId() {
         this.setState({
-            currentUser: null,
+            currentCustomer: null,
             currentIndex: -1,
         });
 
         const { searchAccountId } = this.state;
-        JiraUserDataService.findByAccountId(searchAccountId)
+        JiraCustomerDataService.findByAccountId(searchAccountId)
             .then((response: any) => {
-                const filteredUsers = response.data.filter((user: IJiraUserData) =>
-                    user.accountId.toLowerCase().includes(searchAccountId.toLowerCase())
+                const filteredCustomers = response.data.filter((customers: IJiraCustomerData) =>
+                    customers.accountId.toLowerCase().includes(searchAccountId.toLowerCase())
                 );
                 this.setState({
-                    users: filteredUsers,
+                    customers: filteredCustomers,
                     currentPage: 1, // Reset to first page
-                    lastPage: Math.ceil(filteredUsers.length / 5), // Update last page count
+                    lastPage: Math.ceil(filteredCustomers.length / 5), // Update last page count
                 });
             })
             .catch((e: Error) => {
@@ -143,20 +148,20 @@ export default class JiraUsersList extends Component<Props, State> {
     }
 
     render() {
-        const { searchAccountId, users, currentUser, currentIndex, currentPage, lastPage, usersPerPage, exportFormat } =
+        const { searchAccountId, customers, currentCustomer, currentIndex, currentPage, lastPage, customersPerPage } =
             this.state;
-        const startIndex = (currentPage - 1) * usersPerPage;
-        const endIndex = Math.min(startIndex + usersPerPage, users.length);
-        const displayedUsers = users.slice(startIndex, endIndex);
+        const startIndex = (currentPage - 1) * customersPerPage;
+        const endIndex = Math.min(startIndex + customersPerPage, customers.length);
+        const displayedCustomers = customers.slice(startIndex, endIndex);
 
-        // Calculate the index of the first user to display on the current page
-        const indexOfLastUser = currentPage * usersPerPage;
-        const indexOfFirstUser = indexOfLastUser - usersPerPage;
-        // Get the users to display on the current page
-        const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-        // Calculate the total number of pages based on the number of users and usersPerPage
-        const totalPages = Math.ceil(users.length / usersPerPage);
-        const paginatedUsers = this.getPaginatedUsers();
+        const indexOfLastCustomer = currentPage * customersPerPage;
+        const indexOfFirstCustomer = indexOfLastCustomer - customersPerPage;
+
+        const currentCustomers = customers.slice(indexOfFirstCustomer, indexOfLastCustomer);
+
+        const totalPages = Math.ceil(customers.length / customersPerPage);
+
+        const paginatedCustomers = this.getPaginatedCustomers();
 
         return (
             <div className="list row">
@@ -178,11 +183,11 @@ export default class JiraUsersList extends Component<Props, State> {
                 </div>
 
                 <div className="col-md-7">
-                    <label htmlFor="users-per-page">Users per page:</label>
+                    <label htmlFor="customers-per-page">Customers per page:</label>
                     <select
-                        id="users-per-page"
+                        id="customers-per-page"
                         className="form-select"
-                        value={usersPerPage}
+                        value={customersPerPage}
                         onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                             this.setCurrentPage(1, parseInt(e.target.value))
                         }
@@ -196,8 +201,8 @@ export default class JiraUsersList extends Component<Props, State> {
                     </select>
                 </div>
 
-                <div className="col-md-7">
-                    <h4>Users List</h4>
+                <div className="col-md-6">
+                    <h4>Customers List</h4>
 
                     <nav>
                         <ul className="pagination">
@@ -208,7 +213,7 @@ export default class JiraUsersList extends Component<Props, State> {
                                 >
                                     <button
                                         className="page-link"
-                                        onClick={() => this.setCurrentPage(pageNumber + 1, usersPerPage)}
+                                        onClick={() => this.setCurrentPage(pageNumber + 1, customersPerPage)}
                                     >
                                         {pageNumber + 1}
                                     </button>
@@ -229,15 +234,18 @@ export default class JiraUsersList extends Component<Props, State> {
                                 </tr>
                             </thead>
                             <tbody>
-                                {displayedUsers.map((user, index) => (
+                                {displayedCustomers.map((customer, index) => (
                                     <tr key={index}>
-                                        <td>{user.displayName}</td>
-                                        <td>{user.accountId}</td>
-                                        <td>{user.accountType}</td>
-                                        <td>{user.emailAddress}</td>
+                                        <td>{customer.displayName}</td>
+                                        <td>{customer.accountId}</td>
+                                        <td>{customer.accountType}</td>
+                                        <td>{customer.emailAddress}</td>
                                         <td>
-                                            <Link to={"/jira/user/" + user.id} className="badge badge-warning">
+                                            <Link to={"/jira/customer/" + customer.id} className="badge badge-warning">
                                                 Edit
+                                            </Link>
+                                            <Link to={"/jira/issue"} className="badge badge-primary">
+                                                View issues
                                             </Link>
                                         </td>
                                     </tr>
@@ -247,7 +255,7 @@ export default class JiraUsersList extends Component<Props, State> {
                     </div>
                 </div>
                 <div className="col-md-8">
-                    Export users list as :
+                    Export customers list as :
                     <select
                         value={this.state.exportFormat}
                         className="badge"
