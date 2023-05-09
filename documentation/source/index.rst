@@ -7,3 +7,4 @@ Welcome to documentation projet ETL's documentation!
 
    /Database/Database.rst
    /Extension/extension.rst
+   /Backend/Backend.rst
