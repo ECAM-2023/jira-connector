@@ -77,11 +77,13 @@ To get a local copy up and running, follow these simple example steps.
 
 postgresql: [postgresql-install] (305 Mo)
 
+After installing the installer this is what you will see:
+
 ![install_main_page]
 
 OS : Windows 10/11 (Lower versions might not work)
 
-IDE : Visual Studio Code
+IDE : Visual Studio Code (don't have it ? click [here] to download it)
 
 VSCode Extensions :
 - Python
@@ -247,3 +249,4 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 [typescript-url]: https://typescript.org/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-555555?&logo=bootstrap
 [Bootstrap-url]: https://getbootstrap.com
+[here]: https://code.visualstudio.com/Download
