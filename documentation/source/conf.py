@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'documentation projet ETL'
-copyright = '2023, Mourad Mettioui,Victor Van olffen, Maillard Corentin'
-author = 'Mourad Mettioui,Victor Van olffen, Maillard Corentin'
+project = 'Documentation Connecteur Jira'
+copyright = '2023, Mourad Mettioui, Victor Van Olffen & Maillard Corentin'
+author = 'Mourad Mettioui, Victor Van Olffen & Maillard Corentin'
 release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------

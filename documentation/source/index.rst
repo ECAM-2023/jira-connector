@@ -1,10 +1,11 @@
-Welcome to documentation projet ETL's documentation!
+Documentation du connecteur Jira
 ====================================================
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+   :maxdepth: 2
+   :caption: Contenu:
 
-   /Database/Database.rst
-   /Extension/extension.rst
-   /Backend/Backend.rst
+   /Database/Database
+   /Extension/extension
+   /Backend/Backend
+   frontend/index

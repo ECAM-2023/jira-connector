@@ -1,10 +1,10 @@
 .. include:: ../_static/references/_sphinx.rst
 
-Documentation base de donnée
+Base de donnée
 =============================
 
-Configuration base de donnée
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration de la base de donnée
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Installer progreSQL : `postgresql`_
 
