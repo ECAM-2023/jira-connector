@@ -51,6 +51,10 @@ Voici la vue "Organizations" qui permet d'afficher une liste de toutes les organ
 .. image:: ../_static/images/frontend-organizations.PNG
     :width: 1200
 
+| Une requête HTTP est envoyée vers le backend pour récupérer les organisations dans la base de donnée.
+| Il est également possible de télécharger la liste des organisations en appuyant sur le bouton "Export as xlsx".
+| Les autres vues (Issues, Customers, Users) ont un fonctionnement identique.
+
 Voici la vue "Add organization" qui permet d'ajouter une organisation en indiquant son ID et son nom :
 
 .. image:: ../_static/images/frontend-addorganization.PNG
@@ -76,12 +80,16 @@ Voici la vue "Register" pour s'enregistrer dans la base de donnée :
 .. image:: ../_static/images/frontend-register.PNG
     :width: 1200
 
+Voici la vue "Login" pour s'enregistrer dans la base de donnée :
+
+.. image:: ../_static/images/frontend-login.PNG
+    :width: 1200
+
 Voici la vue "Settings" pour s'enregistrer dans la base de donnée :
 
 .. image:: ../_static/images/frontend-settings.PNG
     :width: 1200
 
-Voici la vue "Login" pour s'enregistrer dans la base de donnée :
+L'entiereté du frontend en français n'a pas encore été implémenté.
 
-.. image:: ../_static/images/frontend-login.PNG
-    :width: 1200
+L'enregistrement et la connexion d'un utilisateur n'est pas fonctionnel.
