@@ -5,6 +5,7 @@ Welcome to documentation projet ETL's documentation!
    :maxdepth: 1
    :caption: Contents:
 
-   /Database/Database.rst
-   /Extension/extension.rst
-   /Backend/Backend.rst
+   instal/index
+   config/index
+   test/index
+   component/index

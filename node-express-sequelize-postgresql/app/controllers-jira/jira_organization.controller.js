@@ -53,6 +53,7 @@ exports.findAll = (req, res) => {
 exports.findbyOrganisationId = (req, res) => {
   const id = req.params.id;
   var condition = id ? { organizationid: { [Op.iLike]: `%${id}%` } } : null;
+  
   Jira_Issue.findAll({where: condition})
     .then(data => {
       if (data) {
@@ -86,15 +87,16 @@ exports.findissuebyOrgId = (req, res) => {
     .then(data => {
       if (data) {
         res.send(data);
-      } else {
+      } 
+      else {
         res.status(404).send({
-          message: `Cannot find Issue with idorg=${idorg}.`
+          message: `Cannot find Issue with idorg=${idiss}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving org with id=" + idorg +"and issue with id "+ idiss
+        message: "Error retrieving issue with id=" + idiss
       });
     });
 };
