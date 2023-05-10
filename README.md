@@ -77,7 +77,7 @@ To get a local copy up and running, follow these simple example steps.
 
 postgresql: [postgresql-install] (305 Mo)
 
-
+![install_main_page]
 
 OS : Windows 10/11 (Lower versions might not work)
 
@@ -227,9 +227,9 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [npmpackage]:  https://img.shields.io/badge/npm_packages-9.6.4-green
-[contributors-shield]: https://img.shields.io/badge/contributors-3-green
+[contributors-shield]: https://img.shields.io/badge/contributors-3-greenv
 [contributors-url]: https://github.com/ECAM-2023/jira-connector/graphs/contributors
-[product-screenshot]: images/screenshot.png
+[install_main_page]: documentation/source/_static/images/inst_MP.PNG
 [Node.js]: https://img.shields.io/badge/node.js-555555?logo=nodedotjs
 [Node-url]: https://nodejs.org/
 [React.js]: https://img.shields.io/badge/React-555555?logo=react

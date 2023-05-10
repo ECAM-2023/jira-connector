@@ -31,14 +31,14 @@ exports.create = (req, res) => {
   // Retrieve all organizations from the jira-connector.
   exports.findAll = (req, res) => {
   
-    axios.get('http://10.1.100.244:8080/api/v1/jira/organization')
+    axios.get('http://192.168.1.109:8080/api/v1/jira/organization')
     .then(response => {
       
       res.send(response.data);})
     .catch(error => {console.log(error); 
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving organizations."
+          error.message || "Some error occurred while retrieving organizations."
       });
     })
   };
