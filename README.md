@@ -304,6 +304,7 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-555555?&logo=bootstrap
 [Bootstrap-url]: https://getbootstrap.com
 [here]: https://code.visualstudio.com/Download
+<<<<<<< HEAD
 [install_main_page]: documentation/source/_static/images/inst_MP.PNG
 [install_components]: documentation/source/_static/images/instcompo.PNG
 [install_repository]: documentation/source/_static/images/instrep.PNG
@@ -315,3 +316,5 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 [install_almost]: documentation/source/_static/images/instfin.PNG
 [install_installation]: documentation/source/_static/images/instencours.PNG
 [install_end]: documentation/source/_static/images/instffin.PNG
+=======
+>>>>>>> a180636a04611235b7d739b3af7450c7f8ffa8d4
