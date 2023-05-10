@@ -77,9 +77,64 @@ To get a local copy up and running, follow these simple example steps.
 
 postgresql: [postgresql-install] (305 Mo)
 
-After installing the installer this is what you will see:
+After installing the installer, open it and this is what you will see:
 
-![install_main_page]
+![install_main_page] 
+
+Click on Next/suivant
+
+
+![install_components]
+
+by default all are selected but if you don't want some, unmark them
+
+
+![install_repository]
+
+Click on Next/suivant if you choose default configuration
+
+
+![install_repo_data]
+
+Click on Next/suivant if you choose default configuration
+
+
+![install_mdp]
+
+choose a password for the database
+
+
+![install_port]
+
+you should let the default port and click on Next/suivant
+
+
+![install_language]
+
+choose the language for the database
+
+
+![install_summary]
+
+Click on Next/suivant 
+
+
+![install_almost]
+
+Click on Next/suivant 
+
+
+![install_installation]
+
+wait for the installation to finish
+
+
+![install_end]
+
+choose if you want to unmark and then click on Finish.
+
+
+You have installed postgresql, to open and configure see the documentation below.
 
 OS : Windows 10/11 (Lower versions might not work)
 
@@ -231,7 +286,6 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 [npmpackage]:  https://img.shields.io/badge/npm_packages-9.6.4-green
 [contributors-shield]: https://img.shields.io/badge/contributors-3-greenv
 [contributors-url]: https://github.com/ECAM-2023/jira-connector/graphs/contributors
-[install_main_page]: documentation/source/_static/images/inst_MP.PNG
 [Node.js]: https://img.shields.io/badge/node.js-555555?logo=nodedotjs
 [Node-url]: https://nodejs.org/
 [React.js]: https://img.shields.io/badge/React-555555?logo=react
@@ -250,3 +304,14 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-555555?&logo=bootstrap
 [Bootstrap-url]: https://getbootstrap.com
 [here]: https://code.visualstudio.com/Download
+[install_main_page]: documentation/source/_static/images/inst_MP.PNG
+[install_components]: documentation/source/_static/images/instcompo.PNG
+[install_repository]: documentation/source/_static/images/instrep.PNG
+[install_repo_data]: documentation/source/_static/images/instrepdata.PNG
+[install_mdp]: documentation/source/_static/images/instmdp.PNG
+[install_port]: documentation/source/_static/images/instport.PNG
+[install_language]: documentation/source/_static/images/instlg.PNG
+[install_summary]: documentation/source/_static/images/instres.PNG
+[install_almost]: documentation/source/_static/images/instfin.PNG
+[install_installation]: documentation/source/_static/images/instencours.PNG
+[install_end]: documentation/source/_static/images/instffin.PNG
