@@ -55,14 +55,8 @@ The project is separated in 3 part, the jira connector, the backend and the fron
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -154,13 +148,15 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
+- [x] Views 
+    - [x] Organizations
+    - [x] Issues
+    - [x] Users
+    - [x] Customers
+- [ ] Add Additional Components
 - [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+    - [x] English
+    - [ ] French
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
@@ -198,9 +194,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Van Olffen Victor - 20253@ecam.be
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Mettioui Mourad - 195019@ecam.be
+
+Maillard Corentin - 21306@ecam.be
+
+Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/ECAM-2023/jira-connector)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
