@@ -1,9 +1,9 @@
-Welcome to documentation projet ETL's documentation!
+Documentation du connecteur Jira
 ====================================================
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+   :maxdepth: 2
+   :caption: Contenu:
 
    instal/index
    config/index

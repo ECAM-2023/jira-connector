@@ -1,9 +1,9 @@
 .. include:: ../_static/references/_sphinx.rst
 
-Documentation Backend
+Backend
 =====================
 
-hébergement serveur web
+Hébergement serveur web
 -----------------------
 
 Serveur express
