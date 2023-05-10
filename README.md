@@ -304,17 +304,14 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-555555?&logo=bootstrap
 [Bootstrap-url]: https://getbootstrap.com
 [here]: https://code.visualstudio.com/Download
-<<<<<<< HEAD
 [install_main_page]: documentation/source/_static/images/inst_MP.PNG
-[install_components]: documentation/source/_static/images/instcompo.PNG
-[install_repository]: documentation/source/_static/images/instrep.PNG
-[install_repo_data]: documentation/source/_static/images/instrepdata.PNG
-[install_mdp]: documentation/source/_static/images/instmdp.PNG
-[install_port]: documentation/source/_static/images/instport.PNG
-[install_language]: documentation/source/_static/images/instlg.PNG
-[install_summary]: documentation/source/_static/images/instres.PNG
-[install_almost]: documentation/source/_static/images/instfin.PNG
-[install_installation]: documentation/source/_static/images/instencours.PNG
-[install_end]: documentation/source/_static/images/instffin.PNG
-=======
->>>>>>> a180636a04611235b7d739b3af7450c7f8ffa8d4
+[install_components]: documentation/source/_static/images/instcompo.png
+[install_repository]: documentation/source/_static/images/instrep.png
+[install_repo_data]: documentation/source/_static/images/instrepdata.png
+[install_mdp]: documentation/source/_static/images/instmdp.png
+[install_port]: documentation/source/_static/images/instport.png
+[install_language]: documentation/source/_static/images/instlg.png
+[install_summary]: documentation/source/_static/images/instres.png
+[install_almost]: documentation/source/_static/images/instfin.png
+[install_installation]: documentation/source/_static/images/instencours.png
+[install_end]: documentation/source/_static/images/instffin.png
