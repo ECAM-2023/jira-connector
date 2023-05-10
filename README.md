@@ -75,7 +75,7 @@ To get a local copy up and running, follow these simple example steps.
 
 ### Prerequisites
 
-postgresql: [postgresql-install] <a href="https://www.enterprisedb.com/postgresql-tutorial-resources-training?uuid=4726a163-a071-4af4-8395-6d239c34d4a1&campaignId=Product_Trial_PostgreSQL_15" target="_blank" rel="noopener">install</a> (305 Mo)
+postgresql: [postgresql-install] (305 Mo)
 
 After installing the installer this is what you will see:
 
