@@ -1,6 +1,8 @@
-
+<a name="readme-top"></a>
 
 [![Contributors][contributors-shield]][contributors-url]
+![npmpackage]
+
 
 <!-- PROJECT LOGO -->
   <h1 align="center">Jira-Connector-Project</h3>
@@ -32,13 +34,11 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    </li
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+
   </ol>
 </details>
 
@@ -71,10 +71,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple example steps.
 
 ### Prerequisites
+
+postgresql: [postgresql-install]
 
 OS : Windows 10/11 (Lower versions might not work)
 
@@ -94,12 +95,28 @@ VSCode Extensions :
 
 ### Installation
 
+Go where you want to install this project and create a folder
+```
+cd perfect_place
+mkdir folder_name
+```
+
+go to the folder newly created
+```
+cd folder_name
+```
+
+clone this project by using this in a terminal:
+```
+git clone https://github.com/ECAM-2023/jira-connector.git
+```
+there you are you have installed the project !
 
 ## To view the documentation, follow these instructions :
 1. Open a bash/powershell terminal in the project
 2. Get in the "documentation" folder of the projet in the terminal using this command :
 ```
-cd documentation
+cd .\jira-connector\documentation\
 ```
 3. Everytime you want to generate and update your documentation, empty the "build" folder with this command :
 ```
@@ -110,6 +127,10 @@ cd documentation
 ./make.bat html
 ```
 5. Get in the folder "build/html" and open "index.html" in your browser to view the documentation
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## To start the project, use these commands :
 
@@ -138,16 +159,6 @@ npm install --legacy-peer-deps
 # then
 node server.js
 ```
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -212,26 +223,8 @@ Project Link: [https://github.com/ECAM-2023/jira-connector](https://github.com/E
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[npmpackage]:  https://img.shields.io/badge/npm_packages-9.6.4-green
 [contributors-shield]: https://img.shields.io/badge/contributors-3-green
 [contributors-url]: https://github.com/ECAM-2023/jira-connector/graphs/contributors
 [product-screenshot]: images/screenshot.png
@@ -243,6 +236,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [axios-url]: https://axios.org/
 [postgresql]: https://img.shields.io/badge/postgresql-555555?logo=postgresql
 [postgresql-url]: https://postgresql.org/
+[postgresql-install]: https://www.enterprisedb.com/postgresql-tutorial-resources-training?uuid=4726a163-a071-4af4-8395-6d239c34d4a1&campaignId=Product_Trial_PostgreSQL_15
 [Express]: https://img.shields.io/badge/Express-555555?logo=Express
 [express-url]: https://Express.org/
 [sequelize]: https://img.shields.io/badge/sequelize-555555?logo=sequelize
