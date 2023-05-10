@@ -75,7 +75,9 @@ To get a local copy up and running, follow these simple example steps.
 
 ### Prerequisites
 
-postgresql: [postgresql-install]
+postgresql: [postgresql-install] (305 Mo)
+
+
 
 OS : Windows 10/11 (Lower versions might not work)
 
