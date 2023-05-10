@@ -76,13 +76,40 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+OS : Windows 10/11 (Lower versions might not work)
+
+IDE : Visual Studio Code
+
+VSCode Extensions :
+- Python
+- reStructuredText
+- MySQL
+- Live Server
+- Prettier
+
 * npm
   ```sh
   npm install npm@latest -g
   ```
 
 ### Installation
+
+
+## To view the documentation, follow these instructions :
+1. Open a bash/powershell terminal in the project
+2. Get in the "documentation" folder of the projet in the terminal using this command :
+```
+cd documentation
+```
+3. Everytime you want to generate and update your documentation, empty the "build" folder with this command :
+```
+./make.bat clean
+```
+4. Generate the documentation in HTML with this command :
+```
+./make.bat html
+```
+5. Get in the folder "build/html" and open "index.html" in your browser to view the documentation
 
 ## To start the project, use these commands :
 
