@@ -6,8 +6,6 @@ Base de donnée
 Configuration de la base de donnée
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Installer progreSQL : `postgresql`_
-
 - ouvrir "pgadmin 4"
 
 - y configurer le mot de passe et le nom d'utilisateur.

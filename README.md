@@ -75,66 +75,7 @@ To get a local copy up and running, follow these simple example steps.
 
 ### Prerequisites
 
-postgresql: [postgresql-install] (305 Mo)
-
-After installing the installer, open it and this is what you will see:
-
-![install_main_page] 
-
-Click on Next/suivant
-
-
-![install_components]
-
-by default all are selected but if you don't want some, unmark them
-
-
-![install_repository]
-
-Click on Next/suivant if you choose default configuration
-
-
-![install_repo_data]
-
-Click on Next/suivant if you choose default configuration
-
-
-![install_mdp]
-
-choose a password for the database
-
-
-![install_port]
-
-you should let the default port and click on Next/suivant
-
-
-![install_language]
-
-choose the language for the database
-
-
-![install_summary]
-
-Click on Next/suivant 
-
-
-![install_almost]
-
-Click on Next/suivant 
-
-
-![install_installation]
-
-wait for the installation to finish
-
-
-![install_end]
-
-choose if you want to unmark and then click on Finish.
-
-
-You have installed postgresql, to open and configure see the documentation below.
+Database : postgresql ( ~ 1.25Go)
 
 OS : Windows 10/11 (Lower versions might not work)
 
@@ -212,32 +153,23 @@ npm run start
 ```
 cd node-express-sequelize-postgres
 ```
-3. Use these commands in the terminal :
+3. Use this command in the terminal to install the packages :
 ```
 npm install --legacy-peer-deps
-# then
-node server.js
 ```
+4. Use this command to start running the server :
 
+``` 
+node server-jc.js
+```
+this is the server of the jiraconnector running on port 8080
 
+5. Open an other terminal as aside and run this command
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Views 
-    - [x] Organizations
-    - [x] Issues
-    - [x] Users
-    - [x] Customers
-- [ ] Add Additional Components
-- [ ] Multi-language Support
-    - [x] English
-    - [ ] French
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+``` 
+node server-fe.js
+```
+this is the server of the frontend running on port 8085
 
 
 <!-- CONTRIBUTING -->

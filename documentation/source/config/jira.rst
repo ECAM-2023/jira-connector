@@ -7,9 +7,9 @@ JIRA
 
     email address
     apitoken
-        expliquer la procedure de creation de l'apitoken
-            url pour l'acces à l'apitoken
-            copie de la clé
+    expliquer la procedure de creation de l'apitoken
+    url pour l'acces à l'apitoken
+    copie de la clé
 
 - OAUTH 2.0
 
