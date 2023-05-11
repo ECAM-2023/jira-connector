@@ -1,5 +1,7 @@
 const db = require("../models");
 const Jira = db.jira_customers;
+const Jira_Issue = db.jira_issues;
+const Jira_Worklog = db.jira_worklog;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new customer
@@ -53,8 +55,9 @@ exports.findAll = (req, res) => {
 // Find a single customer with an accountId
 exports.findOne = (req, res) => {
   const id = req.params.id;
+  var condition = id ? { accountId: { [Op.iLike]: `%${id}%` } } : null;
 
-  Jira.findByPk(id)
+  Jira.findAll({ where: condition })
     .then(data => {
       if (data) {
         res.send(data);
@@ -121,19 +124,89 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all jira customer from the database.
-exports.deleteAll = (req, res) => {
-Jira.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} jira customers were deleted successfully!` });
+exports.findbyCustomerId = (req, res) => {
+  const id = req.params.id;
+  var condition = id ? { userId: { [Op.iLike]: `%${id}%` } } : null;
+  
+  Jira_Issue.findAll({where: condition})
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Issue with id=${id}.`
+        });
+      }
     })
     .catch(err => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all jira customers."
+        message: "Error retrieving Issue with id=" + id
       });
     });
 };
+
+exports.findissuebycustId = (req, res) => {
+  const idcust = req.params.idcust;
+  const idiss = req.params.idiss;
+  var conditioncust = idcust ? { userId: { [Op.iLike]: `%${idcust}%` } } : null
+  var conditioniss = idiss ? { issue_id: { [Op.iLike]: `%${idiss}%` } } : null;
+
+  Jira_Issue.findAll({
+    where: {
+      [Op.and]: [
+        conditioncust,
+        conditioniss
+      ]
+    }})
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } 
+      else {
+        res.status(404).send({
+          message: `Cannot find Issue with idorg=${idiss}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving issue with id=" + idiss
+      });
+    });
+};
+
+exports.findworkloginissue = (req, res) => {
+  const id = req.params.idiss;
+  var condition = id ? { issue_id: { [Op.iLike]: `%${id}%` } } : null;
+
+  Jira_Worklog.findAll({where: condition})
+    .then(data => {
+      if (data) {
+        res.send (data);
+        };
+    })
+      };
+      
+exports.findOneworklog = (req, res) => {
+  //const id = req.params.id
+  const idwl = req.params.idwl;
+  var condition =  idwl ? { worklog_id: { [Op.iLike]: `%${idwl}%` } } : null;
+  //{ where: condition }
+  Jira_Worklog.findAll({ where: condition })
+  //Jira_Worklog.query("SELECT * FROM public.jira_worklogs WHERE WORKLOG_ID = '10015'")
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Worklog with id=${id}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Worklog with id=" + id
+      });
+    });
+};
+

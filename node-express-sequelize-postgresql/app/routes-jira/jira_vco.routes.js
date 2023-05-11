@@ -3,26 +3,20 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  // Create a new Organization
+  // Create a new view
   router.post("/", view_customer_organizations.create);
 
-  // Retrieve all Organizations
+  // Retrieve all view
   router.get("/", view_customer_organizations.findAll);
 
-  // // Retrieve all published Tutorials
-  // router.get("/published", jira.findAllPublished);
-
-  // Retrieve a single Jira Organization with id
+  // Retrieve a single view with id
   router.get("/:id", view_customer_organizations.findOne);
 
-  // Update a Jira Organization with id
+  // Update a view with id
   router.put("/:id", view_customer_organizations.update);
 
-  // Delete a Tutorial with id
+  // Delete a view with id
   router.delete("/:id", view_customer_organizations.delete);
-
-  // Delete all Tutorials
-  router.delete("/", view_customer_organizations.deleteAll);
 
   app.use("/api/v1/jira/viewco", router);
 };

@@ -102,7 +102,7 @@ exports.findissuebyOrgId = (req, res) => {
 };
 
 exports.findworkloginissue = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.idiss;
   var condition = id ? { issue_id: { [Op.iLike]: `%${id}%` } } : null;
 
   Jira_Worklog.findAll({where: condition})
@@ -113,12 +113,59 @@ exports.findworkloginissue = (req, res) => {
     })
       };
 
+exports.findworklogs = (req, res) => {
+  //const id = req.params.id
+  const idwl = req.params.id;
+  var condition =  idwl ? { worklog_id: { [Op.iLike]: `%${idwl}%` } } : null;
+  //{ where: condition }
+  Jira_Worklog.findAll({ where: condition })
+  //Jira_Worklog.query("SELECT * FROM public.jira_worklogs WHERE WORKLOG_ID = '10015'")
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Worklog with id=${id}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Worklog with id=" + id
+      });
+    });
+};
+
+exports.findOneworklog = (req, res) => {
+  //const id = req.params.id
+  const idwl = req.params.idwl;
+  var condition =  idwl ? { worklog_id: { [Op.iLike]: `%${idwl}%` } } : null;
+  //{ where: condition }
+  Jira_Worklog.findAll({ where: condition })
+  //Jira_Worklog.query("SELECT * FROM public.jira_worklogs WHERE WORKLOG_ID = '10015'")
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Worklog with id=${id}.`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Worklog with id=" + id
+      });
+    });
+};
+
 
 // Find a single Jira Organisation with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
+  var condition = id ? { organizationID: { [Op.iLike]: `%${id}%` } } : null;
 
-  Jira_Organization.findByPk(id)
+  Jira_Organization.findAll({where: condition})
     .then(data => {
       if (data) {
         res.send(data);
@@ -181,23 +228,6 @@ exports.delete = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message: "Could not delete Organisation with id=" + id
-      });
-    });
-};
-
-// Delete all Organisations from the database.
-exports.deleteAll = (req, res) => {
-  Jira_Organization.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} Organisations were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all Organisations."
       });
     });
 };

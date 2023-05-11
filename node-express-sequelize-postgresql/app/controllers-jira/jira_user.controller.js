@@ -1,5 +1,6 @@
 const db = require("../models");
 const Jira = db.jira_users;
+const Jira_Worklog = db.jira_worklog;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new User
@@ -53,8 +54,9 @@ exports.findAll = (req, res) => {
 // Find a single User with an accountId
 exports.findOne = (req, res) => {
   const id = req.params.id;
+  var condition = id ? { accountId: { [Op.iLike]: `%${id}%` } } : null;
 
-  Jira.findByPk(id)
+  Jira.findAll({where: condition})
     .then(data => {
       if (data) {
         res.send(data);
@@ -76,7 +78,7 @@ exports.update = (req, res) => {
   const id = req.params.id;
 
   Jira.update(req.body, {
-    where: { id: id }
+    where: { accountId: id }
   })
     .then(num => {
       if (num == 1) {
@@ -101,7 +103,7 @@ exports.delete = (req, res) => {
   const id = req.params.id;
 
   Jira.destroy({
-    where: { id: id }
+    where: { accountId: id }
   })
     .then(num => {
       if (num == 1) {
@@ -121,19 +123,37 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all jira user from the database.
-exports.deleteAll = (req, res) => {
-Jira.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} jira users were deleted successfully!` });
+exports.findworklogfromuser = (req, res) => {
+  const id = req.params.iduser;
+  var condition = id ? { creatorId: { [Op.iLike]: `%${id}%` } } : null;
+
+  Jira_Worklog.findAll({where: condition})
+    .then(data => {
+      if (data) {
+        res.send (data);
+        };
+    })
+      };
+      
+exports.findOneworklog = (req, res) => {
+  //const id = req.params.id
+  const idwl = req.params.idwl;
+  var condition =  idwl ? { worklog_id: { [Op.iLike]: `%${idwl}%` } } : null;
+  //{ where: condition }
+  Jira_Worklog.findAll({ where: condition })
+  //Jira_Worklog.query("SELECT * FROM public.jira_worklogs WHERE WORKLOG_ID = '10015'")
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Worklog with id=${id}.`
+        });
+      }
     })
     .catch(err => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all jira users."
+        message: "Error retrieving Worklog with id=" + id
       });
     });
 };

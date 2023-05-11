@@ -12,23 +12,23 @@ module.exports = app => {
   // Retrieve a single Jira Organization with id
   router.get("/:id", jira_organizations.findOne);
 
-      // Retrieve a Jira issues with id organisation
-      router.get("/:id/issue", jira_organizations.findbyOrganisationId);
-
-          // Retrieve a single Jira Organization with id
-          router.get("/:idorg/issue/:id/worklog", jira_organizations.findworkloginissue);
-
-          // Retrieve a single Jira Organization with id
-          router.get("/:idorg/issue/:idiss", jira_organizations.findissuebyOrgId);
-
   // Update a Jira Organization with id
   router.put("/:id", jira_organizations.update);
 
-  // Delete a Tutorial with id
+  // Delete a Organization with id
   router.delete("/:id", jira_organizations.delete);
 
-  // Delete all Tutorials
-  router.delete("/", jira_organizations.deleteAll);
+      // Retrieve all Jira issues with id organisation
+      router.get("/:id/issue", jira_organizations.findbyOrganisationId);
 
+        // Retrieve a single Jira issue with id organisation
+        router.get("/:idorg/issue/:idiss", jira_organizations.findissuebyOrgId);
+
+          // Retrieves all worklogs from an issue in an organisation
+          router.get("/:idorg/issue/:idiss/worklog", jira_organizations.findworkloginissue);
+
+            // Retrieves one worklog from an issue in an organisation
+            router.get("/:idorg/issue/:id/worklog/:idwl", jira_organizations.findOneworklog);
+            
   app.use("/api/v1/jira/organization", router);
 };

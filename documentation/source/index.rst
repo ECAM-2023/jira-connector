@@ -5,7 +5,9 @@ Documentation du connecteur Jira
    :maxdepth: 2
    :caption: Contenu:
 
-   instal/index
+   install/index
    config/index
    test/index
    component/index
+   Database/Database
+   frontend/index

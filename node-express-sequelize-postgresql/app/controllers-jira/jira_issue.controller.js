@@ -23,7 +23,7 @@ exports.create = (req, res) => {
     status:req.body.status,
     summary: req.body.summary,
     userId:req.body.userId,
-    organizationid:req.body.organizationId
+    organizationid:req.body.organizationid
   };
 
   // Save Jira Issue in the database
@@ -59,7 +59,9 @@ exports.findAll = (req, res) => {
 // Find a single Jira Issue with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Jira_Issue.findByPk(id)
+  var condition = id ? { issue_id: { [Op.iLike]: `%${id}%` } } : null;
+  
+  Jira_Issue.findAll({where: condition})
     .then(data => {
       if (data) {
         res.send(data);
@@ -96,24 +98,13 @@ exports.findbyOrganisationId = (req, res) => {
     });
 };
 
-exports.findworkloginissue = (req, res) => {
-  const id = req.params.id;
-  var condition = id ? { issue_id: { [Op.iLike]: `%${id}%` } } : null;
-
-  Jira_Worklog.findAll({where: condition})
-    .then(data => {
-      if (data) {
-        res.send (data);
-        };
-    })
-      };
 
 // Update a Issue by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
   Jira_Issue.update(req.body, {
-    where: { id: id }
+    where: { issue_id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -138,7 +129,7 @@ exports.delete = (req, res) => {
   const id = req.params.id;
 
   Jira_Issue.destroy({
-    where: { id: id }
+    where: { issue_id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -158,19 +149,3 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all Issues from the database.
-exports.deleteAll = (req, res) => {
-  Jira_Issue.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} Issues were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all Issues."
-      });
-    });
-};
