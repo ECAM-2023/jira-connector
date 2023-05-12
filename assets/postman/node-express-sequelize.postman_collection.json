@@ -1,0 +1,3461 @@
+{
+	"info": {
+		"_postman_id": "c232a4d4-9748-4f53-a774-8fc251b84323",
+		"name": "node-express-sequelize",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26399586",
+		"_collection_link": "https://bold-station-892205.postman.co/workspace/My-Workspace~b999265d-cf6c-4c99-864c-4717ac904571/collection/26399586-c232a4d4-9748-4f53-a774-8fc251b84323?action=share&creator=26399586&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "get users postgresql",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "712020:e84b5e29-1c39-4d00-a96c-c50899a22274",
+									"description": "gfdg",
+									"disabled": true
+								},
+								{
+									"key": "accountType",
+									"value": "atlassian",
+									"disabled": true
+								},
+								{
+									"key": "displayName",
+									"value": "mett",
+									"disabled": true
+								},
+								{
+									"key": "Id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get users postgresql",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "10.1.100.244:8080/api/v1/jira/user",
+									"host": [
+										"10",
+										"1",
+										"100",
+										"244"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"user"
+									],
+									"query": [
+										{
+											"key": "accountId",
+											"value": "712020:e84b5e29-1c39-4d00-a96c-c50899a22274",
+											"description": "gfdg",
+											"disabled": true
+										},
+										{
+											"key": "accountType",
+											"value": "atlassian",
+											"disabled": true
+										},
+										{
+											"key": "displayName",
+											"value": "mett",
+											"disabled": true
+										},
+										{
+											"key": "Id",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "682"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2aa-WC9TQNmakcKMqdmxD5/9rOylVPQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:44:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 59,\n        \"accountId\": \"a5z4er65az4er\",\n        \"accountType\": \"atlassian\",\n        \"emailAddress\": \"noob@noobies.noobs\",\n        \"displayName\": \"Big Noob\",\n        \"createdAt\": \"2023-04-26T13:12:25.116Z\",\n        \"updatedAt\": \"2023-04-26T13:12:25.116Z\"\n    },\n    {\n        \"id\": 3,\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\n        \"accountType\": \"atlassian\",\n        \"emailAddress\": \"mouradm.mm@outlook.com\",\n        \"displayName\": \"Mourad Mettioui\",\n        \"createdAt\": \"2023-04-24T22:00:00.000Z\",\n        \"updatedAt\": \"2023-04-25T09:41:48.802Z\"\n    },\n    {\n        \"id\": 1,\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\n        \"accountType\": \"atlassian\",\n        \"emailAddress\": \"mouradm.mm@outlook.com\",\n        \"displayName\": \"jacques\",\n        \"createdAt\": \"2023-04-24T22:00:00.000Z\",\n        \"updatedAt\": \"2023-04-26T08:29:38.963Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/user/{{account_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user",
+								"{{account_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/user/{{account_id}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"user",
+										"{{account_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fa-KX1XAWViPHNmSXaYFMHLpQ4+enU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:35:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 7,\n        \"accountId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"accountType\": \"atlassian\",\n        \"emailAddress\": \"corentin.maillard@gmail.com\",\n        \"displayName\": \"Corentin Maillard\",\n        \"createdAt\": \"2023-05-11T08:41:04.098Z\",\n        \"updatedAt\": \"2023-05-11T08:41:04.098Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "post users postgresql",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"accountType\": \"atlassian\",\r\n        \"displayName\": \"youssef\",\r\n        \"emailAddress\":\"yboujraf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/api/v1/jira/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "post users postgresql",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"accountType\": \"atlassian\",\r\n        \"displayName\": \"youssef\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/user",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "215"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d7-gqU2cpFpYGcYdchFhj/4YvEzUDc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:44:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 60,\n    \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\n    \"accountType\": \"atlassian\",\n    \"emailAddress\": null,\n    \"displayName\": \"youssef\",\n    \"updatedAt\": \"2023-04-26T13:44:31.933Z\",\n    \"createdAt\": \"2023-04-26T13:44:31.933Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"accountType\": \"atlassian\",\r\n        \"emailAddress\": \"corentin.maillard@gmail.com\",\r\n        \"displayName\": \"Corentin Maillard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/user/{{account_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user",
+								"{{account_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"accountType\": \"atlassian\",\r\n        \"displayName\": \"jacques\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/user/{{account_id}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"user",
+										"{{account_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-WG15xSmgnoVqMf97Ft9oeuoYeSc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:37:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User was updated successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete jira user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/user/{{account_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user",
+								"{{account_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete jira user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/user/59",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"user",
+										"59"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-qYopsciyWE4+mHZtPjN0swR64dw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:45:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"jira user was deleted successfully!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete all users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/api/v1/jira/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "get customers postgresql",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "712020:e84b5e29-1c39-4d00-a96c-c50899a22274",
+									"description": "gfdg",
+									"disabled": true
+								},
+								{
+									"key": "accountType",
+									"value": "atlassian",
+									"disabled": true
+								},
+								{
+									"key": "displayName",
+									"value": "mett",
+									"disabled": true
+								},
+								{
+									"key": "Id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get customers postgresql",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/customer",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"customer"
+									],
+									"query": [
+										{
+											"key": "accountId",
+											"value": "712020:e84b5e29-1c39-4d00-a96c-c50899a22274",
+											"description": "gfdg",
+											"disabled": true
+										},
+										{
+											"key": "accountType",
+											"value": "atlassian",
+											"disabled": true
+										},
+										{
+											"key": "displayName",
+											"value": "mett",
+											"disabled": true
+										},
+										{
+											"key": "Id",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "759"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f7-M6H5yqWBZJYWTJFoGjAq/+fw1AE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:45:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28\",\n        \"accountType\": \"customer\",\n        \"emailAddress\": null,\n        \"displayName\": \"Van Olffen Victor\",\n        \"createdAt\": \"2023-04-26T09:52:28.580Z\",\n        \"updatedAt\": \"2023-04-26T09:52:28.580Z\"\n    },\n    {\n        \"id\": 2,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:bf661920-5646-422d-8caf-c48907172155\",\n        \"accountType\": \"customer\",\n        \"emailAddress\": null,\n        \"displayName\": \"Boujraf Youssef\",\n        \"createdAt\": \"2023-04-26T09:52:28.583Z\",\n        \"updatedAt\": \"2023-04-26T09:52:28.583Z\"\n    },\n    {\n        \"id\": 3,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:ed4564cf-57fb-454c-9faa-e9e67f3eb4ee\",\n        \"accountType\": \"customer\",\n        \"emailAddress\": null,\n        \"displayName\": \"Mourad\",\n        \"createdAt\": \"2023-04-26T09:52:28.585Z\",\n        \"updatedAt\": \"2023-04-26T09:52:28.585Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer",
+								"{{account_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one customer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"customer",
+										"{{account_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"115-Y2jpdA55xO4hl/EjXNSTU08Ddm8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:07:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28\",\n        \"accountType\": \"customer\",\n        \"emailAddress\": \"vanolffen.v@gmail.com\",\n        \"displayName\": \"Van Olffen Victor\",\n        \"createdAt\": \"2023-05-11T08:24:06.931Z\",\n        \"updatedAt\": \"2023-05-11T08:24:06.931Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "post customers postgresql",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"accountType\": \"atlassian\",\r\n        \"displayName\": \"corentin\",\r\n        \"emailAddress\": \"corentin@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "post customers postgresql",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"accountType\": \"atlassian\",\r\n        \"displayName\": \"corentin\",\r\n        \"emailAddress\": \"corentin@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/customer",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"customer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "231"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e7-2oufDp+wHiD2sb4iWaarQdcuiYQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:45:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\n    \"accountType\": \"atlassian\",\n    \"emailAddress\": \"corentin@gmail.com\",\n    \"displayName\": \"corentin\",\n    \"updatedAt\": \"2023-04-26T13:45:32.187Z\",\n    \"createdAt\": \"2023-04-26T13:45:32.187Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"accountType\": \"atlassian\",\r\n        \"displayName\": \"Mourad Mettioui\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer/13",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "organisation",
+			"item": [
+				{
+					"name": "get organisation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/api/v1/jira/organization/",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"organization",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get organisation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/organization",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"organization"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "255"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ff-rtqucCXqr/I1Pv8K2U2H6ZX1cSQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:46:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"organizationID\": \"2\",\n        \"name\": \"BySystems\",\n        \"createdAt\": \"2023-04-26T09:52:28.417Z\",\n        \"updatedAt\": \"2023-04-26T09:52:28.417Z\"\n    },\n    {\n        \"id\": 1,\n        \"organizationID\": \"1\",\n        \"name\": \"ECAMOURAD\",\n        \"createdAt\": \"2023-04-26T09:52:28.410Z\",\n        \"updatedAt\": \"2023-04-26T13:45:44.354Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one organisation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/organization/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"organization",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one organisation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/organization/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"organization",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7e-LkidaCmckBvlGFR8o2TzsVEfz3Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:46:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"organizationID\": \"1\",\n    \"name\": \"ECAMOURAD\",\n    \"createdAt\": \"2023-04-26T09:52:28.410Z\",\n    \"updatedAt\": \"2023-04-26T13:45:44.354Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "post organisations postgresql",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"organizationID\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"name\": \"corentin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/organization",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"organization"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "post organisations postgresql",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"organizationID\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"name\": \"corentin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/organization",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"organization"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "167"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a7-xiPbN5x3IfyBq9rCR9dMN22mEmQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:46:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"organizationID\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\n    \"name\": \"corentin\",\n    \"updatedAt\": \"2023-04-26T13:46:25.118Z\",\n    \"createdAt\": \"2023-04-26T13:46:25.118Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update organisation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"organizationID\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\r\n        \"name\": \"coco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/organization/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"organization",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete organisation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/organization/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"organization",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "View Organization",
+			"item": [
+				{
+					"name": "get View Customer Organization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/api/v1/jira/viewco",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"viewco"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get View Customer Organization",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/viewco",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"viewco"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "797"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31d-FEWMTT+ho2Oc2T1C3FY6c3GB+WM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:46:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28\",\n        \"organizationID\": \"1\",\n        \"createdAt\": \"2023-04-26T09:51:02.551Z\",\n        \"updatedAt\": \"2023-04-26T09:51:02.551Z\"\n    },\n    {\n        \"id\": 2,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:bf661920-5646-422d-8caf-c48907172155\",\n        \"organizationID\": \"1\",\n        \"createdAt\": \"2023-04-26T09:51:02.557Z\",\n        \"updatedAt\": \"2023-04-26T09:51:02.557Z\"\n    },\n    {\n        \"id\": 3,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:ed4564cf-57fb-454c-9faa-e9e67f3eb4ee\",\n        \"organizationID\": \"1\",\n        \"createdAt\": \"2023-04-26T09:51:02.558Z\",\n        \"updatedAt\": \"2023-04-26T09:51:02.558Z\"\n    },\n    {\n        \"id\": 4,\n        \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28\",\n        \"organizationID\": \"2\",\n        \"createdAt\": \"2023-04-26T09:51:02.679Z\",\n        \"updatedAt\": \"2023-04-26T09:51:02.679Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one View Customer Organization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/viewco/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"viewco",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one View Customer Organization",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/viewco/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"viewco",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-2YB9oAejQaht9OnT8uWA+Itv+RQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:46:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"accountId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28\",\n    \"organizationID\": \"1\",\n    \"createdAt\": \"2023-04-26T09:51:02.551Z\",\n    \"updatedAt\": \"2023-04-26T09:51:02.551Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "post View Customer Organization",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"organizationID\": \"1\",\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/viewco",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"viewco"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "post View Customer Organization",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"organizationID\": \"1\",\r\n        \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/viewco",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"viewco"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "165"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a5-42Dcz9+CUQeJksgQ0DLZjVORZfE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Apr 2023 13:47:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"accountId\": \"712020:e84b5e29-1c39-4d00-a96c-c50899a22274\",\n    \"organizationID\": \"1\",\n    \"updatedAt\": \"2023-04-26T13:47:23.216Z\",\n    \"createdAt\": \"2023-04-26T13:47:23.216Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update View Customer Organization",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"organizationID\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/viewco/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"viewco",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete View Customer Organization",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/viewco/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"viewco",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "issues",
+			"item": [
+				{
+					"name": "get issues",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"issue_id\": \"10018\",\r\n        \"key\": \"ECAM-8\",\r\n        \"nameIssueType\": \"Bug\",\r\n        \"timespent\": null,\r\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\r\n        \"description\": \"Example new issue when Jira connector offline\",\r\n        \"status\": \"Open\",\r\n        \"summary\": \"Presentation week 5\",\r\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"organizationid\": \"2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get issues",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1896"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"768-ARnZkGL8w13N8kTPPIFw/jEfwdk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 09:31:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"issue_id\": \"10018\",\n        \"key\": \"ECAM-8\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": null,\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\n        \"description\": \"Example new issue when Jira connector offline\",\n        \"status\": \"Open\",\n        \"summary\": \"Presentation week 5\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:04.753Z\",\n        \"updatedAt\": \"2023-05-11T09:17:04.753Z\"\n    },\n    {\n        \"id\": 13,\n        \"issue_id\": \"10017\",\n        \"key\": \"ECAM-7\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": \"19800\",\n        \"updated\": \"2023-05-05T14:00:43.419+0200\",\n        \"description\": \"Présentation week 4\",\n        \"status\": \"Open\",\n        \"summary\": \"Présentation week 4\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:04.904Z\",\n        \"updatedAt\": \"2023-05-11T09:17:04.904Z\"\n    },\n    {\n        \"id\": 14,\n        \"issue_id\": \"10014\",\n        \"key\": \"ECAM-4\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": \"72000\",\n        \"updated\": \"2023-05-04T16:27:12.193+0200\",\n        \"description\": \"Jira webhook avec typescript\",\n        \"status\": \"Open\",\n        \"summary\": \"Présentation week 3\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:05.039Z\",\n        \"updatedAt\": \"2023-05-11T09:17:05.039Z\"\n    },\n    {\n        \"id\": 15,\n        \"issue_id\": \"10012\",\n        \"key\": \"ECAM-2\",\n        \"nameIssueType\": \"Support\",\n        \"timespent\": \"57600\",\n        \"updated\": \"2023-04-19T14:51:42.523+0200\",\n        \"description\": \"voir si je peux m'auto envoyer\",\n        \"status\": \"Waiting for support\",\n        \"summary\": \"Test\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:05.236Z\",\n        \"updatedAt\": \"2023-05-11T09:17:05.236Z\"\n    },\n    {\n        \"id\": 16,\n        \"issue_id\": \"10011\",\n        \"key\": \"ECAM-1\",\n        \"nameIssueType\": \"Support\",\n        \"timespent\": null,\n        \"updated\": \"2023-05-03T09:49:10.742+0200\",\n        \"description\": \"big noob\",\n        \"status\": \"Waiting for customer\",\n        \"summary\": \"noob\",\n        \"userId\": \"qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28\",\n        \"organizationid\": \"2\",\n        \"createdAt\": \"2023-05-11T09:17:05.424Z\",\n        \"updatedAt\": \"2023-05-11T09:17:05.424Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get issue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/10018",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"10018"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get issue",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/10018",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"10018"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "388"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"184-vAswO9D12b+AUhmaGXW7sjRgPho\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 09:39:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"issue_id\": \"10018\",\n        \"key\": \"ECAM-8\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": null,\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\n        \"description\": \"Example new issue when Jira connector offline\",\n        \"status\": \"Open\",\n        \"summary\": \"Presentation week 5\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:04.753Z\",\n        \"updatedAt\": \"2023-05-11T09:17:04.753Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Post issue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"issue_id\": \"10018\",\r\n        \"key\": \"ECAM-8\",\r\n        \"nameIssueType\": \"Bug\",\r\n        \"timespent\": null,\r\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\r\n        \"description\": \"Example new issue when Jira connector offline\",\r\n        \"status\": \"Open\",\r\n        \"summary\": \"Presentation week 5\",\r\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"organizationid\": \"2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "post issue",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"issue_id\": \"10018\",\r\n        \"key\": \"ECAM-8\",\r\n        \"nameIssueType\": \"Bug\",\r\n        \"timespent\": null,\r\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\r\n        \"description\": \"Example new issue when Jira connector offline\",\r\n        \"status\": \"Open\",\r\n        \"summary\": \"Presentation week 5\",\r\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"organizationid\": \"2\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "386"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"182-+rVcFtWBb4fM0vaKIe4LEBfEOW0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 09:40:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 17,\n    \"issue_id\": \"10018\",\n    \"key\": \"ECAM-8\",\n    \"nameIssueType\": \"Bug\",\n    \"timespent\": null,\n    \"updated\": \"2023-05-05T13:56:07.634+0200\",\n    \"description\": \"Example new issue when Jira connector offline\",\n    \"status\": \"Open\",\n    \"summary\": \"Presentation week 5\",\n    \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n    \"organizationid\": \"2\",\n    \"updatedAt\": \"2023-05-11T09:40:35.308Z\",\n    \"createdAt\": \"2023-05-11T09:40:35.308Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update issue",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"key\": \"ECAM-9\",\r\n        \"nameIssueType\": \"Bug\",\r\n        \"timespent\": null,\r\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\r\n        \"description\": \"Example update issue\",\r\n        \"status\": \"Open\",\r\n        \"summary\": \"Presentation week 5\",\r\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"organizationid\": \"2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/10019",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"10019"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update issue",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"key\": \"ECAM-9\",\r\n        \"nameIssueType\": \"Bug\",\r\n        \"timespent\": null,\r\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\r\n        \"description\": \"Example update issue\",\r\n        \"status\": \"Open\",\r\n        \"summary\": \"Presentation week 5\",\r\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"organizationid\": \"2\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/10019",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"10019"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-joNcpbojjIWiCGxS3ZIq56UHfWU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:27:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Jira Issue was updated successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete issue",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/10019",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"10019"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete issue",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/10019",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"10019"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-cr/nz3VWWt8nN9VZSQ9zUrYEgBY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:27:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Issue was deleted successfully!\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "worklog in issue in organisation",
+			"item": [
+				{
+					"name": "get worklogs in issue in organization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/organization/{{organizationId}}/issue/{{issue_id}}/worklog",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"organization",
+								"{{organizationId}}",
+								"issue",
+								"{{issue_id}}",
+								"worklog"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get worklogs in issue in organization",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/organization/{{organizationId}}/issue/{{issue_id}}/worklog",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"organization",
+										"{{organizationId}}",
+										"issue",
+										"{{issue_id}}",
+										"worklog"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3071"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bff-ZRpmNJ24jgWDWueV8wycbqZi7jI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:51:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"worklog_id\": \"10007\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:04.689+0200\",\n        \"description\": \"Worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.937Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.937Z\"\n    },\n    {\n        \"id\": 13,\n        \"worklog_id\": \"10009\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:07:51.728+0200\",\n        \"description\": \"worklog test\",\n        \"createdAt\": \"2023-05-11T09:05:48.940Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.940Z\"\n    },\n    {\n        \"id\": 14,\n        \"worklog_id\": \"10008\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:58.177+0200\",\n        \"description\": \"worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.945Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.945Z\"\n    },\n    {\n        \"id\": 15,\n        \"worklog_id\": \"10011\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\n        \"description\": \"test create worklog. Edit : Ajout d’une heure\",\n        \"createdAt\": \"2023-05-11T09:05:49.016Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.016Z\"\n    },\n    {\n        \"id\": 16,\n        \"worklog_id\": \"10010\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:08:59.863+0200\",\n        \"description\": \"worklog test 2\",\n        \"createdAt\": \"2023-05-11T09:05:49.017Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.017Z\"\n    },\n    {\n        \"id\": 17,\n        \"worklog_id\": \"10013\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:08:57.124+0200\",\n        \"description\": \"test comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.018Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.018Z\"\n    },\n    {\n        \"id\": 18,\n        \"worklog_id\": \"10014\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:10:19.255+0200\",\n        \"description\": \"test 2 comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.041Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.041Z\"\n    },\n    {\n        \"id\": 19,\n        \"worklog_id\": \"10018\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:11:04.315+0200\",\n        \"description\": \"test update\",\n        \"createdAt\": \"2023-05-11T09:05:49.048Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.048Z\"\n    },\n    {\n        \"id\": 20,\n        \"worklog_id\": \"10019\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-05-04T16:23:31.838+0200\",\n        \"description\": null,\n        \"createdAt\": \"2023-05-11T09:05:49.051Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.051Z\"\n    },\n    {\n        \"id\": 21,\n        \"worklog_id\": \"10012\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:06:00.923+0200\",\n        \"description\": \"Worklog update 1h\",\n        \"createdAt\": \"2023-05-11T09:05:49.056Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.056Z\"\n    },\n    {\n        \"id\": 22,\n        \"worklog_id\": \"10020\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:27:12.127+0200\",\n        \"description\": \"test worklog racourci\",\n        \"createdAt\": \"2023-05-11T09:05:49.070Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.070Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get worklog in issue in organization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/organization/{{organizationId}}/issue/{{issue_id}}/worklog/{{worklog_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"organization",
+								"{{organizationId}}",
+								"issue",
+								"{{issue_id}}",
+								"worklog",
+								"{{worklog_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get worklog in issue in organization",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/organization/{{organizationId}}/issue/{{issue_id}}/worklog/{{worklog_id}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"organization",
+										"{{organizationId}}",
+										"issue",
+										"{{issue_id}}",
+										"worklog",
+										"{{worklog_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-LfP4/uovLSgHvSFIqY8PrF/uPGw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:54:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 14,\n        \"worklog_id\": \"10008\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:58.177+0200\",\n        \"description\": \"worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.945Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.945Z\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Worklog",
+			"item": [
+				{
+					"name": "get all worklogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/worklog",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"worklog"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all worklogs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/worklog",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"worklog"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6291"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1893-Ued2ARdsGsZG64zz5nvv1c+L8+c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:34:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 8,\n        \"worklog_id\": \"10023\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-05-05T14:00:43.394+0200\",\n        \"description\": \"ajout pour test\",\n        \"createdAt\": \"2023-05-11T09:05:33.021Z\",\n        \"updatedAt\": \"2023-05-11T09:05:33.021Z\"\n    },\n    {\n        \"id\": 9,\n        \"worklog_id\": \"10017\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"1800\",\n        \"updated\": \"2023-05-04T11:13:55.606+0200\",\n        \"description\": null,\n        \"createdAt\": \"2023-05-11T09:05:48.775Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.775Z\"\n    },\n    {\n        \"id\": 10,\n        \"worklog_id\": \"10015\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T11:04:33.999+0200\",\n        \"description\": \"\",\n        \"createdAt\": \"2023-05-11T09:05:48.777Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.777Z\"\n    },\n    {\n        \"id\": 11,\n        \"worklog_id\": \"10016\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T10:52:49.919+0200\",\n        \"description\": \"test worklog\",\n        \"createdAt\": \"2023-05-11T09:05:48.835Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.835Z\"\n    },\n    {\n        \"id\": 12,\n        \"worklog_id\": \"10007\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:04.689+0200\",\n        \"description\": \"Worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.937Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.937Z\"\n    },\n    {\n        \"id\": 13,\n        \"worklog_id\": \"10009\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:07:51.728+0200\",\n        \"description\": \"worklog test\",\n        \"createdAt\": \"2023-05-11T09:05:48.940Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.940Z\"\n    },\n    {\n        \"id\": 14,\n        \"worklog_id\": \"10008\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:58.177+0200\",\n        \"description\": \"worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.945Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.945Z\"\n    },\n    {\n        \"id\": 15,\n        \"worklog_id\": \"10011\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\n        \"description\": \"test create worklog. Edit : Ajout d’une heure\",\n        \"createdAt\": \"2023-05-11T09:05:49.016Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.016Z\"\n    },\n    {\n        \"id\": 16,\n        \"worklog_id\": \"10010\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:08:59.863+0200\",\n        \"description\": \"worklog test 2\",\n        \"createdAt\": \"2023-05-11T09:05:49.017Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.017Z\"\n    },\n    {\n        \"id\": 17,\n        \"worklog_id\": \"10013\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:08:57.124+0200\",\n        \"description\": \"test comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.018Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.018Z\"\n    },\n    {\n        \"id\": 18,\n        \"worklog_id\": \"10014\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:10:19.255+0200\",\n        \"description\": \"test 2 comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.041Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.041Z\"\n    },\n    {\n        \"id\": 19,\n        \"worklog_id\": \"10018\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:11:04.315+0200\",\n        \"description\": \"test update\",\n        \"createdAt\": \"2023-05-11T09:05:49.048Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.048Z\"\n    },\n    {\n        \"id\": 20,\n        \"worklog_id\": \"10019\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-05-04T16:23:31.838+0200\",\n        \"description\": null,\n        \"createdAt\": \"2023-05-11T09:05:49.051Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.051Z\"\n    },\n    {\n        \"id\": 21,\n        \"worklog_id\": \"10012\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:06:00.923+0200\",\n        \"description\": \"Worklog update 1h\",\n        \"createdAt\": \"2023-05-11T09:05:49.056Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.056Z\"\n    },\n    {\n        \"id\": 22,\n        \"worklog_id\": \"10020\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:27:12.127+0200\",\n        \"description\": \"test worklog racourci\",\n        \"createdAt\": \"2023-05-11T09:05:49.070Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.070Z\"\n    },\n    {\n        \"id\": 23,\n        \"worklog_id\": \"10002\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-13T11:34:50.289+0200\",\n        \"description\": \"Test time tracking postman\",\n        \"createdAt\": \"2023-05-11T09:05:49.106Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.106Z\"\n    },\n    {\n        \"id\": 24,\n        \"worklog_id\": \"10003\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-13T11:36:52.355+0200\",\n        \"description\": \"Test time tracking for postman with json type\",\n        \"createdAt\": \"2023-05-11T09:05:49.108Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.108Z\"\n    },\n    {\n        \"id\": 25,\n        \"worklog_id\": \"10005\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-13T11:40:21.623+0200\",\n        \"description\": \"erfdsf\",\n        \"createdAt\": \"2023-05-11T09:05:49.110Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.110Z\"\n    },\n    {\n        \"id\": 26,\n        \"worklog_id\": \"10006\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T14:51:42.415+0200\",\n        \"description\": \"trop fort\",\n        \"createdAt\": \"2023-05-11T09:05:49.111Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.111Z\"\n    },\n    {\n        \"id\": 27,\n        \"worklog_id\": \"10000\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-11T11:18:27.798+0200\",\n        \"description\": \"Meeting 11 avril 2023 avec [~accountid:qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28] [~accountid:qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:ed4564cf-57fb-454c-9faa-e9e67f3eb4ee] \",\n        \"createdAt\": \"2023-05-11T09:05:49.121Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.121Z\"\n    },\n    {\n        \"id\": 28,\n        \"worklog_id\": \"10004\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-13T11:38:31.537+0200\",\n        \"description\": \"test\",\n        \"createdAt\": \"2023-05-11T09:05:49.123Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.123Z\"\n    },\n    {\n        \"id\": 29,\n        \"worklog_id\": \"10001\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-13T10:32:48.942+0200\",\n        \"description\": \"test webhoob\",\n        \"createdAt\": \"2023-05-11T09:05:49.161Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.161Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one worklog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/worklog/10020",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"worklog",
+								"10020"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one worklog",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/worklog/10020",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"worklog",
+										"10020"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "284"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11c-kf/c0PuAMQs/QLWbehrOJQf0erw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:39:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 22,\n        \"worklog_id\": \"10020\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:27:12.127+0200\",\n        \"description\": \"test worklog racourci\",\n        \"createdAt\": \"2023-05-11T09:05:49.070Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.070Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "post worklog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"worklog_id\": \"10024\" ,\r\n        \"issue_id\": \"10014\",\r\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"timespent\": \"7200\",\r\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\r\n        \"description\": \"test post  worklog\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/worklog",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"worklog"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "post worklog",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"worklog_id\": \"10024\" ,\r\n        \"issue_id\": \"10014\",\r\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"timespent\": \"7200\",\r\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\r\n        \"description\": \"test post  worklog\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/worklog",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"worklog"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "279"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"117-6qdHwfJoFZXMAnx2WStoK8mZop0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:43:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 31,\n    \"worklog_id\": \"10024\",\n    \"issue_id\": \"10014\",\n    \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n    \"timespent\": \"7200\",\n    \"updated\": \"2023-04-19T16:34:05.961+0200\",\n    \"description\": \"test post  worklog\",\n    \"updatedAt\": \"2023-05-11T10:43:05.975Z\",\n    \"createdAt\": \"2023-05-11T10:43:05.975Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update worklog",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"worklog_id\": \"10024\" ,\r\n        \"issue_id\": \"10014\",\r\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"timespent\": \"72\",\r\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\r\n        \"description\": \"test update  worklog\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/worklog/10024",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"worklog",
+								"10024"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update worklog",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"worklog_id\": \"10024\" ,\r\n        \"issue_id\": \"10014\",\r\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\r\n        \"timespent\": \"72\",\r\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\r\n        \"description\": \"test update  worklog\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/worklog/10024",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"worklog",
+										"10024"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-LhAS8O+cccBdvmLE5VNrsh34rYc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:48:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Jira Worklog was updated successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete worklog",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/issue/worklog/10024",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"issue",
+								"worklog",
+								"10024"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete worklog",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/issue/worklog/10024",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"issue",
+										"worklog",
+										"10024"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-RY5Ba56EGff5gFUrd/fX/fYoINw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 10:48:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Worklog was deleted successfully!\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "worklog in issue from customer",
+			"item": [
+				{
+					"name": "get issues from customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer",
+								"{{account_id}}",
+								"issue"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get issues from customers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"customer",
+										"{{account_id}}",
+										"issue"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1507"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e3-XWrsV4wR1aNZwSidjZuq8aYjst0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:10:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"issue_id\": \"10018\",\n        \"key\": \"ECAM-8\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": null,\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\n        \"description\": \"Example new issue when Jira connector offline\",\n        \"status\": \"Open\",\n        \"summary\": \"Presentation week 5\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:04.753Z\",\n        \"updatedAt\": \"2023-05-11T09:17:04.753Z\"\n    },\n    {\n        \"id\": 13,\n        \"issue_id\": \"10017\",\n        \"key\": \"ECAM-7\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": \"19800\",\n        \"updated\": \"2023-05-05T14:00:43.419+0200\",\n        \"description\": \"Présentation week 4\",\n        \"status\": \"Open\",\n        \"summary\": \"Présentation week 4\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:04.904Z\",\n        \"updatedAt\": \"2023-05-11T09:17:04.904Z\"\n    },\n    {\n        \"id\": 14,\n        \"issue_id\": \"10014\",\n        \"key\": \"ECAM-4\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": \"72000\",\n        \"updated\": \"2023-05-04T16:27:12.193+0200\",\n        \"description\": \"Jira webhook avec typescript\",\n        \"status\": \"Open\",\n        \"summary\": \"Présentation week 3\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:05.039Z\",\n        \"updatedAt\": \"2023-05-11T09:17:05.039Z\"\n    },\n    {\n        \"id\": 15,\n        \"issue_id\": \"10012\",\n        \"key\": \"ECAM-2\",\n        \"nameIssueType\": \"Support\",\n        \"timespent\": \"57600\",\n        \"updated\": \"2023-04-19T14:51:42.523+0200\",\n        \"description\": \"voir si je peux m'auto envoyer\",\n        \"status\": \"Waiting for support\",\n        \"summary\": \"Test\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:05.236Z\",\n        \"updatedAt\": \"2023-05-11T09:17:05.236Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one issue from customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue/{{issue_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer",
+								"{{account_id}}",
+								"issue",
+								"{{issue_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one issue from customer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue/{{issue_id}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"customer",
+										"{{account_id}}",
+										"issue",
+										"{{issue_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "388"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"184-vAswO9D12b+AUhmaGXW7sjRgPho\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:12:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"issue_id\": \"10018\",\n        \"key\": \"ECAM-8\",\n        \"nameIssueType\": \"Bug\",\n        \"timespent\": null,\n        \"updated\": \"2023-05-05T13:56:07.634+0200\",\n        \"description\": \"Example new issue when Jira connector offline\",\n        \"status\": \"Open\",\n        \"summary\": \"Presentation week 5\",\n        \"userId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"organizationid\": \"1\",\n        \"createdAt\": \"2023-05-11T09:17:04.753Z\",\n        \"updatedAt\": \"2023-05-11T09:17:04.753Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get worklogs in issue from customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue/{{issue_id}}/worklog",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer",
+								"{{account_id}}",
+								"issue",
+								"{{issue_id}}",
+								"worklog"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get worklogs in issue from customer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue/{{issue_id}}/worklog",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"customer",
+										"{{account_id}}",
+										"issue",
+										"{{issue_id}}",
+										"worklog"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3071"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bff-ZRpmNJ24jgWDWueV8wycbqZi7jI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:25:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"worklog_id\": \"10007\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:04.689+0200\",\n        \"description\": \"Worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.937Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.937Z\"\n    },\n    {\n        \"id\": 13,\n        \"worklog_id\": \"10009\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:07:51.728+0200\",\n        \"description\": \"worklog test\",\n        \"createdAt\": \"2023-05-11T09:05:48.940Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.940Z\"\n    },\n    {\n        \"id\": 14,\n        \"worklog_id\": \"10008\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:58.177+0200\",\n        \"description\": \"worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.945Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.945Z\"\n    },\n    {\n        \"id\": 15,\n        \"worklog_id\": \"10011\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\n        \"description\": \"test create worklog. Edit : Ajout d’une heure\",\n        \"createdAt\": \"2023-05-11T09:05:49.016Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.016Z\"\n    },\n    {\n        \"id\": 16,\n        \"worklog_id\": \"10010\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:08:59.863+0200\",\n        \"description\": \"worklog test 2\",\n        \"createdAt\": \"2023-05-11T09:05:49.017Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.017Z\"\n    },\n    {\n        \"id\": 17,\n        \"worklog_id\": \"10013\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:08:57.124+0200\",\n        \"description\": \"test comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.018Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.018Z\"\n    },\n    {\n        \"id\": 18,\n        \"worklog_id\": \"10014\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:10:19.255+0200\",\n        \"description\": \"test 2 comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.041Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.041Z\"\n    },\n    {\n        \"id\": 19,\n        \"worklog_id\": \"10018\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:11:04.315+0200\",\n        \"description\": \"test update\",\n        \"createdAt\": \"2023-05-11T09:05:49.048Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.048Z\"\n    },\n    {\n        \"id\": 20,\n        \"worklog_id\": \"10019\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-05-04T16:23:31.838+0200\",\n        \"description\": null,\n        \"createdAt\": \"2023-05-11T09:05:49.051Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.051Z\"\n    },\n    {\n        \"id\": 21,\n        \"worklog_id\": \"10012\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:06:00.923+0200\",\n        \"description\": \"Worklog update 1h\",\n        \"createdAt\": \"2023-05-11T09:05:49.056Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.056Z\"\n    },\n    {\n        \"id\": 22,\n        \"worklog_id\": \"10020\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:27:12.127+0200\",\n        \"description\": \"test worklog racourci\",\n        \"createdAt\": \"2023-05-11T09:05:49.070Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.070Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one worklog in issue from customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue/{{issue_id}}/worklog/{{worklog_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"customer",
+								"{{account_id}}",
+								"issue",
+								"{{issue_id}}",
+								"worklog",
+								"{{worklog_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one worklog in issue from customer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/customer/{{account_id}}/issue/{{issue_id}}/worklog/{{worklog_id}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"customer",
+										"{{account_id}}",
+										"issue",
+										"{{issue_id}}",
+										"worklog",
+										"{{worklog_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-LfP4/uovLSgHvSFIqY8PrF/uPGw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:26:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 14,\n        \"worklog_id\": \"10008\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:58.177+0200\",\n        \"description\": \"worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.945Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.945Z\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "worklog from user",
+			"item": [
+				{
+					"name": "get worklogs from a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/user/{{account_id}}/worklog",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user",
+								"{{account_id}}",
+								"worklog"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get worklogs from a user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/user/{{account_id}}/worklog",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"user",
+										"{{account_id}}",
+										"worklog"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6291"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1893-Ued2ARdsGsZG64zz5nvv1c+L8+c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:42:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 8,\n        \"worklog_id\": \"10023\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-05-05T14:00:43.394+0200\",\n        \"description\": \"ajout pour test\",\n        \"createdAt\": \"2023-05-11T09:05:33.021Z\",\n        \"updatedAt\": \"2023-05-11T09:05:33.021Z\"\n    },\n    {\n        \"id\": 9,\n        \"worklog_id\": \"10017\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"1800\",\n        \"updated\": \"2023-05-04T11:13:55.606+0200\",\n        \"description\": null,\n        \"createdAt\": \"2023-05-11T09:05:48.775Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.775Z\"\n    },\n    {\n        \"id\": 10,\n        \"worklog_id\": \"10015\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T11:04:33.999+0200\",\n        \"description\": \"\",\n        \"createdAt\": \"2023-05-11T09:05:48.777Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.777Z\"\n    },\n    {\n        \"id\": 11,\n        \"worklog_id\": \"10016\",\n        \"issue_id\": \"10017\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T10:52:49.919+0200\",\n        \"description\": \"test worklog\",\n        \"createdAt\": \"2023-05-11T09:05:48.835Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.835Z\"\n    },\n    {\n        \"id\": 12,\n        \"worklog_id\": \"10007\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:04.689+0200\",\n        \"description\": \"Worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.937Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.937Z\"\n    },\n    {\n        \"id\": 13,\n        \"worklog_id\": \"10009\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:07:51.728+0200\",\n        \"description\": \"worklog test\",\n        \"createdAt\": \"2023-05-11T09:05:48.940Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.940Z\"\n    },\n    {\n        \"id\": 14,\n        \"worklog_id\": \"10008\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:58.177+0200\",\n        \"description\": \"worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.945Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.945Z\"\n    },\n    {\n        \"id\": 15,\n        \"worklog_id\": \"10011\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-19T16:34:05.961+0200\",\n        \"description\": \"test create worklog. Edit : Ajout d’une heure\",\n        \"createdAt\": \"2023-05-11T09:05:49.016Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.016Z\"\n    },\n    {\n        \"id\": 16,\n        \"worklog_id\": \"10010\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-19T16:08:59.863+0200\",\n        \"description\": \"worklog test 2\",\n        \"createdAt\": \"2023-05-11T09:05:49.017Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.017Z\"\n    },\n    {\n        \"id\": 17,\n        \"worklog_id\": \"10013\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:08:57.124+0200\",\n        \"description\": \"test comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.018Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.018Z\"\n    },\n    {\n        \"id\": 18,\n        \"worklog_id\": \"10014\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:10:19.255+0200\",\n        \"description\": \"test 2 comment worklog\",\n        \"createdAt\": \"2023-05-11T09:05:49.041Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.041Z\"\n    },\n    {\n        \"id\": 19,\n        \"worklog_id\": \"10018\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:11:04.315+0200\",\n        \"description\": \"test update\",\n        \"createdAt\": \"2023-05-11T09:05:49.048Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.048Z\"\n    },\n    {\n        \"id\": 20,\n        \"worklog_id\": \"10019\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-05-04T16:23:31.838+0200\",\n        \"description\": null,\n        \"createdAt\": \"2023-05-11T09:05:49.051Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.051Z\"\n    },\n    {\n        \"id\": 21,\n        \"worklog_id\": \"10012\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-27T11:06:00.923+0200\",\n        \"description\": \"Worklog update 1h\",\n        \"createdAt\": \"2023-05-11T09:05:49.056Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.056Z\"\n    },\n    {\n        \"id\": 22,\n        \"worklog_id\": \"10020\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-05-04T16:27:12.127+0200\",\n        \"description\": \"test worklog racourci\",\n        \"createdAt\": \"2023-05-11T09:05:49.070Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.070Z\"\n    },\n    {\n        \"id\": 23,\n        \"worklog_id\": \"10002\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-13T11:34:50.289+0200\",\n        \"description\": \"Test time tracking postman\",\n        \"createdAt\": \"2023-05-11T09:05:49.106Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.106Z\"\n    },\n    {\n        \"id\": 24,\n        \"worklog_id\": \"10003\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-13T11:36:52.355+0200\",\n        \"description\": \"Test time tracking for postman with json type\",\n        \"createdAt\": \"2023-05-11T09:05:49.108Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.108Z\"\n    },\n    {\n        \"id\": 25,\n        \"worklog_id\": \"10005\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-13T11:40:21.623+0200\",\n        \"description\": \"erfdsf\",\n        \"createdAt\": \"2023-05-11T09:05:49.110Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.110Z\"\n    },\n    {\n        \"id\": 26,\n        \"worklog_id\": \"10006\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T14:51:42.415+0200\",\n        \"description\": \"trop fort\",\n        \"createdAt\": \"2023-05-11T09:05:49.111Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.111Z\"\n    },\n    {\n        \"id\": 27,\n        \"worklog_id\": \"10000\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-11T11:18:27.798+0200\",\n        \"description\": \"Meeting 11 avril 2023 avec [~accountid:qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28] [~accountid:qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:ed4564cf-57fb-454c-9faa-e9e67f3eb4ee] \",\n        \"createdAt\": \"2023-05-11T09:05:49.121Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.121Z\"\n    },\n    {\n        \"id\": 28,\n        \"worklog_id\": \"10004\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"3600\",\n        \"updated\": \"2023-04-13T11:38:31.537+0200\",\n        \"description\": \"test\",\n        \"createdAt\": \"2023-05-11T09:05:49.123Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.123Z\"\n    },\n    {\n        \"id\": 29,\n        \"worklog_id\": \"10001\",\n        \"issue_id\": \"10012\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"7200\",\n        \"updated\": \"2023-04-13T10:32:48.942+0200\",\n        \"description\": \"test webhoob\",\n        \"createdAt\": \"2023-05-11T09:05:49.161Z\",\n        \"updatedAt\": \"2023-05-11T09:05:49.161Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one worklog from a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/jira/user/{{account_id}}/worklog/{{worklog_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"user",
+								"{{account_id}}",
+								"worklog",
+								"{{worklog_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one worklog from a user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/jira/user/{{account_id}}/worklog/{{worklog_id}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"jira",
+										"user",
+										"{{account_id}}",
+										"worklog",
+										"{{worklog_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-LfP4/uovLSgHvSFIqY8PrF/uPGw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 May 2023 11:43:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 14,\n        \"worklog_id\": \"10008\",\n        \"issue_id\": \"10014\",\n        \"creatorId\": \"70121:a1214ae7-5c7a-422f-8513-edbeb36d6838\",\n        \"timespent\": \"14400\",\n        \"updated\": \"2023-04-19T15:43:58.177+0200\",\n        \"description\": \"worklog 4h\",\n        \"createdAt\": \"2023-05-11T09:05:48.945Z\",\n        \"updatedAt\": \"2023-05-11T09:05:48.945Z\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "login for frontend",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"email\": \"3\",\r\n        \"name\": \"elle\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8085/api/v1/jira/login/",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"jira",
+						"login",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get login",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"blabla@ecam.be\",\r\n        \"name\": \"pedro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/api/v1/jira/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "128"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"80-+rqQYvR1BNVdarOf5nXyXBUM4/o\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 03 May 2023 07:40:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"pedro\",\n        \"email\": \"blabla@ecam.be\",\n        \"createdAt\": \"2023-05-03T07:39:53.131Z\",\n        \"updatedAt\": \"2023-05-03T07:39:53.131Z\"\n    }\n]"
+				},
+				{
+					"name": "create login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"blabla@ecam.be\",\r\n        \"name\": \"pedro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/api/v1/jira/login/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"jira",
+								"login",
+								"signup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "126"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7e-uYCewq5cT8B/YzxG8hzkakUghzs\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 03 May 2023 07:40:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"name\": \"pedro\",\n    \"email\": \"blabla@ecam.be\",\n    \"updatedAt\": \"2023-05-03T07:40:49.975Z\",\n    \"createdAt\": \"2023-05-03T07:40:49.975Z\"\n}"
+				}
+			]
+		}
+	]
+}
