@@ -1,15 +1,117 @@
+.app {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5rem; 
+}
+
 .list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+    text-align: left;
+    max-width: 800px;
+    margin: auto;
 }
 
 .submit-form {
-  max-width: 300px;
-  margin: auto;
+    max-width: 300px;
+    margin: auto;
 }
 
 .edit-form {
-  max-width: 300px;
-  margin: auto;
+    max-width: 300px;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    user-select: none;
+}
+
+#nav-dropdown-dark {
+    color: white;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* ! Footer : Copyright & Version */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+.copyright {
+    color: white;
+    text-align: center;
+    background-color: rgb(70, 70, 70);
+    /* Rôle des prochaines lignes : Placer le texte au milieu au bas de la page */
+    padding: 20px;
+    /* position: fixed; Permet de fixer la position. De cette manière, le copyright reste toujours visible */
+    right: 0;
+    left: 0;
+    width: 100%;
+    /* margin-top: -30px; Negative half of height.
+    margin-left: -50%; Negative half of width.  */
+}
+
+.version {
+    color: white;
+    text-align: center;
+    background-color: rgb(70, 70, 70);
+    right: 0;
+    left: 0;
+    padding: 20px;
+    padding-right: 50px;
+}
+
+footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.card-container.card {
+    max-width: 350px !important;
+    padding: 40px 40px;
+}
+
+.card {
+    background-color: #f7f7f7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.table-custom td {
+    height: 13vh;
+    width: auto;
+    padding: 10px;
+}
+
+.badge {
+    border: solid 2px black;
+}
+
+select {
+    margin-left: 10px;
+    border: solid 2px black;
 }

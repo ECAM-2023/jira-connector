@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new View_Customer_Organization
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.accountId) {
+  if (!req.body.accountId & req.body.organizationID) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -115,23 +115,6 @@ exports.delete = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message: "Could not delete View_Customer_Organization with id=" + id
-      });
-    });
-};
-
-// Delete all View_Customer_Organizations from the database.
-exports.deleteAll = (req, res) => {
-  View_Customer_Organization.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} View_Customer_Organizations were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all View_Customer_Organizations."
       });
     });
 };

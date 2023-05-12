@@ -73,36 +73,13 @@ exports.findworklogs = (req, res) => {
       });
     });
 };
-// Find a single Jira Worklog with an id
-exports.findOne = (req, res) => {
-  const id = req.params.id
-  //const idwl = req.params.id;
-  //var condition =  idwl ? { worklog_id: { [Op.iLike]: `%${idwl}%` } } : null;
-  //{ where: condition }
-  Jira_Worklog.findByPk(id)
-  //Jira_Worklog.query("SELECT * FROM public.jira_worklogs WHERE WORKLOG_ID = '10015'")
-    .then(data => {
-      if (data) {
-        res.send(data);
-      } else {
-        res.status(404).send({
-          message: `Cannot find Worklog with id=${id}.`
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving Worklog with id=" + id
-      });
-    });
-};
 
 // Update a Worklog by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
   Jira_Worklog.update(req.body, {
-    where: { id: id }
+    where: { worklog_id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -127,7 +104,7 @@ exports.delete = (req, res) => {
   const id = req.params.id;
 
   Jira_Worklog.destroy({
-    where: { id: id }
+    where: { worklog_id: id }
   })
     .then(num => {
       if (num == 1) {

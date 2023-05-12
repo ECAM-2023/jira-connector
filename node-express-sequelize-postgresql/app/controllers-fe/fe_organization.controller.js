@@ -19,7 +19,7 @@ exports.create = (req, res) => {
         name: req.body.name
       };  
     // post organization in jira-connector by frontend 
-    axios.post('http://10.1.100.244:8080/api/v1/jira/organization', jira_organization)
+    axios.post('http://localhost:8080/api/v1/jira/organization', jira_organization)
     .then(response => {
       res.send(response.data); // logs the response from the server
     })
@@ -31,14 +31,14 @@ exports.create = (req, res) => {
   // Retrieve all organizations from the jira-connector.
   exports.findAll = (req, res) => {
   
-    axios.get('http://10.1.100.244:8080/api/v1/jira/organization')
+    axios.get('http://localhost:8080/api/v1/jira/organization')
     .then(response => {
       
       res.send(response.data);})
     .catch(error => {console.log(error); 
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving organizations."
+          error.message || "Some error occurred while retrieving organizations."
       });
     })
   };
@@ -47,7 +47,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
   
     const id = req.params.id;
-    axios.get('http://10.1.100.244:8080/api/v1/jira/organization/' + id)
+    axios.get('http://localhost:8080/api/v1/jira/organization/' + id)
     .then(response => {
       res.send(response.data); // logs the response from the server
     })
@@ -65,7 +65,7 @@ exports.create = (req, res) => {
         name: req.body.name
       };
   
-    axios.put('http://10.1.100.244:8080/api/v1/jira/organization/' + id, jira_organization)
+    axios.put('http://localhost:8080/api/v1/jira/organization/' + id, jira_organization)
     .then(response => {
       res.send(response.data); // logs the response from the server
     })
@@ -79,7 +79,7 @@ exports.create = (req, res) => {
   
     const id = req.params.id;
   
-    axios.delete('http://10.1.100.244:8080/api/v1/jira/organization/' + id)
+    axios.delete('http://localhost:8080/api/v1/jira/organization/' + id)
     .then(response => {
       res.send(response.data); // logs the response from the server
     })

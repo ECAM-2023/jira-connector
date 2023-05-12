@@ -3,23 +3,26 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  // Create a new User X
+  // Create a new User 
   router.post("/", jira_users.create);
 
-  // Retrieve all Users V
+  // Retrieve all Users 
   router.get("/", jira_users.findAll);
 
-  // Retrive one User by id X
+  // Retrive one User by id 
   router.get("/:id", jira_users.findOne);
 
-  // Update a User with id V
+  // Update a User with id 
   router.put("/:id", jira_users.update);
 
   // Delete a User with id
   router.delete("/:id", jira_users.delete);
 
-  // Delete all Users
-  router.delete("/", jira_users.deleteAll);
+    // Retrieves all worklogs from a user
+    router.get("/:iduser/worklog", jira_users.findworklogfromuser );
+
+    // Retrieve one worklog from a user
+    router.get("/:iduser/worklog/:idwl", jira_users.findOneworklog);
 
   app.use("/api/v1/jira/user", router);
 };

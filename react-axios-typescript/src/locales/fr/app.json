@@ -1,0 +1,15 @@
+{
+    "title": "Connecteur Jira",
+    "Issues": "Issues",
+    "Users": "Utilisateurs",
+    "Organizations": "Organisations",
+    "Customers": "Clients",
+    "AddNew": "Ajouter",
+    "AddNewIssue": "Ajouter une issue",
+    "AddNewUser": "Ajouter un utilisateur",
+    "AddNewOrganization": "Ajouter une organisation",
+    "Login": "Se connecter",
+    "Register": "Créer un nouveau compte",
+    "Settings": "Paramètres",
+    "Copyright": "Tous droits réservés."
+}

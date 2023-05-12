@@ -1,0 +1,15 @@
+{
+    "title": "Jira Connector",
+    "Issues": "Issues",
+    "Users": "Users",
+    "Organizations": "Organizations",
+    "Customers": "Customers",
+    "AddNew": "Add new",
+    "AddNewIssue": "Add issue",
+    "AddNewUser": "Add user",
+    "AddNewOrganization": "Add organization",
+    "Login": "Login",
+    "Register": "Register",
+    "Settings": "Settings",
+    "Copyright": "All rights reserved."
+}
