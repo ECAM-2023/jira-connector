@@ -1,0 +1,5 @@
+26/04/2023
+----------
+
+| Matinée : Jira connector: ajout user et interface + connexion back-end
+| Après-midi : Jira connector: ajout user et interface + connexion back-end

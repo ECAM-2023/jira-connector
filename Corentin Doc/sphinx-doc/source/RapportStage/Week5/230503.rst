@@ -1,0 +1,5 @@
+03/05/2023
+----------
+
+| Matinée : Jira connector: changement d'authentification (OAuth2 vers api token)
+| Après-midi : Jira connector: webhook request

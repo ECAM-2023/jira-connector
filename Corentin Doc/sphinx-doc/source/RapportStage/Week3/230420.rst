@@ -1,0 +1,5 @@
+20/04/2023
+----------
+
+| Matinée : request POST et GET de jira service management sur vs code
+| Après-midi : request POST et GET de jira service management sur vs code

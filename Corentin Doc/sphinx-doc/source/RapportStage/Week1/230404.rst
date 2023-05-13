@@ -1,0 +1,5 @@
+04/04/2023
+----------
+
+| Matinée : sphinx doc, création d’un compte jira + confluence + jira service management, commit rebase + sqwach.
+| Après-midi : sphinx-doc

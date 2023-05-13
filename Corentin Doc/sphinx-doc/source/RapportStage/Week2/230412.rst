@@ -1,0 +1,5 @@
+12/04/2023
+----------
+
+| Matinée : Postman utilisation de l'oauth 2.0 et configuration avec atlassian developer
+| Après-midi : Postman utilisation de l'oauth 2.0 et configuration avec atlassian developer + présentation.

@@ -1,0 +1,5 @@
+04/05/2023
+----------
+
+| Matinée : Jira connector : ajout de la comparaison database avec les infos recues de jira
+| Après-midi : Jira connector : webhook event CRUD issues

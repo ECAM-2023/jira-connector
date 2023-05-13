@@ -1,0 +1,5 @@
+03/04/2023
+----------
+
+| Matinée : connexion avec SSH, vérification des signatures avec GPG    
+| Après-midi : commitizen, semantic version (Major, minor, Patch)             

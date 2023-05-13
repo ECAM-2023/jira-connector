@@ -1,0 +1,5 @@
+10/05/2023
+----------
+
+| Matinée : Documentation du projet Jira-connector + Création du powerpoint pour la présentation finale
+| Après-midi : Documentation du projet Jira-connector + ReadME du Jira-connector

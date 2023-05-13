@@ -1,0 +1,5 @@
+18/04/2023
+----------
+
+| Matinée : typescript autobuild .ts et .map file,
+| Après-midi : connexion OAuth 2 jira avec vs code

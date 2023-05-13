@@ -1,0 +1,722 @@
+{
+    "expand": "schema,names",
+    "startAt": 0,
+    "maxResults": 50,
+    "total": 2,
+    "issues": [
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,customfield_10010.requestTypePractice,renderedFields",
+            "id": "10012",
+            "self": "https://corentinmaillard.atlassian.net/rest/api/latest/issue/10012",
+            "key": "ECAM-2",
+            "fields": {
+                "statuscategorychangedate": "2023-04-11T10:49:53.048+0200",
+                "issuetype": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/issuetype/10023",
+                    "id": "10023",
+                    "description": "For customer support issues. Created by Jira Service Desk.",
+                    "iconUrl": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10564?size=medium",
+                    "name": "Support",
+                    "subtask": false,
+                    "avatarId": 10564,
+                    "hierarchyLevel": 0
+                },
+                "timespent": 7200,
+                "customfield_10030": null,
+                "customfield_10031": null,
+                "project": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/project/10004",
+                    "id": "10004",
+                    "key": "ECAM",
+                    "name": "ECAM2023 - STAGE",
+                    "projectTypeKey": "service_desk",
+                    "simplified": false,
+                    "avatarUrls": {
+                        "48x48": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405",
+                        "24x24": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405?size=small",
+                        "16x16": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+                        "32x32": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405?size=medium"
+                    }
+                },
+                "customfield_10032": null,
+                "fixVersions": [],
+                "customfield_10033": [
+                    {
+                        "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=qm%3A2254bb2d-80ac-40c0-b4e8-4ee36123bb1f%3Aed4564cf-57fb-454c-9faa-e9e67f3eb4ee",
+                        "key": "qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:ed4564cf-57fb-454c-9faa-e9e67f3eb4ee",
+                        "accountId": "qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:ed4564cf-57fb-454c-9faa-e9e67f3eb4ee",
+                        "emailAddress": "mouradm.mm@outlook.com",
+                        "avatarUrls": {
+                            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+                        },
+                        "displayName": "Mourad",
+                        "active": true,
+                        "timeZone": "Europe/Brussels",
+                        "accountType": "customer"
+                    },
+                    {
+                        "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=qm%3A2254bb2d-80ac-40c0-b4e8-4ee36123bb1f%3A7f6f845d-14b0-4b78-8da6-92205f70ea28",
+                        "key": "qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28",
+                        "accountId": "qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28",
+                        "emailAddress": "vanolffen.v@gmail.com",
+                        "avatarUrls": {
+                            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+                        },
+                        "displayName": "Van Olffen Victor",
+                        "active": true,
+                        "timeZone": "Europe/Brussels",
+                        "accountType": "customer"
+                    }
+                ],
+                "customfield_10034": null,
+                "aggregatetimespent": 7200,
+                "resolution": null,
+                "customfield_10035": null,
+                "customfield_10027": null,
+                "customfield_10028": null,
+                "customfield_10029": null,
+                "resolutiondate": null,
+                "workratio": 8,
+                "lastViewed": "2023-04-11T12:26:36.891+0200",
+                "watches": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/issue/ECAM-2/watchers",
+                    "watchCount": 0,
+                    "isWatching": false
+                },
+                "customfield_10060": null,
+                "created": "2023-04-11T10:49:52.684+0200",
+                "customfield_10020": null,
+                "customfield_10021": null,
+                "customfield_10022": null,
+                "priority": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/priority/3",
+                    "iconUrl": "https://corentinmaillard.atlassian.net/images/icons/priorities/medium.svg",
+                    "name": "Medium",
+                    "id": "3"
+                },
+                "customfield_10023": null,
+                "customfield_10024": null,
+                "customfield_10025": null,
+                "labels": [],
+                "customfield_10026": null,
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": {
+                    "hasEpicLinkFieldDependency": false,
+                    "showField": false,
+                    "nonEditableReason": {
+                        "reason": "PLUGIN_LICENSE_ERROR",
+                        "message": "The Parent Link is only available to Jira Premium users."
+                    }
+                },
+                "customfield_10019": "0|i0002n:",
+                "aggregatetimeoriginalestimate": 86400,
+                "timeestimate": 79200,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=70121%3Aa1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "accountId": "70121:a1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "emailAddress": "corentin.maillard@gmail.com",
+                    "avatarUrls": {
+                        "48x48": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "24x24": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "16x16": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "32x32": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png"
+                    },
+                    "displayName": "Corentin Maillard",
+                    "active": true,
+                    "timeZone": "Europe/Brussels",
+                    "accountType": "atlassian"
+                },
+                "updated": "2023-04-11T11:18:27.869+0200",
+                "status": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/status/10003",
+                    "description": "This was auto-generated by Jira Service Management during workflow import",
+                    "iconUrl": "https://corentinmaillard.atlassian.net/images/icons/status_generic.gif",
+                    "name": "Waiting for support",
+                    "id": "10003",
+                    "statusCategory": {
+                        "self": "https://corentinmaillard.atlassian.net/rest/api/2/statuscategory/4",
+                        "id": 4,
+                        "key": "indeterminate",
+                        "colorName": "yellow",
+                        "name": "In Progress"
+                    }
+                },
+                "components": [],
+                "customfield_10050": null,
+                "timeoriginalestimate": 86400,
+                "customfield_10051": null,
+                "customfield_10052": null,
+                "customfield_10053": null,
+                "description": "voir si je peux m'auto envoyer",
+                "customfield_10010": {
+                    "_links": {
+                        "jiraRest": "https://corentinmaillard.atlassian.net/rest/api/2/issue/10012",
+                        "web": "https://corentinmaillard.atlassian.net/servicedesk/customer/portal/3/ECAM-2",
+                        "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/request/10012",
+                        "agent": "https://corentinmaillard.atlassian.net/browse/ECAM-2"
+                    },
+                    "requestType": {
+                        "_expands": [
+                            "field"
+                        ],
+                        "id": "29",
+                        "_links": {
+                            "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/servicedesk/3/requesttype/29"
+                        },
+                        "name": "Emailed request",
+                        "description": "Request received from your email support channel.",
+                        "helpText": "",
+                        "issueTypeId": "10023",
+                        "serviceDeskId": "3",
+                        "portalId": "3",
+                        "groupIds": [],
+                        "icon": {
+                            "id": "10527",
+                            "_links": {
+                                "iconUrls": {
+                                    "48x48": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10527?size=large",
+                                    "24x24": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10527?size=small",
+                                    "16x16": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10527?size=xsmall",
+                                    "32x32": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10527?size=medium"
+                                }
+                            }
+                        }
+                    },
+                    "currentStatus": {
+                        "status": "Waiting for support",
+                        "statusCategory": "INDETERMINATE",
+                        "statusDate": {
+                            "iso8601": "2023-04-11T10:49:52+0200",
+                            "jira": "2023-04-11T10:49:52.684+0200",
+                            "friendly": "Today 10:49 AM",
+                            "epochMillis": 1681202992684
+                        }
+                    }
+                },
+                "customfield_10054": null,
+                "customfield_10055": null,
+                "customfield_10056": null,
+                "customfield_10057": null,
+                "customfield_10058": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10059": null,
+                "customfield_10005": null,
+                "customfield_10049": null,
+                "customfield_10006": null,
+                "security": null,
+                "customfield_10007": null,
+                "customfield_10008": null,
+                "customfield_10009": null,
+                "aggregatetimeestimate": 79200,
+                "summary": "Test",
+                "creator": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=70121%3Aa1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "accountId": "70121:a1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "emailAddress": "corentin.maillard@gmail.com",
+                    "avatarUrls": {
+                        "48x48": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "24x24": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "16x16": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "32x32": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png"
+                    },
+                    "displayName": "Corentin Maillard",
+                    "active": true,
+                    "timeZone": "Europe/Brussels",
+                    "accountType": "atlassian"
+                },
+                "subtasks": [],
+                "customfield_10040": null,
+                "customfield_10041": {
+                    "id": "7",
+                    "name": "Time to resolution",
+                    "_links": {
+                        "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/request/10012/sla/7"
+                    },
+                    "completedCycles": [],
+                    "ongoingCycle": {
+                        "startTime": {
+                            "iso8601": "2023-04-11T10:49:52+0200",
+                            "jira": "2023-04-11T10:49:52.684+0200",
+                            "friendly": "Today 10:49 AM",
+                            "epochMillis": 1681202992684
+                        },
+                        "breachTime": {
+                            "iso8601": "2023-04-14T10:49:52+0200",
+                            "jira": "2023-04-14T10:49:52.684+0200",
+                            "friendly": "14/Apr/23 10:49 AM",
+                            "epochMillis": 1681462192684
+                        },
+                        "breached": false,
+                        "paused": false,
+                        "withinCalendarHours": true,
+                        "goalDuration": {
+                            "millis": 86400000,
+                            "friendly": "24h"
+                        },
+                        "elapsedTime": {
+                            "millis": 5892423,
+                            "friendly": "1h 38m"
+                        },
+                        "remainingTime": {
+                            "millis": 80507577,
+                            "friendly": "22h 21m"
+                        }
+                    }
+                },
+                "customfield_10042": {
+                    "id": "8",
+                    "name": "Time to first response",
+                    "_links": {
+                        "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/request/10012/sla/8"
+                    },
+                    "completedCycles": [],
+                    "ongoingCycle": {
+                        "startTime": {
+                            "iso8601": "2023-04-11T10:49:52+0200",
+                            "jira": "2023-04-11T10:49:52.684+0200",
+                            "friendly": "Today 10:49 AM",
+                            "epochMillis": 1681202992684
+                        },
+                        "breachTime": {
+                            "iso8601": "2023-04-12T10:49:52+0200",
+                            "jira": "2023-04-12T10:49:52.684+0200",
+                            "friendly": "12/Apr/23 10:49 AM",
+                            "epochMillis": 1681289392684
+                        },
+                        "breached": false,
+                        "paused": false,
+                        "withinCalendarHours": true,
+                        "goalDuration": {
+                            "millis": 28800000,
+                            "friendly": "8h"
+                        },
+                        "elapsedTime": {
+                            "millis": 5892496,
+                            "friendly": "1h 38m"
+                        },
+                        "remainingTime": {
+                            "millis": 22907504,
+                            "friendly": "6h 21m"
+                        }
+                    }
+                },
+                "reporter": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=70121%3Aa1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "accountId": "70121:a1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "emailAddress": "corentin.maillard@gmail.com",
+                    "avatarUrls": {
+                        "48x48": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "24x24": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "16x16": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "32x32": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png"
+                    },
+                    "displayName": "Corentin Maillard",
+                    "active": true,
+                    "timeZone": "Europe/Brussels",
+                    "accountType": "atlassian"
+                },
+                "customfield_10044": null,
+                "customfield_10000": "{}",
+                "aggregateprogress": {
+                    "progress": 7200,
+                    "total": 86400,
+                    "percent": 8
+                },
+                "customfield_10001": null,
+                "customfield_10045": null,
+                "customfield_10046": null,
+                "customfield_10002": [
+                    {
+                        "id": "1",
+                        "name": "ECAM",
+                        "_links": {
+                            "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/organization/1"
+                        }
+                    }
+                ],
+                "customfield_10047": null,
+                "customfield_10003": [
+                    {
+                        "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=qm%3A2254bb2d-80ac-40c0-b4e8-4ee36123bb1f%3Aed4564cf-57fb-454c-9faa-e9e67f3eb4ee",
+                        "accountId": "qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:ed4564cf-57fb-454c-9faa-e9e67f3eb4ee",
+                        "emailAddress": "mouradm.mm@outlook.com",
+                        "avatarUrls": {
+                            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+                        },
+                        "displayName": "Mourad",
+                        "active": true,
+                        "timeZone": "Europe/Brussels",
+                        "accountType": "customer"
+                    }
+                ],
+                "customfield_10048": [],
+                "customfield_10004": null,
+                "customfield_10038": {
+                    "languageCode": "en",
+                    "displayName": "English"
+                },
+                "customfield_10039": null,
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 7200,
+                    "total": 86400,
+                    "percent": 8
+                },
+                "votes": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/issue/ECAM-2/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,customfield_10010.requestTypePractice,renderedFields",
+            "id": "10011",
+            "self": "https://corentinmaillard.atlassian.net/rest/api/latest/issue/10011",
+            "key": "ECAM-1",
+            "fields": {
+                "statuscategorychangedate": "2023-04-11T10:49:46.248+0200",
+                "issuetype": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/issuetype/10023",
+                    "id": "10023",
+                    "description": "For customer support issues. Created by Jira Service Desk.",
+                    "iconUrl": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10564?size=medium",
+                    "name": "Support",
+                    "subtask": false,
+                    "avatarId": 10564,
+                    "hierarchyLevel": 0
+                },
+                "timespent": null,
+                "customfield_10030": null,
+                "customfield_10031": null,
+                "project": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/project/10004",
+                    "id": "10004",
+                    "key": "ECAM",
+                    "name": "ECAM2023 - STAGE",
+                    "projectTypeKey": "service_desk",
+                    "simplified": false,
+                    "avatarUrls": {
+                        "48x48": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405",
+                        "24x24": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405?size=small",
+                        "16x16": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+                        "32x32": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10405?size=medium"
+                    }
+                },
+                "customfield_10032": null,
+                "fixVersions": [],
+                "customfield_10033": [],
+                "customfield_10034": null,
+                "aggregatetimespent": null,
+                "resolution": null,
+                "customfield_10035": null,
+                "customfield_10027": null,
+                "customfield_10028": null,
+                "customfield_10029": null,
+                "resolutiondate": null,
+                "workratio": -1,
+                "watches": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/issue/ECAM-1/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "lastViewed": "2023-04-11T11:12:19.742+0200",
+                "customfield_10060": null,
+                "created": "2023-04-11T10:49:45.682+0200",
+                "customfield_10020": null,
+                "customfield_10021": null,
+                "customfield_10022": null,
+                "customfield_10023": null,
+                "priority": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/priority/3",
+                    "iconUrl": "https://corentinmaillard.atlassian.net/images/icons/priorities/medium.svg",
+                    "name": "Medium",
+                    "id": "3"
+                },
+                "customfield_10024": "2023-04-11T10:51:51.275+0200",
+                "customfield_10025": null,
+                "customfield_10026": null,
+                "labels": [],
+                "customfield_10016": null,
+                "customfield_10017": null,
+                "customfield_10018": {
+                    "hasEpicLinkFieldDependency": false,
+                    "showField": false,
+                    "nonEditableReason": {
+                        "reason": "PLUGIN_LICENSE_ERROR",
+                        "message": "The Parent Link is only available to Jira Premium users."
+                    }
+                },
+                "customfield_10019": "0|i0002f:",
+                "aggregatetimeoriginalestimate": null,
+                "timeestimate": null,
+                "versions": [],
+                "issuelinks": [],
+                "assignee": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=70121%3Aa1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "accountId": "70121:a1214ae7-5c7a-422f-8513-edbeb36d6838",
+                    "emailAddress": "corentin.maillard@gmail.com",
+                    "avatarUrls": {
+                        "48x48": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "24x24": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "16x16": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png",
+                        "32x32": "https://secure.gravatar.com/avatar/300d24a778a81dfc9d0ccb010ea2f840?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FCM-3.png"
+                    },
+                    "displayName": "Corentin Maillard",
+                    "active": true,
+                    "timeZone": "Europe/Brussels",
+                    "accountType": "atlassian"
+                },
+                "updated": "2023-04-11T11:12:22.929+0200",
+                "status": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/status/10004",
+                    "description": "This was auto-generated by Jira Service Management during workflow import",
+                    "iconUrl": "https://corentinmaillard.atlassian.net/images/icons/status_generic.gif",
+                    "name": "Waiting for customer",
+                    "id": "10004",
+                    "statusCategory": {
+                        "self": "https://corentinmaillard.atlassian.net/rest/api/2/statuscategory/4",
+                        "id": 4,
+                        "key": "indeterminate",
+                        "colorName": "yellow",
+                        "name": "In Progress"
+                    }
+                },
+                "components": [],
+                "customfield_10050": null,
+                "timeoriginalestimate": null,
+                "customfield_10051": null,
+                "customfield_10052": null,
+                "description": "big noob",
+                "customfield_10053": null,
+                "customfield_10054": null,
+                "customfield_10010": {
+                    "_links": {
+                        "jiraRest": "https://corentinmaillard.atlassian.net/rest/api/2/issue/10011",
+                        "web": "https://corentinmaillard.atlassian.net/servicedesk/customer/portal/3/ECAM-1",
+                        "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/request/10011",
+                        "agent": "https://corentinmaillard.atlassian.net/browse/ECAM-1"
+                    },
+                    "requestType": {
+                        "_expands": [
+                            "field"
+                        ],
+                        "id": "25",
+                        "_links": {
+                            "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/servicedesk/3/requesttype/25"
+                        },
+                        "name": "Technical support",
+                        "description": "Need help installing, configuring, or troubleshooting? Select this to request assistance.",
+                        "helpText": "",
+                        "issueTypeId": "10023",
+                        "serviceDeskId": "3",
+                        "portalId": "3",
+                        "groupIds": [
+                            "8"
+                        ],
+                        "icon": {
+                            "id": "10520",
+                            "_links": {
+                                "iconUrls": {
+                                    "48x48": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10520?size=large",
+                                    "24x24": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10520?size=small",
+                                    "16x16": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10520?size=xsmall",
+                                    "32x32": "https://corentinmaillard.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10520?size=medium"
+                                }
+                            }
+                        }
+                    },
+                    "currentStatus": {
+                        "status": "Waiting for customer",
+                        "statusCategory": "INDETERMINATE",
+                        "statusDate": {
+                            "iso8601": "2023-04-11T10:51:54+0200",
+                            "jira": "2023-04-11T10:51:54.068+0200",
+                            "friendly": "Today 10:51 AM",
+                            "epochMillis": 1681203114068
+                        }
+                    }
+                },
+                "customfield_10055": null,
+                "customfield_10056": null,
+                "customfield_10057": null,
+                "customfield_10058": null,
+                "customfield_10014": null,
+                "customfield_10015": null,
+                "customfield_10059": null,
+                "customfield_10005": null,
+                "customfield_10049": null,
+                "customfield_10006": null,
+                "security": null,
+                "customfield_10007": null,
+                "customfield_10008": null,
+                "aggregatetimeestimate": null,
+                "customfield_10009": null,
+                "summary": "noob",
+                "creator": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=qm%3A2254bb2d-80ac-40c0-b4e8-4ee36123bb1f%3A7f6f845d-14b0-4b78-8da6-92205f70ea28",
+                    "accountId": "qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28",
+                    "emailAddress": "vanolffen.v@gmail.com",
+                    "avatarUrls": {
+                        "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                        "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                        "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                        "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+                    },
+                    "displayName": "Van Olffen Victor",
+                    "active": true,
+                    "timeZone": "Europe/Brussels",
+                    "accountType": "customer"
+                },
+                "subtasks": [],
+                "customfield_10040": null,
+                "customfield_10041": {
+                    "id": "7",
+                    "name": "Time to resolution",
+                    "_links": {
+                        "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/request/10011/sla/7"
+                    },
+                    "completedCycles": [],
+                    "ongoingCycle": {
+                        "startTime": {
+                            "iso8601": "2023-04-11T10:49:45+0200",
+                            "jira": "2023-04-11T10:49:45.682+0200",
+                            "friendly": "Today 10:49 AM",
+                            "epochMillis": 1681202985682
+                        },
+                        "breachTime": {
+                            "iso8601": "2023-04-13T10:49:45+0200",
+                            "jira": "2023-04-13T10:49:45.682+0200",
+                            "friendly": "13/Apr/23 10:49 AM",
+                            "epochMillis": 1681375785682
+                        },
+                        "breached": false,
+                        "paused": false,
+                        "withinCalendarHours": true,
+                        "goalDuration": {
+                            "millis": 57600000,
+                            "friendly": "16h"
+                        },
+                        "elapsedTime": {
+                            "millis": 5899469,
+                            "friendly": "1h 38m"
+                        },
+                        "remainingTime": {
+                            "millis": 51700531,
+                            "friendly": "14h 21m"
+                        }
+                    }
+                },
+                "customfield_10042": {
+                    "id": "8",
+                    "name": "Time to first response",
+                    "_links": {
+                        "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/request/10011/sla/8"
+                    },
+                    "completedCycles": [
+                        {
+                            "startTime": {
+                                "iso8601": "2023-04-11T10:49:45+0200",
+                                "jira": "2023-04-11T10:49:45.682+0200",
+                                "friendly": "Today 10:49 AM",
+                                "epochMillis": 1681202985682
+                            },
+                            "stopTime": {
+                                "iso8601": "2023-04-11T10:51:51+0200",
+                                "jira": "2023-04-11T10:51:51.275+0200",
+                                "friendly": "Today 10:51 AM",
+                                "epochMillis": 1681203111275
+                            },
+                            "breachTime": {
+                                "iso8601": "2023-04-12T10:49:45+0200",
+                                "jira": "2023-04-12T10:49:45.682+0200",
+                                "friendly": "12/Apr/23 10:49 AM",
+                                "epochMillis": 1681289385682
+                            },
+                            "breached": false,
+                            "goalDuration": {
+                                "millis": 28800000,
+                                "friendly": "8h"
+                            },
+                            "elapsedTime": {
+                                "millis": 125593,
+                                "friendly": "2m"
+                            },
+                            "remainingTime": {
+                                "millis": 28674407,
+                                "friendly": "7h 57m"
+                            }
+                        }
+                    ]
+                },
+                "reporter": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/user?accountId=qm%3A2254bb2d-80ac-40c0-b4e8-4ee36123bb1f%3A7f6f845d-14b0-4b78-8da6-92205f70ea28",
+                    "accountId": "qm:2254bb2d-80ac-40c0-b4e8-4ee36123bb1f:7f6f845d-14b0-4b78-8da6-92205f70ea28",
+                    "emailAddress": "vanolffen.v@gmail.com",
+                    "avatarUrls": {
+                        "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                        "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                        "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
+                        "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
+                    },
+                    "displayName": "Van Olffen Victor",
+                    "active": true,
+                    "timeZone": "Europe/Brussels",
+                    "accountType": "customer"
+                },
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_10000": "{}",
+                "customfield_10044": null,
+                "customfield_10001": null,
+                "customfield_10045": null,
+                "customfield_10046": null,
+                "customfield_10002": [
+                    {
+                        "id": "1",
+                        "name": "ECAM",
+                        "_links": {
+                            "self": "https://corentinmaillard.atlassian.net/rest/servicedeskapi/organization/1"
+                        }
+                    }
+                ],
+                "customfield_10003": null,
+                "customfield_10047": null,
+                "customfield_10004": null,
+                "customfield_10048": [],
+                "customfield_10038": {
+                    "languageCode": "en",
+                    "displayName": "English"
+                },
+                "customfield_10039": null,
+                "environment": null,
+                "duedate": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "https://corentinmaillard.atlassian.net/rest/api/2/issue/ECAM-1/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                }
+            }
+        }
+    ]
+}

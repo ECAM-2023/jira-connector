@@ -1,0 +1,5 @@
+24/04/2023
+----------
+
+| Matinée : Jira connector utilisation des promises pour des HTTPS requests
+| Après-midi : Jira connector utilisation des promises pour des HTTPS requests

@@ -1,0 +1,5 @@
+02/05/2023
+----------
+
+| Matinée : Jira connector configuration webhook + webhook event to back-end
+| Après-midi : Jira connector configuration webhook + webhook event to back-end

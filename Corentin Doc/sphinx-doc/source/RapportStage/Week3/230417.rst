@@ -1,0 +1,5 @@
+17/04/2023
+----------
+
+| Matinée : typescript, eslint, nodejs, npm, axios
+| Après-midi : configuration typescript, eslint, prettier

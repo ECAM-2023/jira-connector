@@ -1,0 +1,5 @@
+13/04/2023
+----------
+
+| Matinée : Webhook configuration sur Jira
+| Après-midi : Utilisation de Webhook avec Postman

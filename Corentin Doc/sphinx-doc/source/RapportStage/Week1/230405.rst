@@ -1,0 +1,5 @@
+05/04/2023
+----------
+
+| Matinée : sphinx-doc plantuml, tree (=arborescence)
+| Après-midi : sphinx-doc lien avec confluence via un API token, lien entre github et html, création d'un lien url entre confluence et github, lecture de document xlsx, xls, CSV.

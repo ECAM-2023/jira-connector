@@ -1,0 +1,5 @@
+25/04/2023
+----------
+
+| Matinée : Jira connector: ajout customer + envoi back-end
+| Après-midi : Jira connector: ajout customer + envoi back-end
