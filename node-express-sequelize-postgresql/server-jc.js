@@ -29,6 +29,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to jira connector's API." });
 });
 
+app.get("/api/v1/jira", (req, res) => {
+  res.json({ message: "Welcome to jira connector's API" });
+});
+
 // Routes view_customer_organization
 require("./app/routes-jira/jira_vco.routes")(app);
 
